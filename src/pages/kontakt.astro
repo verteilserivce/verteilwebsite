@@ -1,0 +1,343 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/Badge.astro";
+import Button from "../components/Button.astro";
+
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || "";
+---
+
+<BaseLayout
+  title="Kontakt | Verteilservice Plus"
+  description="Kontaktieren Sie Verteilservice Plus in Oberursel. Angebot anfragen, Termin vereinbaren oder Rückruf wünschen – Douaa bendali hilft Ihnen gerne."
+  canonicalUrl="/kontakt"
+>
+  <!-- ===== HERO ===== -->
+  <section class="bg-background-soft py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <Badge text="• Kontakt" />
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mt-5 mb-6">
+        Sprechen Sie mich an
+      </h1>
+      <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+        Ob Angebotsanfrage, Terminvereinbarung oder einfach nur eine Frage – ich freue mich auf Ihre Nachricht 
+        und melde mich schnellstmöglich bei Ihnen.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== KONTAKT SPLIT SCREEN ===== -->
+  <section class="bg-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        
+        <!-- Left: Contact Info -->
+        <div class="space-y-10">
+          <div>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-foreground mb-6">
+              Direkter Kontakt
+            </h2>
+            <p class="text-muted leading-relaxed">
+              Rufen Sie mich an, schreiben Sie eine E-Mail oder nutzen Sie WhatsApp – 
+              ich bin für Sie da und antworte in der Regel innerhalb weniger Stunden.
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <!-- Address -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground mb-1">Adresse</p>
+                <p class="text-sm text-muted">
+                  Verteilservice Plus<br>
+                  Douaa bendali<br>
+                  Kupferhammer weg 51<br>
+                  61440 Oberursel
+                </p>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground mb-1">Telefon</p>
+                <a href="tel:+491638866766" class="text-sm text-primary hover:text-primary-dark transition-colors font-medium">
+                  0163 8866766
+                </a>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground mb-1">E-Mail</p>
+                <a href="mailto:Info@verteilservice-plus.de" class="text-sm text-primary hover:text-primary-dark transition-colors font-medium">
+                  Info@verteilservice-plus.de
+                </a>
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-success/10 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#22c55e" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-foreground mb-1">WhatsApp</p>
+                <a 
+                  href="https://wa.me/491638866766" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-sm text-success hover:text-success/80 transition-colors font-medium inline-flex items-center gap-1"
+                >
+                  Direkt chatten
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="bg-white rounded-3xl shadow-xl shadow-black/5 p-8 lg:p-10 border border-border/20">
+          <h3 class="font-serif text-xl font-semibold text-foreground mb-6">
+            Anfrage senden
+          </h3>
+
+          <form
+            id="contact-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            class="space-y-5"
+            novalidate
+          >
+            <!-- Web3Forms Config -->
+            <input type="hidden" name="access_key" value={web3formsKey} />
+            <input type="hidden" name="subject" value="Neue Anfrage von verteilservice-plus.de" />
+            <input type="hidden" name="from_name" value="Verteilservice Plus Website" />
+            <input type="hidden" name="redirect" value={Astro.site + "kontakt?success=true"} />
+
+            <!-- Honeypot -->
+            <input type="text" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+
+            <!-- Name -->
+            <div>
+              <label for="name" class="block text-sm font-medium text-foreground mb-2">
+                Name <span class="text-error">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 rounded-2xl border border-border bg-background-soft text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                placeholder="Ihr vollständiger Name"
+              />
+              <p class="hidden text-xs text-error mt-1" id="name-error">Bitte geben Sie Ihren Namen ein.</p>
+            </div>
+
+            <!-- Firma -->
+            <div>
+              <label for="company" class="block text-sm font-medium text-foreground mb-2">
+                Firma <span class="text-muted">(optional)</span>
+              </label>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                class="w-full px-4 py-3 rounded-2xl border border-border bg-background-soft text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                placeholder="Ihre Firma"
+              />
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-medium text-foreground mb-2">
+                E-Mail <span class="text-error">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 rounded-2xl border border-border bg-background-soft text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                placeholder="ihre@email.de"
+              />
+              <p class="hidden text-xs text-error mt-1" id="email-error">Bitte geben Sie eine gültige E-Mail-Adresse ein.</p>
+            </div>
+
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-medium text-foreground mb-2">
+                Telefon
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full px-4 py-3 rounded-2xl border border-border bg-background-soft text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                placeholder="0163 12345678"
+              />
+            </div>
+
+            <!-- Flyer Amount -->
+            <div>
+              <label for="amount" class="block text-sm font-medium text-foreground mb-2">
+                Geschätzte Anzahl Flyer
+              </label>
+              <select
+                id="amount"
+                name="amount"
+                class="w-full px-4 py-3 rounded-2xl border border-border bg-background-soft text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors appearance-none"
+              >
+                <option value="">Bitte wählen</option>
+                <option value="1-500">1 - 500 Stück</option>
+                <option value="500-1000">500 - 1.000 Stück</option>
+                <option value="1000-5000">1.000 - 5.000 Stück</option>
+                <option value="5000-10000">5.000 - 10.000 Stück</option>
+                <option value="10000+">Mehr als 10.000 Stück</option>
+              </select>
+            </div>
+
+            <!-- Message -->
+            <div>
+              <label for="message" class="block text-sm font-medium text-foreground mb-2">
+                Nachricht <span class="text-error">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="4"
+                class="w-full px-4 py-3 rounded-2xl border border-border bg-background-soft text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-none"
+                placeholder="Beschreiben Sie Ihr Vorhaben..."
+              ></textarea>
+              <p class="hidden text-xs text-error mt-1" id="message-error">Bitte geben Sie eine Nachricht ein.</p>
+            </div>
+
+            <!-- Submit -->
+            <Button type="submit" variant="primary" class="w-full" ariaLabel="Nachricht senden">
+              Nachricht senden
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </Button>
+          </form>
+
+          <!-- Success Message -->
+          <div id="success-message" class="hidden text-center py-8">
+            <div class="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h4 class="font-serif text-xl font-semibold text-foreground mb-2">Nachricht gesendet!</h4>
+            <p class="text-sm text-muted">Vielen Dank für Ihre Anfrage. Ich melde mich in Kürze bei Ihnen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+    
+    // Check for success param
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true' && successMessage) {
+      if (form) form.classList.add('hidden');
+      successMessage.classList.remove('hidden');
+    }
+
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        let isValid = true;
+        
+        // Name validation
+        const name = document.getElementById('name');
+        const nameError = document.getElementById('name-error');
+        if (name && nameError) {
+          if (!name.value.trim()) {
+            nameError.classList.remove('hidden');
+            name.classList.add('border-error');
+            isValid = false;
+          } else {
+            nameError.classList.add('hidden');
+            name.classList.remove('border-error');
+          }
+        }
+
+        // Email validation
+        const email = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email && emailError) {
+          if (!email.value.trim() || !emailRegex.test(email.value)) {
+            emailError.classList.remove('hidden');
+            email.classList.add('border-error');
+            isValid = false;
+          } else {
+            emailError.classList.add('hidden');
+            email.classList.remove('border-error');
+          }
+        }
+
+        // Message validation
+        const message = document.getElementById('message');
+        const messageError = document.getElementById('message-error');
+        if (message && messageError) {
+          if (!message.value.trim()) {
+            messageError.classList.remove('hidden');
+            message.classList.add('border-error');
+            isValid = false;
+          } else {
+            messageError.classList.add('hidden');
+            message.classList.remove('border-error');
+          }
+        }
+
+        if (!isValid) {
+          e.preventDefault();
+        }
+      });
+
+      // Real-time validation removal
+      ['name', 'email', 'message'].forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(fieldId + '-error');
+        if (field && error) {
+          field.addEventListener('input', () => {
+            error.classList.add('hidden');
+            field.classList.remove('border-error');
+          });
+        }
+      });
+    }
+  });
+</script>

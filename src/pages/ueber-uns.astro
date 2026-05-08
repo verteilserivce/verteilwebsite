@@ -1,0 +1,181 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/Badge.astro";
+import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+
+import aboutPortrait from "../assets/uberuns.jpg";
+---
+
+<BaseLayout
+  title="Über Uns | Verteilservice Plus"
+  description="Lernen Sie Douaa bendali kennen – Inhaber von Verteilservice Plus. Lokale Verbundenheit in Oberursel, hoher Qualitätsanspruch und persönlicher Service."
+  canonicalUrl="/ueber-uns"
+>
+  <!-- ===== HERO ===== -->
+  <section class="bg-background-soft py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <Badge text="• Das Unternehmen" />
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mt-5 mb-6">
+        Über Verteilservice Plus
+      </h1>
+      <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+        Ein lokales Einzelunternehmen mit einer klaren Mission: Ihre Werbung zuverlässig und persönlich 
+        direkt in die Briefkästen von Oberursel zu bringen.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== INHABER PROFIL ===== -->
+  <section class="bg-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Portrait with Overlap -->
+        <div class="relative">
+          <Image
+            src={aboutPortrait}
+            alt="Douaa bendali - Inhaber von Verteilservice Plus"
+            class="w-full h-[550px] lg:h-[650px] object-cover rounded-3xl shadow-xl shadow-black/5"
+            width={600}
+            height={800}
+          />
+          <!-- Overlapping Info Card -->
+          <div class="absolute -bottom-6 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl shadow-black/10 p-6 border border-border/20 max-w-[280px]">
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs text-muted uppercase tracking-wide">Inhaber</p>
+                  <p class="text-sm font-semibold text-foreground">Douaa bendali</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs text-muted uppercase tracking-wide">Standort</p>
+                  <p class="text-sm font-semibold text-foreground">Oberursel (Taunus)</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs text-muted uppercase tracking-wide">Telefon</p>
+                  <p class="text-sm font-semibold text-foreground">0163 8866766</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Content -->
+        <div>
+          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
+            Persönlich. Lokal. Engagiert.
+          </h2>
+          <div class="space-y-4 text-muted leading-relaxed">
+            <p>
+              Verteilservice Plus ist ein Einzelunternehmen mit Sitz in Oberursel. 
+              Gegründet mit der Vision, lokale Unternehmen bei ihrer Werbestrategie zu unterstützen, 
+              biete ich eine Alternative zu unpersönlichen Großverteilern: 
+              <strong class="text-foreground">echte Handarbeit mit persönlichem Engagement</strong>.
+            </p>
+            <p>
+              Ich kenne Oberursel und die Region wie meine eigene Westentasche. Jede Straße, jedes Viertel, 
+              jede Wohngegend – das Wissen um die lokale Struktur ist ein entscheidender Vorteil für 
+              die gezielte Verteilung Ihrer Werbematerialien.
+            </p>
+            <p>
+              Mein Anspruch ist hoch: <strong class="text-foreground">Zuverlässigkeit, Transparenz und Termintreue</strong> 
+              sind keine Optionen, sondern die Basis meiner Arbeit. Wenn Sie mit mir zusammenarbeiten, 
+              haben Sie einen direkten Ansprechpartner, der persönlich für das Ergebnis einsteht.
+            </p>
+            <p>
+              <!-- TODO: Hier echtes Kunden-Zitat einfügen -->
+              <em class="text-foreground/80">"Mein Ziel ist es, dass jeder Kunde sich auf mich verlassen kann – 
+              von der ersten Anfrage bis zur abschließenden Bestätigung."</em>
+              <br>
+              <span class="text-sm text-foreground font-medium">— Douaa bendali, Inhaber</span>
+            </p>
+          </div>
+
+          <div class="mt-8">
+            <Button href="/kontakt" ariaLabel="Kontakt aufnehmen">
+              Kontakt aufnehmen
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WERTE ===== -->
+  <section class="bg-background-soft py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 lg:mb-16">
+        <Badge text="• Unsere Werte" />
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-foreground mt-5 mb-4">
+          Was uns auszeichnet
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform duration-300 border border-border/20">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-lg font-semibold text-foreground mb-2">Leidenschaft</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Ich liebe, was ich tue. Jede Verteilung ist eine Chance, Unternehmen beim Wachstum zu helfen.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform duration-300 border border-border/20">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-lg font-semibold text-foreground mb-2">Verlässlichkeit</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Wenn ich einen Termin zusage, halte ich ihn. Keine Ausreden, keine Überraschungen.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform duration-300 border border-border/20">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-lg font-semibold text-foreground mb-2">Nähe</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Als Einzelunternehmer bin ich direkt für Sie da. Kurze Wege, schnelle Reaktion, persönlicher Kontakt.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

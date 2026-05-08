@@ -1,0 +1,134 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Impressum | Verteilservice Plus"
+  description="Impressum von Verteilservice Plus. Rechtliche Informationen gemäß § 5 TMG."
+  canonicalUrl="/impressum"
+  noindex={true}
+>
+  <section class="bg-background-soft py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-10">
+        Impressum
+      </h1>
+
+      <div class="space-y-10 text-sm text-muted leading-relaxed">
+        <!-- Angaben gemäß § 5 TMG -->
+        <div>
+          <h2 class="font-sans text-base font-semibold text-foreground mb-3">
+            Angaben gemäß § 5 TMG
+          </h2>
+          <div class="space-y-1">
+            <p class="text-foreground font-medium">Verteilservice Plus</p>
+            <p>Inhaber: Douaa bendali</p>
+            <p>Rechtsform: Einzelunternehmen</p>
+            <p>Kupferhammer weg 51</p>
+            <p>61440 Oberursel</p>
+          </div>
+        </div>
+
+        <!-- Kontakt -->
+        <div>
+          <h2 class="font-sans text-base font-semibold text-foreground mb-3">
+            Kontakt
+          </h2>
+          <div class="space-y-1">
+            <p>Telefon: <a href="tel:+491638866766" class="text-primary hover:underline">0163 8866766</a></p>
+            <p>E-Mail: <a href="mailto:Info@verteilservice-plus.de" class="text-primary hover:underline">Info@verteilservice-plus.de</a></p>
+          </div>
+        </div>
+
+        <!-- USt-IdNr -->
+        <div>
+          <h2 class="font-sans text-base font-semibold text-foreground mb-3">
+            Umsatzsteuer-ID
+          </h2>
+          <p>
+            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br>
+            <!-- TODO: USt-IdNr. hier einfügen, falls vorhanden -->
+            <span class="italic text-muted/70">Wird nachgereicht, falls erforderlich.</span>
+          </p>
+        </div>
+
+        <!-- Gewerbeamt -->
+        <div>
+          <h2 class="font-sans text-base font-semibold text-foreground mb-3">
+            Gewerbeanmeldung
+          </h2>
+          <p>
+            <!-- TODO: Gewerbeamt und -nummer hier einfügen, falls vorhanden -->
+            <span class="italic text-muted/70">Gewerbeanmeldung beim zuständigen Gewerbeamt.</span>
+          </p>
+        </div>
+
+        <!-- Verantwortlich für Inhalte -->
+        <div>
+          <h2 class="font-sans text-base font-semibold text-foreground mb-3">
+            Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+          </h2>
+          <div class="space-y-1">
+            <p>Douaa bendali</p>
+            <p>Kupferhammer weg 51</p>
+            <p>61440 Oberursel</p>
+          </div>
+        </div>
+
+        <!-- Streitschlichtung -->
+        <div>
+          <h2 class="font-sans text-base font-semibold text-foreground mb-3">
+            Streitschlichtung
+          </h2>
+          <p class="mb-2">
+            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+          </p>
+          <p class="mb-2">
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+              https://ec.europa.eu/consumers/odr/
+            </a>
+          </p>
+          <p>
+            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+          </p>
+        </div>
+
+        <!-- Haftung für Inhalte -->
+        <div>
+          <h2 class="font-sans text-base font-semibold text-foreground mb-3">
+            Haftung für Inhalte
+          </h2>
+          <p>
+            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. 
+            Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen 
+            oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+          </p>
+        </div>
+
+        <!-- Haftung für Links -->
+        <div>
+          <h2 class="font-sans text-base font-semibold text-foreground mb-3">
+            Haftung für Links
+          </h2>
+          <p>
+            Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. 
+            Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten 
+            ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+          </p>
+        </div>
+
+        <!-- Urheberrecht -->
+        <div>
+          <h2 class="font-sans text-base font-semibold text-foreground mb-3">
+            Urheberrecht
+          </h2>
+          <p>
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. 
+            Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes 
+            bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

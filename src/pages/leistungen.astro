@@ -1,0 +1,203 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/Badge.astro";
+import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+
+import serviceGastro from "../assets/leistung1.jpg";
+import serviceRealestate from "../assets/leistung2.jpg";
+import serviceCraft from "../assets/leistung3.jpg";
+---
+
+<BaseLayout
+  title="Professionelle Flyerverteilung | Verteilservice Plus"
+  description="Flyerverteilung für Gastronomie, Immobilien und Handwerk in Oberursel. Selektive Verteilung, transparente Routen und höchste Zuverlässigkeit."
+  canonicalUrl="/leistungen"
+>
+  <!-- ===== HERO ===== -->
+  <section class="bg-background-soft py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <Badge text="• Unser Angebot" />
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mt-5 mb-6">
+        Professionelle Flyerverteilung
+      </h1>
+      <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
+        Ich biete maßgeschneiderte Flyerverteilung für Unternehmen in Oberursel und der näheren Umgebung. 
+        Ob Gastronomie, Immobilien oder Handwerk – Ihre Werbung kommt direkt dort an, wo sie gelesen wird.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== DETAILS ZICK-ZACK ===== -->
+  <section class="bg-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 lg:space-y-32">
+      
+      <!-- Block 1: Selektive Verteilung -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <Image
+            src={serviceGastro}
+            alt="Selektive Flyerverteilung – gezielte Auswahl der Verteilungsgebiete"
+            class="w-full h-[400px] lg:h-[500px] object-cover rounded-3xl shadow-xl shadow-black/5"
+            width={600}
+            height={800}
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
+            Selektive Verteilung
+          </h2>
+          <p class="text-muted leading-relaxed mb-6">
+            Nicht jeder Haushalt ist Ihre Zielgruppe. Deshalb planen wir gemeinsam die optimalen Verteilungsgebiete. 
+            Ob bestimmte Stadtteile in Oberursel, Wohngegenden mit bestimmter Zielgruppe oder ein Radius um Ihr Geschäft – 
+            Ihre Flyer landen bei den richtigen Empfängern.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm text-foreground">Gezielte Auswahl der Verteilungsgebiete</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm text-foreground">Keine Streuverluste in irrelevanten Gebieten</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm text-foreground">Flexible Anpassung der Routen</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Block 2: Transparenz -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
+            Transparenz der Routen
+          </h2>
+          <p class="text-muted leading-relaxed mb-6">
+            Vertrauen ist gut, Kontrolle ist besser. Sie erhalten vor der Verteilung eine detaillierte Planung 
+            der geplanten Routen und nach Abschluss eine Bestätigung über die durchgeführte Verteilung. 
+            So behalten Sie jederzeit den Überblick.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm text-foreground">Detaillierte Routenplanung vorab</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm text-foreground">Abschlussbestätigung nach Verteilung</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm text-foreground">Volle Nachvollziehbarkeit</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <Image
+            src={serviceRealestate}
+            alt="Transparente Routenplanung mit Live-Dashboard"
+            class="w-full h-[400px] lg:h-[500px] object-cover rounded-3xl shadow-xl shadow-black/5"
+            width={600}
+            height={800}
+          />
+        </div>
+      </div>
+
+      <!-- Block 3: Zuverlässigkeit -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1">
+          <Image
+            src={serviceCraft}
+            alt="Zuverlässige Flyerverteilung – Qualität garantiert"
+            class="w-full h-[400px] lg:h-[500px] object-cover rounded-3xl shadow-xl shadow-black/5"
+            width={600}
+            height={800}
+          />
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
+            Zuverlässigkeit & Qualität
+          </h2>
+          <p class="text-muted leading-relaxed mb-6">
+            Als Einzelunternehmer stehe ich persönlich für die Qualität jeder Verteilung ein. 
+            Keine Subunternehmer, keine Unsicherheiten. Ich sorge dafür, dass jeder Flyer ordentlich 
+            im Briefkasten landet – nicht in der Gegend oder im Müll.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm text-foreground">Persönliche Durchführung durch den Inhaber</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm text-foreground">Sorgfältige Einwurf-Kontrolle</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm text-foreground">Termintreue als oberstes Prinzip</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="bg-background-soft py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-5">
+        Lassen Sie uns loslegen
+      </h2>
+      <p class="text-muted mb-10 max-w-2xl mx-auto">
+        Ob 500 oder 50.000 Flyer – ich finde die passende Lösung für Ihre Kampagne. 
+        Fordern Sie jetzt Ihr individuelles Angebot an.
+      </p>
+      <Button href="/kontakt" ariaLabel="Angebot anfragen">
+        Angebot anfragen
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </Button>
+    </div>
+  </section>
+</BaseLayout>

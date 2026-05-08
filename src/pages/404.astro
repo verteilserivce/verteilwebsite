@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+---
+
+<BaseLayout
+  title="Seite nicht gefunden | Verteilservice Plus"
+  description="Die gewünschte Seite konnte nicht gefunden werden."
+  noindex={true}
+>
+  <section class="bg-background-soft py-24 lg:py-32">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-foreground mb-4">
+        404
+      </h1>
+      <p class="text-lg text-muted mb-8">
+        Die gewünschte Seite konnte nicht gefunden werden. 
+        Vielleicht wurde sie verschoben oder existiert nicht mehr.
+      </p>
+      <Button href="/" ariaLabel="Zurück zur Startseite">
+        Zurück zur Startseite
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </Button>
+    </div>
+  </section>
+</BaseLayout>

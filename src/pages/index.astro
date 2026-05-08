@@ -1,0 +1,322 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Badge from "../components/Badge.astro";
+import Button from "../components/Button.astro";
+import SvgDividers from "../components/SvgDividers.astro";
+import { Image } from "astro:assets";
+
+import heroImg from "../assets/hero.jpg";
+import process1 from "../assets/schritt1.jpg";
+import process2 from "../assets/schritt2.jpg";
+import process3 from "../assets/schritt3.jpg";
+import serviceGastro from "../assets/Unser-Service.jpg";
+---
+
+<BaseLayout
+  title="Flyerverteilung Oberursel | Verteilservice Plus"
+  description="Professionelle Flyerverteilung in Oberursel und Umgebung. Zuverlässig, transparent und persönlich. Douaa bendali – Ihr Partner für lokale Reichweite."
+  canonicalUrl="/"
+>
+  <!-- ===== HERO SECTION ===== -->
+  <section class="relative bg-background-soft overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center py-16 lg:py-24">
+        <!-- Text Content -->
+        <div class="relative z-10">
+          <Badge text="• Lokale Reichweite" />
+          
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mt-5 mb-6">
+            Ihre Werbung direkt im <span class="text-primary">Briefkasten</span>. Zuverlässig & Transparent.
+          </h1>
+          
+          <p class="text-base sm:text-lg text-muted leading-relaxed mb-8 max-w-lg">
+            Verteilservice Plus bringt Ihre Flyer zuverlässig in die Briefkästen von Oberursel und Umgebung. 
+            Als lokales Einzelunternehmen garantiere ich Ihnen persönlichen Service mit höchster Qualität.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button href="/kontakt" ariaLabel="Angebot anfragen">
+              Angebot anfragen
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </Button>
+            <Button href="tel:+491638866766" variant="outline" ariaLabel="Anrufen">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              0163 8866766
+            </Button>
+          </div>
+        </div>
+
+        <!-- Hero Image with Overlap -->
+        <div class="relative">
+          <div class="relative">
+            <Image
+              src={heroImg}
+              alt="Flyer werden professionell in Briefkästen verteilt"
+              class="w-full h-[500px] lg:h-[600px] object-cover rounded-3xl shadow-2xl"
+              width={896}
+              height={1200}
+            />
+          </div>
+          
+          <!-- Overlapping Location Card -->
+          <div class="absolute -bottom-6 -left-6 lg:-left-12 bg-white rounded-2xl shadow-xl shadow-black/5 p-5 max-w-[260px] border border-border/30">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-muted font-medium uppercase tracking-wide">Einsatzgebiet</p>
+                <p class="text-sm font-semibold text-foreground">Oberursel & Umgebung</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave Divider to White -->
+  <SvgDividers variant="wave-bottom" color="#ffffff" />
+
+  <!-- ===== TRUST BAR ===== -->
+  <section class="bg-white py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
+        <!-- Feature 1 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-lg font-semibold text-foreground mb-1">Pünktlich & Zuverlässig</h3>
+          <p class="text-sm text-muted">Termingerechte Verteilung ohne Kompromisse</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-lg font-semibold text-foreground mb-1">Kontrolliert & Seriös</h3>
+          <p class="text-sm text-muted">Qualitätskontrolle bei jeder Verteilung</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="flex flex-col items-center text-center">
+          <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="font-serif text-lg font-semibold text-foreground mb-1">Persönlich & Lokal</h3>
+          <p class="text-sm text-muted">Einzelunternehmen aus Oberursel</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROZESS SECTION ===== -->
+  <section class="bg-background-soft py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 lg:mb-16">
+        <Badge text="• So einfach geht's" />
+        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-5 mb-4">
+          Ihre Flyer in 3 Schritten verteilt
+        </h2>
+        <p class="text-muted max-w-2xl mx-auto">
+          Von der Planung bis zur Verteilung – ein unkomplizierter Prozess mit maximaler Transparenz
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+        <!-- Step 1 -->
+        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform duration-300 border border-border/20">
+          <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg mb-6">
+            1
+          </div>
+          <Image
+            src={process1}
+            alt="Planung der Verteilungsroute auf Stadtplan Oberursel"
+            class="w-full h-56 object-cover rounded-2xl mb-6"
+            width={400}
+            height={534}
+          />
+          <h3 class="font-serif text-xl font-semibold text-foreground mb-3">Planung & Abstimmung</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Gemeinsam definieren wir Ihr Zielgebiet, die gewünschte Menge und den Zeitrahmen. 
+            Ich berate Sie persönlich zur optimalen Verteilungsstrategie.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform duration-300 border border-border/20">
+          <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg mb-6">
+            2
+          </div>
+          <Image
+            src={process2}
+            alt="Professionelle Vorbereitung und Qualitätskontrolle der Flyer"
+            class="w-full h-56 object-cover rounded-2xl mb-6"
+            width={400}
+            height={534}
+          />
+          <h3 class="font-serif text-xl font-semibold text-foreground mb-3">Abholung & Vorbereitung</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Sie stellen die Flyer bereit oder ich übernehme den Druck für Sie. 
+            Qualitätskontrolle und sorgfältige Vorbereitung stehen an erster Stelle.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform duration-300 border border-border/20">
+          <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg mb-6">
+            3
+          </div>
+          <Image
+            src={process3}
+            alt="Live-Tracking der Verteilungsroute per Smartphone"
+            class="w-full h-56 object-cover rounded-2xl mb-6"
+            width={400}
+            height={218}
+          />
+          <h3 class="font-serif text-xl font-semibold text-foreground mb-3">Verteilung & Bericht</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Ihre Flyer werden termingerecht und zuverlässig verteilt. 
+            Nach Abschluss erhalten Sie eine Bestätigung über die durchgeführte Aktion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Torn Paper Divider to Primary -->
+  <SvgDividers variant="torn-bottom" color="#1e938c" />
+
+  <!-- ===== LEISTUNGEN TEASER ===== -->
+  <section class="bg-primary py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Text Content -->
+        <div>
+          <Badge text="• Unser Service" variant="light" />
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-5 mb-6">
+            Flyerverteilung für jeden Bedarf
+          </h2>
+          <p class="text-white/80 leading-relaxed mb-8">
+            Ob Sie ein Restaurant, eine Immobilienagentur oder ein Handwerksbetrieb sind – 
+            ich helfe Ihnen, Ihre Zielgruppe in Oberursel und Umgebung direkt zu erreichen. 
+            Lokale Werbung mit persönlicher Note.
+          </p>
+
+          <ul class="space-y-4 mb-10">
+            <li class="flex items-center gap-3 text-white">
+              <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Gastronomie & Events</span>
+            </li>
+            <li class="flex items-center gap-3 text-white">
+              <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Immobilien & Makler</span>
+            </li>
+            <li class="flex items-center gap-3 text-white">
+              <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <span class="text-sm font-medium">Handwerk & Dienstleister</span>
+            </li>
+          </ul>
+
+          <Button href="/leistungen" variant="white" ariaLabel="Alle Leistungen entdecken">
+            Alle Leistungen entdecken
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </Button>
+        </div>
+
+        <!-- Image -->
+        <div class="relative">
+          <Image
+            src={serviceGastro}
+            alt="Flyerverteilung für Gastronomie und lokale Unternehmen"
+            class="w-full h-auto rounded-3xl shadow-2xl shadow-black/20"
+            width={600}
+            height={800}
+          />
+          <!-- Overlapping stat card -->
+          <div class="absolute -bottom-5 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl shadow-black/10 p-5 border border-border/20">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-xs text-muted font-medium uppercase tracking-wide">Qualität</p>
+                <p class="text-sm font-semibold text-foreground">100% Kontrolliert</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Torn Paper Divider back to White -->
+  <SvgDividers variant="torn-top" color="#ffffff" />
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="bg-white py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-5">
+        Bereit für Ihre nächste Kampagne?
+      </h2>
+      <p class="text-muted mb-10 max-w-2xl mx-auto">
+        Lassen Sie uns gemeinsam besprechen, wie ich Ihre Flyer optimal in Oberursel und Umgebung verteilen kann. 
+        Kontaktieren Sie mich für ein unverbindliches Angebot.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button href="/kontakt" ariaLabel="Jetzt Angebot anfragen">
+          Jetzt Angebot anfragen
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </Button>
+        <Button href="tel:+491638866766" variant="outline" ariaLabel="Anrufen">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          0163 8866766
+        </Button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

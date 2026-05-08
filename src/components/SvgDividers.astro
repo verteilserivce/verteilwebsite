@@ -1,0 +1,85 @@
+---
+interface Props {
+  variant?: "wave-top" | "wave-bottom" | "torn-top" | "torn-bottom";
+  color?: string;
+  class?: string;
+}
+
+const { variant = "wave-bottom", color = "#f8fafc", class: className = "" } = Astro.props;
+---
+
+{
+  variant === "wave-bottom" && (
+    <div class={`w-full overflow-hidden leading-[0] ${className}`} aria-hidden="true">
+      <svg
+        viewBox="0 0 1440 120"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-full h-auto block"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 36.7C840 27 960 13 1080 13.3C1200 13 1320 27 1380 33.3L1440 40V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
+          fill={color}
+        />
+      </svg>
+    </div>
+  )
+}
+
+{
+  variant === "wave-top" && (
+    <div class={`w-full overflow-hidden leading-[0] rotate-180 ${className}`} aria-hidden="true">
+      <svg
+        viewBox="0 0 1440 120"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-full h-auto block"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 36.7C840 27 960 13 1080 13.3C1200 13 1320 27 1380 33.3L1440 40V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z"
+          fill={color}
+        />
+      </svg>
+    </div>
+  )
+}
+
+{
+  variant === "torn-bottom" && (
+    <div class={`w-full overflow-hidden leading-[0] ${className}`} aria-hidden="true">
+      <svg
+        viewBox="0 0 1440 80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-full h-auto block"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0 0L48 8C96 16 192 32 288 36C384 40 480 32 576 28C672 24 768 24 864 28C960 32 1056 40 1152 36C1248 32 1344 16 1392 8L1440 0V80H1392C1344 80 1248 80 1152 80C1056 80 960 80 864 80C768 80 672 80 576 80C480 80 384 80 288 80C192 80 96 80 48 80H0V0Z"
+          fill={color}
+        />
+      </svg>
+    </div>
+  )
+}
+
+{
+  variant === "torn-top" && (
+    <div class={`w-full overflow-hidden leading-[0] rotate-180 ${className}`} aria-hidden="true">
+      <svg
+        viewBox="0 0 1440 80"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-full h-auto block"
+        preserveAspectRatio="none"
+      >
+        <path
+          d="M0 0L48 8C96 16 192 32 288 36C384 40 480 32 576 28C672 24 768 24 864 28C960 32 1056 40 1152 36C1248 32 1344 16 1392 8L1440 0V80H1392C1344 80 1248 80 1152 80C1056 80 960 80 864 80C768 80 672 80 576 80C480 80 384 80 288 80C192 80 96 80 48 80H0V0Z"
+          fill={color}
+        />
+      </svg>
+    </div>
+  )
+}
