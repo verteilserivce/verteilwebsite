@@ -98,15 +98,15 @@ const services = [
       type="button"
       id="slider-prev"
       aria-label="Vorherige Leistung"
-      class="w-11 h-11 rounded-full bg-white shadow-sm border border-gray-200 flex items-center justify-center text-gray-700 hover:text-primary hover:border-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      class="w-11 h-11 rounded-full flex items-center justify-center text-gray-400 hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
-      <ChevronLeft class="w-4 h-4" />
+      <ChevronLeft class="w-5 h-5" />
     </button>
 
-    <div class="flex justify-center gap-2" id="slider-dots" role="tablist" aria-label="Leistungen-Navigation">
+    <div class="flex justify-center gap-1" id="slider-dots" role="tablist" aria-label="Leistungen-Navigation">
       {services.map((_, index) => (
         <button type="button" data-index={index} aria-label={`Zu Leistung ${index + 1} scrollen`} class={`min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full transition-colors`} role="tab" aria-selected={index === 0 ? 'true' : 'false'}>
-          <span class={`w-2.5 h-2.5 rounded-full ${index === 0 ? 'bg-primary' : 'bg-gray-300'}`}></span>
+          <span class={`rounded-full transition-all duration-300 ${index === 0 ? 'w-2 h-2 bg-primary' : 'w-1.5 h-1.5 bg-gray-300'}`}></span>
         </button>
       ))}
     </div>
@@ -115,9 +115,9 @@ const services = [
       type="button"
       id="slider-next"
       aria-label="Nächste Leistung"
-      class="w-11 h-11 rounded-full bg-white shadow-sm border border-gray-200 flex items-center justify-center text-gray-700 hover:text-primary hover:border-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      class="w-11 h-11 rounded-full flex items-center justify-center text-gray-400 hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
-      <ChevronRight class="w-4 h-4" />
+      <ChevronRight class="w-5 h-5" />
     </button>
   </div>
 </section>
@@ -161,13 +161,14 @@ const services = [
       }
 
       dots.forEach((dot, i) => {
+        const circle = dot.querySelector('span');
         if (i === closestIndex) {
-          dot.classList.remove('bg-gray-300');
-          dot.classList.add('bg-primary');
+          circle?.classList.remove('w-1.5', 'bg-gray-300');
+          circle?.classList.add('w-2', 'bg-primary');
           dot.setAttribute('aria-selected', 'true');
         } else {
-          dot.classList.remove('bg-primary');
-          dot.classList.add('bg-gray-300');
+          circle?.classList.remove('w-2', 'bg-primary');
+          circle?.classList.add('w-1.5', 'bg-gray-300');
           dot.setAttribute('aria-selected', 'false');
         }
       });
