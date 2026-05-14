@@ -1,88 +1,167 @@
 ---
-import { Image } from "astro:assets";
-import logoImg from "../assets/logo.jpg";
+import Phone from './icons/Phone.astro';
+import Envelope from './icons/Envelope.astro';
+import MapMarker from './icons/MapMarker.astro';
+import WhatsApp from './icons/WhatsApp.astro';
+import img1 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.14.jpeg';
+import img2 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.24.jpeg';
+import img3 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.30 (1).jpeg';
+import img4 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.15 (1).jpeg';
+import img5 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.34.jpeg';
+import img6 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.31 (1).jpeg';
 
 const currentYear = new Date().getFullYear();
+
+const navLinks = [
+  { href: '/', label: 'Startseite' },
+  { href: '/leistungen', label: 'Leistungen' },
+  { href: '/ueber-uns', label: 'Über Uns' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+
+const legalLinks = [
+  { href: '/impressum', label: 'Impressum' },
+  { href: '/datenschutz', label: 'Datenschutz' },
+];
+
+const galleryImages = [img1, img2, img3, img4, img5, img6];
 ---
 
-<footer class="bg-foreground text-white/80">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
-      <!-- Brand -->
-      <div class="lg:col-span-1">
-        <a href="/" class="inline-flex items-center gap-3 mb-5" aria-label="Verteilservice Plus - Zur Startseite">
-          <div class="bg-white rounded-xl p-1 shadow-lg shadow-black/20">
-            <Image
-              src={logoImg}
-              alt="Verteilservice Plus Logo"
-              width={36}
-              height={48}
-              class="h-9 w-auto rounded-md"
-            />
-          </div>
-          <span class="font-serif text-lg font-semibold text-white tracking-tight">
+<footer class="mt-auto">
+  {/* Bereich 1: Content-Grid */}
+  <div class="bg-[#111111] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        {/* Spalte 1: Brand */}
+        <div class="sm:col-span-2 lg:col-span-1">
+          <a href="/" class="inline-block text-2xl font-bold tracking-tight mb-4">
             Verteilservice <span class="text-primary">Plus</span>
-          </span>
-        </a>
-        <p class="text-sm leading-relaxed text-white/60 max-w-xs">
-          Professionelle Flyerverteilung in Oberursel und Umgebung. Zuverlässig, transparent und persönlich.
-        </p>
-      </div>
+          </a>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
+            Ihr zuverlässiger Partner für professionelle Flyerverteilung und Streetpromotion bundesweit in ganz Deutschland.
+          </p>
+          <a
+            href="/kontakt"
+            class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-primary hover:bg-primary-dark rounded-full transition-all duration-200 min-h-[44px]"
+          >
+            Jetzt Kontakt aufnehmen
+          </a>
+        </div>
 
-      <!-- Navigation -->
-      <div>
-        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-5">Navigation</h3>
-        <ul class="space-y-3">
-          <li><a href="/" class="text-sm hover:text-primary transition-colors duration-200">Startseite</a></li>
-          <li><a href="/leistungen" class="text-sm hover:text-primary transition-colors duration-200">Leistungen</a></li>
-          <li><a href="/ueber-uns" class="text-sm hover:text-primary transition-colors duration-200">Über Uns</a></li>
-          <li><a href="/kontakt" class="text-sm hover:text-primary transition-colors duration-200">Kontakt</a></li>
-        </ul>
-      </div>
+        {/* Spalte 2: Navigation */}
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Navigation</h3>
+          <ul class="space-y-3">
+            {navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-gray-400 hover:text-primary transition-colors duration-200 text-sm min-h-[44px] flex items-center"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      <!-- Kontakt -->
-      <div>
-        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-5">Kontakt</h3>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 text-primary shrink-0" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            <span class="text-sm">Kupferhammer weg 51<br>61440 Oberursel</span>
-          </li>
-          <li class="flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-            <a href="tel:+491638866766" class="text-sm hover:text-primary transition-colors duration-200">0163 8866766</a>
-          </li>
-          <li class="flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-              <polyline points="22,6 12,13 2,6"/>
-            </svg>
-            <a href="mailto:Info@verteilservice-plus.de" class="text-sm hover:text-primary transition-colors duration-200">Info@verteilservice-plus.de</a>
-          </li>
-        </ul>
-      </div>
+        {/* Spalte 3: Rechtliches */}
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Rechtliches</h3>
+          <ul class="space-y-3">
+            {legalLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-gray-400 hover:text-primary transition-colors duration-200 text-sm min-h-[44px] flex items-center"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      <!-- Legal -->
-      <div>
-        <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-5">Rechtliches</h3>
-        <ul class="space-y-3">
-          <li><a href="/impressum" class="text-sm hover:text-primary transition-colors duration-200">Impressum</a></li>
-          <li><a href="/datenschutz" class="text-sm hover:text-primary transition-colors duration-200">Datenschutz</a></li>
-        </ul>
+        {/* Spalte 4: Kontakt */}
+        <div>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Kontakt</h3>
+          <ul class="space-y-4">
+            <li>
+              <a
+                href="tel:+491638866766"
+                class="inline-flex items-center gap-3 text-gray-400 hover:text-primary transition-colors duration-200 text-sm min-h-[44px]"
+              >
+                <Phone class="w-4 h-4 shrink-0" />
+                <span>0163 8866766</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="mailto:Info@verteilservice-plus.de"
+                class="inline-flex items-center gap-3 text-gray-400 hover:text-primary transition-colors duration-200 text-sm break-all min-h-[44px]"
+              >
+                <Envelope class="w-4 h-4 shrink-0" />
+                <span>Info@verteilservice-plus.de</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/491638866766"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-3 text-gray-400 hover:text-primary transition-colors duration-200 text-sm"
+              >
+                <WhatsApp class="w-4 h-4 shrink-0" />
+                <span>WhatsApp</span>
+              </a>
+            </li>
+            <li class="inline-flex items-start gap-3 text-gray-400 text-sm">
+              <MapMarker class="w-4 h-4 shrink-0 mt-0.5" />
+              <span>Kupferhammer weg 51<br />61440 Oberursel</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-xs text-white/40">
-        © {currentYear} Verteilservice Plus - Douaa bendali. Alle Rechte vorbehalten.
-      </p>
-      <p class="text-xs text-white/40">
-        Einzelunternehmen · Kupferhammer weg 51 · 61440 Oberursel
+  {/* Bereich 2: Auto-Galerie Marquee */}
+  <div class="bg-[#0a0a0a] overflow-hidden py-4">
+    <div class="relative flex w-[200%] animate-marquee">
+      {/* Erste Reihe */}
+      {galleryImages.map((src, i) => (
+        <div class="shrink-0 w-64 h-44 mx-2 rounded-xl overflow-hidden opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <img
+            src={src.src}
+            alt=""
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="256"
+            height="176"
+          />
+        </div>
+      ))}
+      {/* Duplizierte Reihe für nahtloses Looping */}
+      {galleryImages.map((src, i) => (
+        <div class="shrink-0 w-64 h-44 mx-2 rounded-xl overflow-hidden opacity-60 hover:opacity-100 transition-opacity duration-300">
+          <img
+            src={src.src}
+            alt=""
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="256"
+            height="176"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Bereich 3: Copyright */}
+  <div class="bg-black py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-center text-gray-500 text-xs">
+        &copy; {currentYear} Verteilservice Plus – Douaa Bendali. Alle Rechte vorbehalten.
       </p>
     </div>
   </div>

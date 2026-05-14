@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /impressum
-Disallow: /datenschutz
 
 Sitemap: https://verteilservice-plus.de/sitemap.xml

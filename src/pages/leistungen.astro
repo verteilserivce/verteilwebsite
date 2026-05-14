@@ -1,203 +1,280 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/Badge.astro";
-import Button from "../components/Button.astro";
-import { Image } from "astro:assets";
+import Layout from '../layouts/Layout.astro';
+import ArrowRight from '../components/icons/ArrowRight.astro';
+import Check from '../components/icons/Check.astro';
 
-import serviceGastro from "../assets/leistung1.jpg";
-import serviceRealestate from "../assets/leistung2.jpg";
-import serviceCraft from "../assets/leistung3.jpg";
+const services = [
+  {
+    title: 'Flyerverteilung',
+    subtitle: 'Die klassische Direktwerbung',
+    description: 'Zuverlässige Haus-zu-Haus-Verteilung mit präziser Gebietsplanung bis auf Straßen- und Hausebene. Wir bringen Ihre Flyer professionell in die Briefkästen Ihrer Zielgruppe – bundesweit in ganz Deutschland.',
+    features: [
+      'Zielgenaue Routenplanung nach PLZ oder Stadtteil',
+      'Termingerechte Auslieferung mit Qualitätskontrolle',
+      'Einzelflyer-Verteilung (keine Mehrfachbelegung)',
+      'Fotodokumentation und GPS-Tracking auf Wunsch',
+      'Flexible Auflagen von 5.000 bis 500.000+ Exemplaren',
+    ],
+    highlighted: true,
+  },
+  {
+    title: 'Prospektverteilung',
+    subtitle: 'Ideal für große Marken und Franchises',
+    description: 'Ideal für lokale Geschäfte, Filialen, Franchises und große Marken mit messbarer Reichweite. Wir planen und führen Ihre Prospektverteilung mit höchster Präzision durch.',
+    features: [
+      'Massgeschneiderte Gebietsplanung',
+      'Koordination mit Filialnetzwerken',
+      'Mengenplanung und Tourenoptimierung',
+      'Live-Tracking während der Verteilung',
+      'Detaillierte Abschlussreports',
+    ],
+    highlighted: false,
+  },
+  {
+    title: 'Zeitungs- & Beilagenverteilung',
+    subtitle: 'Regelmäßige Präsenz für Ihre Marke',
+    description: 'Gezielte Zustellung von Werbebeilagen, Wochenblättern und regionalen Prospekten. Wir garantieren pünktliche und flächendeckende Abdeckung in Ihrem Wunschgebiet.',
+    features: [
+      'Wöchentliche, monatliche oder einmalige Verteilung',
+      'Garantierte Zustellung bis zu einem festen Termin',
+      'Flächendeckende Abdeckung bundesweit',
+      'Erfahrene Verteiler mit regionaler Ortskenntnis',
+      'Rückmeldung bei Nichtzustellbarkeit',
+    ],
+    highlighted: false,
+  },
+  {
+    title: 'Direktwerbung',
+    subtitle: 'Individuelle Werbemittel gezielt platziert',
+    description: 'Verteilung individueller Werbemittel direkt in Briefkästen Ihrer Zielgruppe. Perfekt für exklusive Angebote, Einladungen und hochwertige Direktwerbung.',
+    features: [
+      'Gezielte Ansprache nach Zielgruppe',
+      'Ideal für Einladungen und Premium-Angebote',
+      'Hohe Aufmerksamkeit durch persönlichen Charakter',
+      'Enge Zusammenarbeit bei der Gebietsauswahl',
+      'Datenschutzkonforme Handhabung',
+    ],
+    highlighted: false,
+  },
+  {
+    title: 'Streetpromotion',
+    subtitle: 'Ihre Marke live vor Ort',
+    description: 'Promotion-Teams für Innenstädte, Einkaufszonen, Events, Messen und stark frequentierte Bereiche. Wir bringen Ihre Marke direkt zu den Menschen.',
+    features: [
+      'Flyer-Handouts an stark frequentierten Orten',
+      'Produktproben-Verteilung bei Events',
+      'Persönliche Ansprache und Interaktion',
+      'Flexible Einsatzzeiten und Standorte',
+      'Erfahrene Promoter mit Freundlichkeit und Engagement',
+    ],
+    highlighted: false,
+  },
+  {
+    title: 'Sampling Aktionen',
+    subtitle: 'Produktproben für maximale Sichtbarkeit',
+    description: 'Gezielte Produktproben-Verteilung für maximale Sichtbarkeit und Neukundengewinnung. Lassen Sie potentielle Kunden Ihr Produkt direkt erleben.',
+    features: [
+      'Gezielte Verteilung an Ihre Zielgruppe',
+      'Messbare Reichweite und Conversion',
+      'Erfahrene Sampling-Teams',
+      'Feedback-Erfassung vor Ort',
+      'Dokumentation aller Aktionen',
+    ],
+    highlighted: false,
+  },
+  {
+    title: 'Bundesweite Kampagnenplanung',
+    subtitle: 'Von der Idee bis zur Umsetzung',
+    description: 'Von der Mengenplanung über Zielgebiete bis zur exakten Touren- und Bezirksstruktur. Wir planen Ihre bundesweite Kampagne bis ins kleinste Detail.',
+    features: [
+      'Detaillierte Gebiets- und Straßenplanung',
+      'Mengenplanung und Logistikkoordination',
+      'Exakte Touren- und Bezirksstruktur',
+      'Koordination bundesweiter Teams',
+      'Umfassende Abschlussreports',
+    ],
+    highlighted: false,
+  },
+  {
+    title: 'Adressierte Verteilung',
+    subtitle: 'Personalisierter Versand an Ihre Zielgruppe',
+    description: 'Gezielte Zustellung Ihrer Werbung direkt an ausgewählte Haushalte und Unternehmen. Perfekt für exklusive Einladungen, VIP-Angebote und Neukundenakquise.',
+    features: [
+      'Gezielte Ansprache nach Adressliste oder Zielgruppe',
+      'Ideal für Einladungen, Angebote und Kundenmailings',
+      'Hohe Aufmerksamkeit durch personalisierten Charakter',
+      'Enge Zusammenarbeit bei der Adressauswahl',
+      'Datenschutzkonforme Handhabung aller Adressdaten',
+    ],
+    highlighted: false,
+  },
+  {
+    title: 'Web- & Logo Design',
+    subtitle: 'Ihr professioneller Auftritt im Netz',
+    description: 'Moderne Webseiten und professionelle Logos für einen starken und überzeugenden Markenauftritt. Wir gestalten visuelle Identitäten, die im Gedächtnis bleiben.',
+    features: [
+      'Individuelles Logo-Design und Corporate Design',
+      'Responsive Webdesign für alle Endgeräte',
+      'SEO-optimierte Struktur für bessere Auffindbarkeit',
+      'Klare Call-to-Actions für höhere Conversion',
+      'Betreuung und Wartung nach Go-Live',
+    ],
+    highlighted: false,
+  },
+];
+
+const benefits = [
+  'Exakte Haus-zu-Haus-Planung',
+  'Bundesweite Teams',
+  'Live-App-Tracking',
+  'Standortkontrolle',
+  'Fotodokumentation jeder Straße',
+  'Qualitätskontrolle durch eigene Kontrolleure',
+  'Bezirksleiter-Überwachung',
+  'Abschlussreport auf Wunsch',
+];
+
+const audiences = [
+  'lokale Unternehmen',
+  'Filialisten',
+  'Franchises',
+  'große Marken',
+  'Marktführer',
+  'Neueröffnungen',
+  'Rabattaktionen',
+  'Event- und Messewerbung',
+];
 ---
 
-<BaseLayout
-  title="Professionelle Flyerverteilung | Verteilservice Plus"
-  description="Flyerverteilung für Gastronomie, Immobilien und Handwerk in Oberursel. Selektive Verteilung, transparente Routen und höchste Zuverlässigkeit."
-  canonicalUrl="/leistungen"
+<Layout
+  title="Leistungen | Verteilservice Plus"
+  description="Unsere Leistungen: Flyerverteilung, Prospektverteilung, Zeitungsverteilung, Direktwerbung, Streetpromotion, Sampling, Kampagnenplanung, Adressierte Verteilung und Web- & Logo Design bundesweit."
 >
-  <!-- ===== HERO ===== -->
-  <section class="bg-background-soft py-16 lg:py-24">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <Badge text="• Unser Angebot" />
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mt-5 mb-6">
-        Professionelle Flyerverteilung
-      </h1>
-      <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-        Ich biete maßgeschneiderte Flyerverteilung für Unternehmen in Oberursel und der näheren Umgebung. 
-        Ob Gastronomie, Immobilien oder Handwerk – Ihre Werbung kommt direkt dort an, wo sie gelesen wird.
-      </p>
-    </div>
-  </section>
-
-  <!-- ===== DETAILS ZICK-ZACK ===== -->
-  <section class="bg-white py-16 lg:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 lg:space-y-32">
-      
-      <!-- Block 1: Selektive Verteilung -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div class="order-2 lg:order-1">
-          <Image
-            src={serviceGastro}
-            alt="Selektive Flyerverteilung – gezielte Auswahl der Verteilungsgebiete"
-            class="w-full h-[400px] lg:h-[500px] object-cover rounded-3xl shadow-xl shadow-black/5"
-            width={600}
-            height={800}
-          />
-        </div>
-        <div class="order-1 lg:order-2">
-          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
-            Selektive Verteilung
-          </h2>
-          <p class="text-muted leading-relaxed mb-6">
-            Nicht jeder Haushalt ist Ihre Zielgruppe. Deshalb planen wir gemeinsam die optimalen Verteilungsgebiete. 
-            Ob bestimmte Stadtteile in Oberursel, Wohngegenden mit bestimmter Zielgruppe oder ein Radius um Ihr Geschäft – 
-            Ihre Flyer landen bei den richtigen Empfängern.
+  <main>
+    {/* Hero */}
+    <section class="pt-20 pb-16 md:pt-28 md:pb-24 bg-background-alt">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Unsere Leistungen</span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6 leading-tight">
+            Professionelle Werbeverteilung & Promotion bundesweit
+          </h1>
+          <p class="text-lg md:text-xl text-text-secondary leading-relaxed">
+            Seit über 20 Jahren bieten wir bundesweit professionelle Lösungen rund um Werbeverteilung und Promotion – mit Live-Tracking, Fotodokumentation und eigener Qualitätskontrolle.
           </p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <span class="text-sm text-foreground">Gezielte Auswahl der Verteilungsgebiete</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <span class="text-sm text-foreground">Keine Streuverluste in irrelevanten Gebieten</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <span class="text-sm text-foreground">Flexible Anpassung der Routen</span>
-            </li>
-          </ul>
         </div>
       </div>
+    </section>
 
-      <!-- Block 2: Transparenz -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div>
-          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
-            Transparenz der Routen
-          </h2>
-          <p class="text-muted leading-relaxed mb-6">
-            Vertrauen ist gut, Kontrolle ist besser. Sie erhalten vor der Verteilung eine detaillierte Planung 
-            der geplanten Routen und nach Abschluss eine Bestätigung über die durchgeführte Verteilung. 
-            So behalten Sie jederzeit den Überblick.
-          </p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
+    {/* Services Detail */}
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-20 md:space-y-28">
+          {services.map((service, index) => (
+            <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <div class={index % 2 === 1 ? 'lg:order-2' : ''}>
+                <span class={`inline-block text-xs font-bold uppercase tracking-widest mb-3 ${service.highlighted ? 'text-primary' : 'text-text-muted'}`}>
+                  {service.subtitle}
+                </span>
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary mb-4">
+                  {service.title}
+                </h2>
+                <p class="text-base md:text-lg text-text-secondary leading-relaxed mb-8">
+                  {service.description}
+                </p>
+                <ul class="space-y-3 mb-8">
+                  {service.features.map((feature) => (
+                    <li class="flex items-start gap-3">
+                      <span class="w-5 h-5 flex items-center justify-center rounded-full bg-green-100 text-green-600 shrink-0 mt-0.5">
+                        <Check class="w-3 h-3" />
+                      </span>
+                      <span class="text-sm text-text-secondary">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="/kontakt"
+                  class={`group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-full transition-all duration-200 ${
+                    service.highlighted
+                      ? 'text-white bg-primary hover:bg-primary-dark shadow-lg shadow-primary/20'
+                      : 'text-white bg-primary hover:bg-primary-dark'
+                  }`}
+                >
+                  Jetzt anfragen
+                  <ArrowRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </a>
               </div>
-              <span class="text-sm text-foreground">Detaillierte Routenplanung vorab</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
+              <div class={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <div class={`aspect-[4/3] rounded-3xl overflow-hidden ${service.highlighted ? 'ring-2 ring-primary' : ''}`}>
+                  <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                    <span class="text-6xl font-bold text-gray-300">{String(index + 1).padStart(2, '0')}</span>
+                  </div>
+                </div>
               </div>
-              <span class="text-sm text-foreground">Abschlussbestätigung nach Verteilung</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <span class="text-sm text-foreground">Volle Nachvollziehbarkeit</span>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <Image
-            src={serviceRealestate}
-            alt="Transparente Routenplanung mit Live-Dashboard"
-            class="w-full h-[400px] lg:h-[500px] object-cover rounded-3xl shadow-xl shadow-black/5"
-            width={600}
-            height={800}
-          />
+            </div>
+          ))}
         </div>
       </div>
+    </section>
 
-      <!-- Block 3: Zuverlässigkeit -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <div class="order-2 lg:order-1">
-          <Image
-            src={serviceCraft}
-            alt="Zuverlässige Flyerverteilung – Qualität garantiert"
-            class="w-full h-[400px] lg:h-[500px] object-cover rounded-3xl shadow-xl shadow-black/5"
-            width={600}
-            height={800}
-          />
-        </div>
-        <div class="order-1 lg:order-2">
-          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
-            Zuverlässigkeit & Qualität
+    {/* Benefits */}
+    <section class="py-20 md:py-28 bg-[#F8F7F5]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Inklusive</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-primary">
+            Was Sie bei jeder Leistung erhalten
           </h2>
-          <p class="text-muted leading-relaxed mb-6">
-            Als Einzelunternehmer stehe ich persönlich für die Qualität jeder Verteilung ein. 
-            Keine Subunternehmer, keine Unsicherheiten. Ich sorge dafür, dass jeder Flyer ordentlich 
-            im Briefkasten landet – nicht in der Gegend oder im Müll.
-          </p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <span class="text-sm text-foreground">Persönliche Durchführung durch den Inhaber</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <span class="text-sm text-foreground">Sorgfältige Einwurf-Kontrolle</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="20 6 9 17 4 12"/>
-                </svg>
-              </div>
-              <span class="text-sm text-foreground">Termintreue als oberstes Prinzip</span>
-            </li>
-          </ul>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          {benefits.map((benefit) => (
+            <div class="flex items-center gap-3 bg-white rounded-2xl px-5 py-4 shadow-sm">
+              <span class="w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-600 shrink-0">
+                <Check class="w-3.5 h-3.5" />
+              </span>
+              <span class="text-sm font-medium text-text-secondary">{benefit}</span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== CTA ===== -->
-  <section class="bg-background-soft py-16 lg:py-24">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-5">
-        Lassen Sie uns loslegen
-      </h2>
-      <p class="text-muted mb-10 max-w-2xl mx-auto">
-        Ob 500 oder 50.000 Flyer – ich finde die passende Lösung für Ihre Kampagne. 
-        Fordern Sie jetzt Ihr individuelles Angebot an.
-      </p>
-      <Button href="/kontakt" ariaLabel="Angebot anfragen">
-        Angebot anfragen
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="5" y1="12" x2="19" y2="12"/>
-          <polyline points="12 5 19 12 12 19"/>
-        </svg>
-      </Button>
-    </div>
-  </section>
-</BaseLayout>
+    {/* Target Audience */}
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Zielgruppen</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-primary">
+            Für wen unsere Leistungen ideal sind
+          </h2>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+          {audiences.map((audience) => (
+            <span class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-text-secondary bg-background-alt border border-border rounded-full">
+              {audience}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* CTA */}
+    <section class="py-20 md:py-28 bg-[#F8F7F5]">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+          Nicht sicher, welche Leistung die richtige ist?
+        </h2>
+        <p class="text-lg text-text-secondary mb-8">
+          Kontaktieren Sie uns unverbindlich. Wir beraten Sie persönlich und finden gemeinsam die optimale Lösung für Ihr Werbeziel.
+        </p>
+        <a
+          href="/kontakt"
+          class="group inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-full transition-all duration-200 shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5"
+        >
+          Kostenloses Beratungsgespräch vereinbaren
+          <ArrowRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout>

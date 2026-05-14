@@ -1,0 +1,27 @@
+---
+const trustItems = [
+  'Über 20 Jahre Erfahrung',
+  'Bundesweite Teams',
+  '100 % Haus-zu-Haus-Fokus',
+  'Live-Tracking',
+  'Fotodokumentation',
+  'Eigene Kontrolleure',
+  'Bezirksleiter-Prüfung',
+  'Marktführer als Kunden',
+];
+---
+
+<section class="bg-white border-y border-border" aria-label="Vertrauensindikatoren">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="flex flex-wrap justify-center gap-x-6 gap-y-3">
+      {trustItems.map((item) => (
+        <div class="flex items-center gap-2 text-sm font-medium text-text-secondary">
+          <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+          <span>{item}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

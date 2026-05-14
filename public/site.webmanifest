@@ -1,0 +1,11 @@
+{
+  "name": "Verteilservice Plus",
+  "short_name": "VSP",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d91c26",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -1,0 +1,126 @@
+---
+import Check from '../icons/Check.astro';
+
+const packages = [
+  {
+    name: 'Starter Vorteil',
+    subtitle: 'Ab 50.000 Flyer',
+    features: [
+      'Kostenlose Lagerung',
+      'Verteilplanung inklusive',
+      'Basis-Support',
+    ],
+    buttonClass: 'bg-primary text-white hover:bg-primary-dark',
+  },
+  {
+    name: 'Premium Vorteil',
+    subtitle: 'Ab 100.000 Flyer',
+    features: [
+      'App-Tracking inklusive',
+      'Live-Standorte',
+      'Kostenlose Lagerung',
+      'Priorisierte Verteilung',
+    ],
+    buttonClass: 'bg-primary text-white hover:bg-primary-dark',
+  },
+  {
+    name: 'Business Vorteil',
+    subtitle: 'Ab 250.000 Flyer',
+    features: [
+      'Fotodokumentation inklusive',
+      'Bezirksleiter-Kontrolle',
+      'GPS-Live-Überwachung',
+      'Express-Abwicklung',
+    ],
+    buttonClass: 'bg-primary text-white hover:bg-primary-dark',
+  },
+  {
+    name: 'Mega Deal',
+    subtitle: 'Ab 500.000 Flyer + 25.000 gratis',
+    features: [
+      'Alle Business-Vorteile',
+      '+ 25.000 Flyer kostenlos',
+      'Live-App-Tracking',
+      'GPS-Standortkontrolle',
+      'Fotodokumentation',
+      'Qualitätskontrolle',
+    ],
+    buttonClass: 'bg-primary text-white hover:bg-primary-dark',
+    highlighted: true,
+  },
+];
+
+const bonuses = [
+  'Live-App-Tracking',
+  'GPS-Standortkontrolle',
+  'Fotodokumentation',
+  'Bundesweite Verteilung',
+  'Qualitätskontrolle',
+];
+---
+
+<section class="bg-white py-24" aria-labelledby="pricing-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header */}
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Unsere Pakete</span>
+      <h2 id="pricing-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+        Ihre Vorteile nach Auflagenhöhe.
+      </h2>
+    </div>
+  </div>
+
+  {/* Grid */}
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+    {packages.map((pkg) => (
+      <div class={`bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border overflow-hidden flex flex-col ${pkg.highlighted ? 'border-primary ring-2 ring-primary' : 'border-gray-100'}`}>
+        {/* Image Placeholder */}
+        <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
+          <span class="text-sm font-medium text-gray-400">Bild folgt</span>
+        </div>
+
+        {/* Content */}
+        <div class="p-8 flex flex-col flex-1">
+          <h3 class="text-2xl font-bold text-gray-900 mb-1">{pkg.name}</h3>
+          <p class="text-sm font-bold text-gray-500 mb-6 pb-6 border-b border-gray-100">{pkg.subtitle}</p>
+
+          {/* Checkliste */}
+          <div class="flex flex-col gap-3 mb-8">
+            {pkg.features.map((feature) => (
+              <div class="flex items-start gap-3">
+                <Check class="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
+                <span class="text-gray-600 text-sm">{feature}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer Button */}
+          <div class="mt-auto">
+            <a
+              href="/kontakt"
+              class={`inline-flex w-max items-center gap-2 rounded-full px-7 py-3 text-sm font-bold transition-all min-h-[44px] ${pkg.buttonClass}`}
+            >
+              Anfragen
+            </a>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Bonus Box */}
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+    <div class="bg-background-alt border border-border rounded-3xl p-8 md:p-10">
+      <p class="text-lg md:text-xl font-bold text-gray-900 text-center mb-6">
+        ✔️ Profitieren Sie zusätzlich von unseren Premium-Vorteilen
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        {bonuses.map((badge) => (
+          <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-full min-h-[44px]">
+            {badge}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

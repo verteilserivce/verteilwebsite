@@ -1,83 +1,78 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Fontsource - lokal eingebunden */
-@import "@fontsource/playfair-display/400.css";
-@import "@fontsource/playfair-display/500.css";
-@import "@fontsource/playfair-display/600.css";
-@import "@fontsource/playfair-display/700.css";
-@import "@fontsource/inter/300.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/inter/700.css";
+@layer base {
+  :root {
+    /* Brand Colors */
+    --color-primary: #d91c26;
+    --color-primary-dark: #c91a23;
 
-@theme {
-  /* Farben */
-  --color-primary: #1e938c;
-  --color-primary-dark: #167a74;
-  --color-primary-light: #2ab5ad;
-  --color-background: #ffffff;
-  --color-background-soft: #f8fafc;
-  --color-foreground: #0f172a;
-  --color-muted: #64748b;
-  --color-border: #e2e8f0;
-  --color-card: #ffffff;
-  --color-success: #22c55e;
-  --color-error: #ef4444;
+    /* Backgrounds */
+    --color-background: #ffffff;
+    --color-background-alt: #f8f7f5;
+    --color-surface: #ffffff;
 
-  /* Schriftarten */
-  --font-serif: "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-}
+    /* Text */
+    --color-text-primary: #111111;
+    --color-text-secondary: #333333;
+    --color-text-muted: #666666;
 
-html {
-  scroll-behavior: smooth;
-}
+    /* Border */
+    --color-border: #e5e5e5;
 
-body {
-  font-family: var(--font-sans);
-  color: var(--color-foreground);
-  background-color: var(--color-background);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+    /* Fonts */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Merriweather', Georgia, serif;
+  }
 
-/* Cookie Banner Styles */
-.cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  background: var(--color-foreground);
-  color: white;
-  padding: 1.5rem;
-  transform: translateY(100%);
-  transition: transform 0.4s ease-out;
-}
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-.cookie-banner.active {
-  transform: translateY(0);
-}
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 
-/* Focus Styles für Accessibility */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
+  body {
+    @apply bg-background text-text-primary font-sans;
+  }
 
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  /* Active state feedback for all interactive elements */
+  a:active,
+  button:active {
+    transform: scale(0.98);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a:active,
+    button:active {
+      transform: none;
+    }
+  }
+
+  /* Hide scrollbar for gallery/carousels but keep functionality */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Focus visible for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
   }
 }

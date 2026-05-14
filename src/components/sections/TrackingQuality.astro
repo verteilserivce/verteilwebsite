@@ -1,0 +1,61 @@
+---
+import Check from '../icons/Check.astro';
+
+const features = [
+  'Eigene Tracking-App',
+  'Live-Standorte',
+  'Rote Straßenmarkierung',
+  'Fotodokumentation',
+  'Kontrolleure',
+  'Bezirksleiter',
+  'Abschlussreport',
+];
+---
+
+<section class="py-20 md:py-28 bg-white" aria-labelledby="tracking-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      {/* Left: Content */}
+      <div>
+        <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Qualität</span>
+        <h2 id="tracking-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-6">
+          Live Tracking & Qualität
+        </h2>
+        <p class="text-base md:text-lg text-text-secondary leading-relaxed mb-8">
+          Mit unserer eigenen Tracking-App behalten Sie jederzeit den Überblick. 
+          Jede Straße wird dokumentiert, jeder Standort erfasst – für maximale Transparenz 
+          und lückenlose Qualitätskontrolle.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {features.map((feature) => (
+            <div class="flex items-center gap-3">
+              <span class="w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-600 shrink-0">
+                <Check class="w-3.5 h-3.5" />
+              </span>
+              <span class="text-sm text-text-secondary font-medium">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right: Visual */}
+      <div class="relative">
+        <div class="aspect-[4/3] rounded-[2rem] overflow-hidden bg-gray-100 flex items-center justify-center">
+          <div class="text-center p-8">
+            <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
+              </svg>
+            </div>
+            <p class="text-lg font-bold text-text-primary">Tracking-App Vorschau</p>
+            <p class="text-sm text-text-muted mt-1">Live-Standorte & Fotodokumentation</p>
+          </div>
+        </div>
+        {/* Decorative element */}
+        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-full -z-10"></div>
+        <div class="absolute -top-4 -left-4 w-16 h-16 bg-primary/5 rounded-full -z-10"></div>
+      </div>
+    </div>
+  </div>
+</section>

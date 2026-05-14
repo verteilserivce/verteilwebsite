@@ -1,0 +1,162 @@
+---
+import ChevronDown from '../icons/ChevronDown.astro';
+import faqImage from '../../assets/images/WhatsApp Image 2026-05-14 at 21.17.26.jpeg';
+
+const faqs = [
+  {
+    question: 'Wie läuft die Flyerverteilung ab?',
+    answer: 'Nach Ihrer Anfrage erstellen wir gemeinsam einen detaillierten Verteilungsplan. Unser Team verteilt Ihre Flyer anschließend zielgenau in den gewünschten Gebieten – termingerecht und mit Qualitätskontrolle.',
+  },
+  {
+    question: 'Verteilen Sie bundesweit?',
+    answer: 'Ja, ab unserem Business-Paket bieten wir bundesweite Verteilung an. Für kleinere Auflagen konzentrieren wir uns auf die Region Oberursel und den Rhein-Main-Raum.',
+  },
+  {
+    question: 'Gibt es ein Live-Tracking?',
+    answer: 'Beim Premium- und Business-Paket erhalten Sie Zugang zu unserer Live-Tracking-App. Dort sehen Sie in Echtzeit, wo Ihre Flyer gerade verteilt werden.',
+  },
+  {
+    question: 'Wie erhalte ich einen Nachweis?',
+    answer: 'Je nach Paket erhalten Sie eine Fotodokumentation, GPS-Standortkontrolle oder detaillierte Reports. So haben Sie jederzeit die Gewissheit, dass Ihre Werbung angekommen ist.',
+  },
+  {
+    question: 'Werden die Flyer einzeln verteilt?',
+    answer: 'Ja, wir legen größten Wert auf Einzelverteilung. Jeder Briefkasten erhält ein Exemplar – so stellen wir maximale Reichweite und Qualität sicher.',
+  },
+  {
+    question: 'Stellen Sie auch die Werbemittel her?',
+    answer: 'Im Business-Paket übernehmen wir auch die Produktion Ihrer Flyer und Prospekte. Von der Grafik bis zum Druck – alles aus einer Hand.',
+  },
+  {
+    question: 'Was ist Streetpromotion?',
+    answer: 'Bei der Streetpromotion bringen wir Ihre Marke direkt zu den Menschen – durch Produktproben, Flyer-Handouts oder Interaktionen an stark frequentierten Orten und Events.',
+  },
+  {
+    question: 'Wie schnell kann die Verteilung starten?',
+    answer: 'Je nach Auftragsvolumen und Routenplanung kann die Verteilung innerhalb weniger Tage nach Auftragsbestätigung beginnen. Bei Großprojekten besprechen wir einen realistischen Zeitplan.',
+  },
+  {
+    question: 'Arbeiten Sie auch mit Großunternehmen zusammen?',
+    answer: 'Absolut. Unser Business-Paket ist speziell für Großunternehmen und Agenturen konzipiert – mit dediziertem Account-Management und maßgeschneiderten Lösungen.',
+  },
+  {
+    question: 'Wie erhalte ich ein individuelles Angebot?',
+    answer: 'Nutzen Sie einfach unser Kontaktformular, rufen Sie uns an oder schreiben Sie uns über WhatsApp. Wir erstellen Ihnen innerhalb von 24 Stunden ein unverbindliches Angebot.',
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-white" aria-labelledby="faq-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+      {/* Left Column: Accordion */}
+      <div class="order-2 lg:order-1">
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div class="faq-item bg-[#F8F7F5] rounded-2xl overflow-hidden">
+              <button
+                type="button"
+                class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${index}`}
+              >
+                <span class="text-base font-semibold text-text-primary">{faq.question}</span>
+                <span class="faq-icon shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-white text-text-primary transition-transform duration-300">
+                  <ChevronDown class="w-4 h-4" />
+                </span>
+              </button>
+              <div
+                id={`faq-answer-${index}`}
+                class="faq-answer grid grid-rows-[0fr] transition-[grid-template-rows] duration-300 ease-out"
+                aria-hidden="true"
+              >
+                <div class="overflow-hidden">
+                  <p class="px-6 pb-5 text-sm text-text-secondary leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right Column: Sticky Info */}
+      <div class="order-1 lg:order-2 lg:sticky lg:top-24 lg:self-start">
+        <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Häufige Fragen</span>
+        <h2 id="faq-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-6">
+          Alles Wichtige auf einen Blick.
+        </h2>
+        <p class="text-base md:text-lg text-text-secondary leading-relaxed mb-8">
+          Wir legen großen Wert auf Transparenz. Hier finden Sie Antworten auf die Fragen, die uns am häufigsten gestellt werden. 
+          Haben Sie weitere Fragen? Kontaktieren Sie uns jederzeit.
+        </p>
+        <div class="aspect-[4/3] rounded-[2rem] overflow-hidden bg-gray-200">
+          <img
+            src={faqImage.src}
+            alt="Team von Verteilservice Plus bei der Arbeit"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="800"
+            height="600"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <noscript>
+    <style>
+      .faq-answer {
+        grid-template-rows: 1fr !important;
+      }
+    </style>
+  </noscript>
+</section>
+
+<script>
+  (function() {
+    const items = document.querySelectorAll('.faq-item');
+
+    items.forEach((item) => {
+      const trigger = item.querySelector('.faq-trigger');
+      const answer = item.querySelector('.faq-answer');
+      const icon = item.querySelector('.faq-icon');
+
+      if (!trigger || !answer || !icon) return;
+
+      trigger.addEventListener('click', () => {
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        // Close all others
+        items.forEach((otherItem) => {
+          if (otherItem === item) return;
+          const otherTrigger = otherItem.querySelector('.faq-trigger');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          const otherIcon = otherItem.querySelector('.faq-icon');
+          if (otherTrigger && otherAnswer && otherIcon) {
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            otherAnswer.setAttribute('aria-hidden', 'true');
+            otherAnswer.classList.remove('grid-rows-[1fr]');
+            otherAnswer.classList.add('grid-rows-[0fr]');
+            otherIcon.classList.remove('rotate-180');
+          }
+        });
+
+        // Toggle current
+        if (isOpen) {
+          trigger.setAttribute('aria-expanded', 'false');
+          answer.setAttribute('aria-hidden', 'true');
+          answer.classList.remove('grid-rows-[1fr]');
+          answer.classList.add('grid-rows-[0fr]');
+          icon.classList.remove('rotate-180');
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          answer.setAttribute('aria-hidden', 'false');
+          answer.classList.remove('grid-rows-[0fr]');
+          answer.classList.add('grid-rows-[1fr]');
+          icon.classList.add('rotate-180');
+        }
+      });
+    });
+  })();
+</script>

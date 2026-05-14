@@ -1,0 +1,47 @@
+---
+const steps = [
+  {
+    number: '1',
+    title: 'Planung',
+    description: 'Unsere Spezialisten planen jede Straße, jedes Haus und jedes Gebiet präzise.',
+  },
+  {
+    number: '2',
+    title: 'Verteilung',
+    description: 'Unsere geschulten Außendienst- und Verteilerteams setzen die Kampagne zuverlässig um.',
+  },
+  {
+    number: '3',
+    title: 'Live-Kontrolle',
+    description: 'Während der Verteilung läuft unser App-Tracking live und zeigt alle Standorte.',
+  },
+  {
+    number: '4',
+    title: 'Qualitätsprüfung',
+    description: 'Kontrolleure und Bezirksleiter prüfen zusätzlich jede laufende Aktion.',
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-background-alt" aria-labelledby="process-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Ablauf</span>
+      <h2 id="process-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight">
+        So arbeiten wir
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {steps.map((step) => (
+        <div class="relative bg-white rounded-3xl p-8 shadow-sm border border-border">
+          <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary text-white text-lg font-bold mb-6">
+            {step.number}
+          </div>
+          <h3 class="text-xl font-bold text-text-primary mb-3">{step.title}</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

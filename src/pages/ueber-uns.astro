@@ -1,181 +1,269 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Badge from "../components/Badge.astro";
-import Button from "../components/Button.astro";
-import { Image } from "astro:assets";
+import Layout from '../layouts/Layout.astro';
+import Bullseye from '../components/icons/Bullseye.astro';
+import ShieldCheck from '../components/icons/ShieldCheck.astro';
+import Phone from '../components/icons/Phone.astro';
+import Envelope from '../components/icons/Envelope.astro';
+import MapMarker from '../components/icons/MapMarker.astro';
+import WhatsApp from '../components/icons/WhatsApp.astro';
+import aboutStory1 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.33.jpeg';
+import aboutStory2 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.35.jpeg';
+import aboutContact from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.31.jpeg';
 
-import aboutPortrait from "../assets/uberuns.jpg";
+const values = [
+  {
+    title: 'Zielgenauigkeit',
+    description: 'Jeder Flyer hat einen bestimmten Empfänger. Wir stellen sicher, dass er genau dort ankommt, wo er die größte Wirkung entfaltet.',
+    icon: Bullseye,
+  },
+  {
+    title: 'Zuverlässigkeit',
+    description: 'Wir halten unsere Zusagen ein – termingerecht, gründlich und mit höchster Sorgfalt. Vertrauen ist das Fundament unseres Geschäfts.',
+    icon: ShieldCheck,
+  },
+];
+
+const stats = [
+  { value: '20+', label: 'Jahre Erfahrung' },
+  { value: 'Bundesweit', label: 'In ganz Deutschland' },
+  { value: '100%', label: 'Haus-zu-Haus-Fokus' },
+  { value: 'Marktführer', label: 'Als Kunden' },
+];
 ---
 
-<BaseLayout
+<Layout
   title="Über Uns | Verteilservice Plus"
-  description="Lernen Sie Douaa bendali kennen – Inhaber von Verteilservice Plus. Lokale Verbundenheit in Oberursel, hoher Qualitätsanspruch und persönlicher Service."
-  canonicalUrl="/ueber-uns"
+  description="Seit über 20 Jahren Ihr Partner für Flyerverteilung, Prospektverteilung & Streetpromotion in ganz Deutschland. Mit Live-Tracking & Qualitätskontrolle."
 >
-  <!-- ===== HERO ===== -->
-  <section class="bg-background-soft py-16 lg:py-24">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <Badge text="• Das Unternehmen" />
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mt-5 mb-6">
-        Über Verteilservice Plus
-      </h1>
-      <p class="text-base sm:text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-        Ein lokales Einzelunternehmen mit einer klaren Mission: Ihre Werbung zuverlässig und persönlich 
-        direkt in die Briefkästen von Oberursel zu bringen.
-      </p>
-    </div>
-  </section>
+  <main>
+    {/* Hero */}
+    <section class="pt-20 pb-16 md:pt-28 md:pb-24 bg-background-alt">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Über Uns</span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6 leading-tight">
+            Ihr bundesweiter Partner für professionelle Werbeverteilung
+          </h1>
+          <p class="text-lg md:text-xl text-text-secondary leading-relaxed">
+            Seit über 20 Jahren stehen wir für exzellente Planung, lückenlose Kontrolle und messbare Ergebnisse – bundesweit in ganz Deutschland.
+          </p>
+        </div>
+      </div>
+    </section>
 
-  <!-- ===== INHABER PROFIL ===== -->
-  <section class="bg-white py-16 lg:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <!-- Portrait with Overlap -->
-        <div class="relative">
-          <Image
-            src={aboutPortrait}
-            alt="Douaa bendali - Inhaber von Verteilservice Plus"
-            class="w-full h-[550px] lg:h-[650px] object-cover rounded-3xl shadow-xl shadow-black/5"
-            width={600}
-            height={800}
-          />
-          <!-- Overlapping Info Card -->
-          <div class="absolute -bottom-6 -right-4 lg:-right-8 bg-white rounded-2xl shadow-xl shadow-black/10 p-6 border border-border/20 max-w-[280px]">
-            <div class="space-y-3">
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-xs text-muted uppercase tracking-wide">Inhaber</p>
-                  <p class="text-sm font-semibold text-foreground">Douaa bendali</p>
-                </div>
+    {/* Story */}
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+              Über uns
+            </h2>
+            <div class="space-y-4 text-text-secondary leading-relaxed">
+              <p>
+                Seit über 20 Jahren stehen wir für professionelle, zuverlässige und messbare Haus-zu-Haus-Verteilung sowie Streetpromotion – bundesweit in ganz Deutschland.
+              </p>
+              <p>
+                Als stark aufgestelltes Unternehmen besteht unser Team aus erfahrenen Spezialisten im Innen- und Außendienst, die jeden Auftrag präzise planen und professionell umsetzen.
+              </p>
+              <p>
+                Ob unsere Außendienst- und Verteilerteams im direkten Einsatzgebiet oder unsere erfahrenen Bürokräfte in der Kampagnenplanung – bei uns greift jeder Bereich perfekt ineinander.
+              </p>
+
+              <div id="about-more-content" class="space-y-4 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                <h3 class="text-lg font-semibold text-text-primary pt-2">Präzise Planung bis zur letzten Straße</h3>
+                <p>
+                  Unsere Stärke beginnt bereits vor der eigentlichen Verteilung. Unsere Planungsteams erstellen jede Kampagne so detailliert, dass jede Straße, jedes Haus und jedes gewünschte Verteilgebiet exakt berücksichtigt wird.
+                </p>
+
+                <h3 class="text-lg font-semibold text-text-primary pt-2">Bundesweite Verteilung & Streetpromotion</h3>
+                <p>
+                  Wir bieten bundesweite Verteilung von Flyern, Prospekten, Zeitungen, Beilagen, Direktwerbung sowie Streetpromotion und Promotion-Aktionen vor Ort.
+                </p>
+
+                <h3 class="text-lg font-semibold text-text-primary pt-2">Exzellente Ausführung & maximale Kontrolle</h3>
+                <p>
+                  Unser Qualitätsanspruch ist eine 100 % Haus-zu-Haus-Verteilung. Einzigartig ist unsere moderne Kontrollstruktur:
+                </p>
+                <ul class="list-disc list-inside space-y-1 pl-2">
+                  <li>Live-App-Tracking unserer Verteiler</li>
+                  <li>Standortverfolgung in Echtzeit</li>
+                  <li>Fotodokumentation jeder Straße</li>
+                  <li>Kontrolle durch eigene Kontrolleure</li>
+                  <li>Überwachung durch Bezirksleiter</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold text-text-primary pt-2">Vertrauen durch starke Strukturen</h3>
+                <p>
+                  Unsere strukturierte Arbeitsweise ist einer der Hauptgründe, warum wir seit vielen Jahren erfolgreich mit Marktführern, Franchise-Unternehmen, großen Firmen sowie kleinen Betrieben zusammenarbeiten.
+                </p>
+
+                <h3 class="text-lg font-semibold text-text-primary pt-2">Unser Versprechen</h3>
+                <p>
+                  Wir stehen für exzellente Planung, lückenlose Kontrolle, bundesweite Stärke und messbare Ergebnisse.
+                </p>
               </div>
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-xs text-muted uppercase tracking-wide">Standort</p>
-                  <p class="text-sm font-semibold text-foreground">Oberursel (Taunus)</p>
-                </div>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-xs text-muted uppercase tracking-wide">Telefon</p>
-                  <p class="text-sm font-semibold text-foreground">0163 8866766</p>
-                </div>
-              </div>
+
+              <button
+                type="button"
+                id="about-toggle"
+                aria-expanded="false"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors mt-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-lg"
+              >
+                <span>Mehr anzeigen</span>
+                <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="aspect-[3/4] rounded-2xl bg-gray-200 overflow-hidden">
+              <img
+                src={aboutStory1.src}
+                alt="Verteilservice Plus bei der Arbeit"
+                class="w-full h-full object-cover"
+                loading="eager"
+                width="250"
+                height="333"
+              />
+            </div>
+            <div class="aspect-[3/4] rounded-2xl bg-gray-200 overflow-hidden mt-8">
+              <img
+                src={aboutStory2.src}
+                alt="Qualitätskontrolle bei der Verteilung"
+                class="w-full h-full object-cover"
+                loading="eager"
+                width="250"
+                height="333"
+              />
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Text Content -->
-        <div>
-          <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
-            Persönlich. Lokal. Engagiert.
+    {/* Values */}
+    <section class="py-20 md:py-28 bg-[#F8F7F5]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Unsere Werte</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-text-primary">
+            Was uns antreibt
           </h2>
-          <div class="space-y-4 text-muted leading-relaxed">
-            <p>
-              Verteilservice Plus ist ein Einzelunternehmen mit Sitz in Oberursel. 
-              Gegründet mit der Vision, lokale Unternehmen bei ihrer Werbestrategie zu unterstützen, 
-              biete ich eine Alternative zu unpersönlichen Großverteilern: 
-              <strong class="text-foreground">echte Handarbeit mit persönlichem Engagement</strong>.
-            </p>
-            <p>
-              Ich kenne Oberursel und die Region wie meine eigene Westentasche. Jede Straße, jedes Viertel, 
-              jede Wohngegend – das Wissen um die lokale Struktur ist ein entscheidender Vorteil für 
-              die gezielte Verteilung Ihrer Werbematerialien.
-            </p>
-            <p>
-              Mein Anspruch ist hoch: <strong class="text-foreground">Zuverlässigkeit, Transparenz und Termintreue</strong> 
-              sind keine Optionen, sondern die Basis meiner Arbeit. Wenn Sie mit mir zusammenarbeiten, 
-              haben Sie einen direkten Ansprechpartner, der persönlich für das Ergebnis einsteht.
-            </p>
-            <p>
-              <!-- TODO: Hier echtes Kunden-Zitat einfügen -->
-              <em class="text-foreground/80">"Mein Ziel ist es, dass jeder Kunde sich auf mich verlassen kann – 
-              von der ersten Anfrage bis zur abschließenden Bestätigung."</em>
-              <br>
-              <span class="text-sm text-foreground font-medium">— Douaa bendali, Inhaber</span>
-            </p>
-          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {values.map((value) => (
+            <div class="bg-white rounded-3xl p-8 shadow-sm">
+              <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
+                <value.icon class="w-6 h-6" />
+              </div>
+              <h3 class="text-xl font-bold text-text-primary mb-3">{value.title}</h3>
+              <p class="text-text-secondary leading-relaxed">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
-          <div class="mt-8">
-            <Button href="/kontakt" ariaLabel="Kontakt aufnehmen">
-              Kontakt aufnehmen
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </Button>
+    {/* Stats */}
+    <section class="py-16 md:py-20 bg-text-primary">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat) => (
+            <div class="text-center">
+              <p class="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</p>
+              <p class="text-sm text-gray-400 uppercase tracking-wider">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Contact Teaser */}
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Kontakt</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+              Sprechen Sie uns an
+            </h2>
+            <p class="text-text-secondary leading-relaxed mb-8">
+              Ob per Telefon, E-Mail oder WhatsApp – wir sind für Sie da. Lassen Sie uns gemeinsam besprechen,
+              wie wir Ihre Werbebotschaft am besten in die Welt bringen.
+            </p>
+            <div class="space-y-4">
+              <a href="tel:+491638866766" class="flex items-center gap-4 text-text-secondary hover:text-primary transition-colors">
+                <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Phone class="w-5 h-5" />
+                </span>
+                <span class="font-medium">0163 8866766</span>
+              </a>
+              <a href="mailto:Info@verteilservice-plus.de" class="flex items-center gap-4 text-text-secondary hover:text-primary transition-colors">
+                <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Envelope class="w-5 h-5" />
+                </span>
+                <span class="font-medium">Info@verteilservice-plus.de</span>
+              </a>
+              <a href="https://wa.me/491638866766" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-text-secondary hover:text-primary transition-colors">
+                <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <WhatsApp class="w-5 h-5" />
+                </span>
+                <span class="font-medium">WhatsApp</span>
+              </a>
+              <div class="flex items-center gap-4 text-text-secondary">
+                <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <MapMarker class="w-5 h-5" />
+                </span>
+                <span class="font-medium">Kupferhammer weg 51, 61440 Oberursel</span>
+              </div>
+            </div>
+          </div>
+          <div class="aspect-[4/3] rounded-3xl bg-gray-200 overflow-hidden">
+            <img
+              src={aboutContact.src}
+              alt="Verteilservice Plus Team"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              width="800"
+              height="600"
+            />
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ===== WERTE ===== -->
-  <section class="bg-background-soft py-16 lg:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 lg:mb-16">
-        <Badge text="• Unsere Werte" />
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-foreground mt-5 mb-4">
-          Was uns auszeichnet
-        </h2>
-      </div>
+  <script>
+    (function () {
+      const toggleBtn = document.getElementById('about-toggle');
+      const moreContent = document.getElementById('about-more-content');
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform duration-300 border border-border/20">
-          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-          </div>
-          <h3 class="font-serif text-lg font-semibold text-foreground mb-2">Leidenschaft</h3>
-          <p class="text-sm text-muted leading-relaxed">
-            Ich liebe, was ich tue. Jede Verteilung ist eine Chance, Unternehmen beim Wachstum zu helfen.
-          </p>
-        </div>
+      if (!toggleBtn || !moreContent) return;
 
-        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform duration-300 border border-border/20">
-          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-          </div>
-          <h3 class="font-serif text-lg font-semibold text-foreground mb-2">Verlässlichkeit</h3>
-          <p class="text-sm text-muted leading-relaxed">
-            Wenn ich einen Termin zusage, halte ich ihn. Keine Ausreden, keine Überraschungen.
-          </p>
-        </div>
+      const arrow = toggleBtn.querySelector('svg');
+      const label = toggleBtn.querySelector('span');
 
-        <div class="bg-white rounded-3xl p-8 shadow-xl shadow-black/5 hover:-translate-y-1 transition-transform duration-300 border border-border/20">
-          <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e938c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h3 class="font-serif text-lg font-semibold text-foreground mb-2">Nähe</h3>
-          <p class="text-sm text-muted leading-relaxed">
-            Als Einzelunternehmer bin ich direkt für Sie da. Kurze Wege, schnelle Reaktion, persönlicher Kontakt.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+      toggleBtn.addEventListener('click', () => {
+        const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+
+        if (isExpanded) {
+          moreContent.classList.remove('max-h-[2000px]');
+          moreContent.classList.add('max-h-0');
+          moreContent.setAttribute('aria-hidden', 'true');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          if (label) label.textContent = 'Mehr anzeigen';
+          if (arrow) arrow.classList.remove('rotate-180');
+        } else {
+          moreContent.classList.remove('max-h-0');
+          moreContent.classList.add('max-h-[2000px]');
+          moreContent.setAttribute('aria-hidden', 'false');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          if (label) label.textContent = 'Weniger anzeigen';
+          if (arrow) arrow.classList.add('rotate-180');
+        }
+      });
+    })();
+  </script>
+</Layout>
