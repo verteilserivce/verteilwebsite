@@ -5,8 +5,45 @@ import Envelope from '../components/icons/Envelope.astro';
 import MapMarker from '../components/icons/MapMarker.astro';
 import WhatsApp from '../components/icons/WhatsApp.astro';
 import Check from '../components/icons/Check.astro';
+import ArrowRight from '../components/icons/ArrowRight.astro';
+import ChevronLeft from '../components/icons/ChevronLeft.astro';
 
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
+
+const materialOptions = [
+  'Flyer',
+  'Prospekt',
+  'Katalog',
+  'Sonstiges Werbematerial',
+  'Wobbler',
+  'Ich brauche Beratung',
+];
+
+const formatOptions = [
+  'DIN A6',
+  'DIN A5',
+  'DIN A4',
+  'Sonstiges',
+];
+
+const regions = [
+  'Berlin (Großraum)',
+  'Hamburg (Großraum)',
+  'Niedersachsen',
+  'Saarland',
+  'Schleswig-Holstein',
+  'Baden-Württemberg',
+  'Brandenburg',
+  'Hessen',
+  'Nordrhein-Westfalen',
+  'Sachsen',
+  'Thüringen',
+  'Bayern',
+  'Bremen (Großraum)',
+  'Mecklenburg-Vorpommern',
+  'Rheinland-Pfalz',
+  'Sachsen-Anhalt',
+];
 ---
 
 <Layout
@@ -30,7 +67,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
     </section>
 
     {/* Contact Section */}
-    <section class="py-20 md:py-28 bg-white">
+    <section id="angebot" class="py-20 md:py-28 bg-white scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
           {/* Left: Contact Info */}
@@ -86,7 +123,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
             </div>
           </div>
 
-          {/* Right: Contact Form */}
+          {/* Right: Multi-Step Form */}
           <div class="lg:col-span-3">
             <div class="bg-[#F8F7F5] rounded-3xl p-8 md:p-10">
               {/* Success Message */}
@@ -104,112 +141,353 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
                 action="https://api.web3forms.com/submit"
                 method="POST"
                 class="space-y-6"
-
+                novalidate
               >
                 <input type="hidden" name="access_key" value={accessKey} />
                 <input type="hidden" name="subject" value="Neue Anfrage über Verteilservice Plus Website" />
                 <input type="hidden" name="from_name" value="Verteilservice Plus Website" />
                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" />
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label for="name" class="block text-sm font-medium text-text-primary mb-2">Name *</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                      placeholder="Ihr vollständiger Name"
-                      maxlength="100"
-                    />
+                {/* Hidden fields for step 1 & 2 data */}
+                <input type="hidden" id="hf-material" name="material" />
+                <input type="hidden" id="hf-menge" name="verteilmenge" />
+                <input type="hidden" id="hf-format" name="format" />
+                <input type="hidden" id="hf-termin" name="verteiltermin" />
+                <input type="hidden" id="hf-region" name="region" />
+                <input type="hidden" id="hf-plz" name="plz_gebiete" />
+                <input type="hidden" id="hf-selektiv" name="selektive_verteilung" />
+                <input type="hidden" id="hf-info" name="zusaetzliche_info" />
+
+                {/* Progress Steps */}
+                <div class="flex items-center justify-center gap-4 mb-8" role="tablist" aria-label="Formularschritte">
+                  <div class="flex items-center gap-2">
+                    <span id="step-indicator-1" class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-primary text-white transition-colors duration-300" aria-current="step">1</span>
+                    <span class="text-sm font-medium text-text-primary hidden sm:inline">Verteilung</span>
                   </div>
-                  <div>
-                    <label for="email" class="block text-sm font-medium text-text-primary mb-2">E-Mail *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                      placeholder="ihre@email.de"
-                      maxlength="254"
-                    />
+                  <div class="w-8 h-0.5 bg-border rounded-full" id="step-line-1"></div>
+                  <div class="flex items-center gap-2">
+                    <span id="step-indicator-2" class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-border text-text-muted transition-colors duration-300">2</span>
+                    <span class="text-sm font-medium text-text-muted hidden sm:inline">Region</span>
+                  </div>
+                  <div class="w-8 h-0.5 bg-border rounded-full" id="step-line-2"></div>
+                  <div class="flex items-center gap-2">
+                    <span id="step-indicator-3" class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-border text-text-muted transition-colors duration-300">3</span>
+                    <span class="text-sm font-medium text-text-muted hidden sm:inline">Kontakt</span>
                   </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Step 1: Verteilungsdetails */}
+                <div id="step-1" class="space-y-6">
+                  <h3 class="text-lg font-bold text-text-primary">Schritt 1: Verteilungsdetails</h3>
+
+                  {/* Material */}
                   <div>
-                    <label for="phone" class="block text-sm font-medium text-text-primary mb-2">Telefon</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="telefon"
-                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
-                      placeholder="Optional"
-                      maxlength="30"
-                    />
+                    <fieldset>
+                      <legend class="block text-sm font-medium text-text-primary mb-3">Was soll verteilt werden? *</legend>
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        {materialOptions.map((opt) => (
+                          <label class="cursor-pointer">
+                            <input type="radio" name="material-radio" value={opt} required class="peer sr-only" />
+                            <span class="block text-center px-3 py-3 text-sm font-medium rounded-xl border border-border bg-white text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
+                              {opt}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    </fieldset>
                   </div>
+
+                  {/* Menge */}
                   <div>
-                    <label for="subject-select" class="block text-sm font-medium text-text-primary mb-2">Betreff *</label>
+                    <label for="step1-menge" class="block text-sm font-medium text-text-primary mb-2">Geplante Verteilmenge *</label>
+                    <input
+                      type="number"
+                      id="step1-menge"
+                      min="1"
+                      required
+                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      placeholder="z. B. 5000"
+                    />
+                    <p class="mt-1.5 text-xs text-text-muted">Wieviel Stück willst du voraussichtlich verteilen lassen? Für eine erfolgreiche Kampagne empfehlen wir eine Mindestmenge von 5.000 Stück.</p>
+                  </div>
+
+                  {/* Format */}
+                  <div>
+                    <label for="step1-format" class="block text-sm font-medium text-text-primary mb-2">Geplantes Format *</label>
                     <select
-                      id="subject-select"
-                      name="betreff"
+                      id="step1-format"
                       required
                       class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                     >
-                      <option value="" disabled selected>Betreff auswählen</option>
-                      <option value="Flyerverteilung">Flyerverteilung</option>
-                      <option value="Prospektverteilung">Prospektverteilung</option>
-                      <option value="Zeitungs- & Beilagenverteilung">Zeitungs- & Beilagenverteilung</option>
-                      <option value="Direktwerbung">Direktwerbung</option>
-                      <option value="Streetpromotion">Streetpromotion</option>
-                      <option value="Sampling Aktionen">Sampling Aktionen</option>
-                      <option value="Bundesweite Kampagnenplanung">Bundesweite Kampagnenplanung</option>
-                      <option value="Adressierte Verteilung">Adressierte Verteilung</option>
-                      <option value="Web- & Logo Design">Web- & Logo Design</option>
-                      <option value="Sonstiges">Sonstiges</option>
+                      <option value="" disabled selected>Format auswählen</option>
+                      {formatOptions.map((opt) => (
+                        <option value={opt}>{opt}</option>
+                      ))}
                     </select>
+                  </div>
+
+                  {/* Termin */}
+                  <div>
+                    <label for="step1-termin" class="block text-sm font-medium text-text-primary mb-2">Geplanter Verteiltermin</label>
+                    <input
+                      type="date"
+                      id="step1-termin"
+                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                    />
+                  </div>
+
+                  <div class="flex justify-end">
+                    <button
+                      type="button"
+                      id="btn-step1-next"
+                      class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-white bg-primary hover:bg-primary-dark rounded-full transition-all min-h-[44px]"
+                    >
+                      Weiter
+                      <ArrowRight class="w-4 h-4" />
+                    </button>
                   </div>
                 </div>
 
-                <div>
-                  <label for="message" class="block text-sm font-medium text-text-primary mb-2">Nachricht *</label>
-                  <textarea
-                    id="message"
-                    name="nachricht"
-                    rows="5"
-                    required
-                    class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-none"
-                    placeholder="Beschreiben Sie Ihr Vorhaben – Auflage, Gebiet, Zeitrahmen..."
-                    maxlength="2000"
-                  ></textarea>
+                {/* Step 2: Region & Details */}
+                <div id="step-2" class="hidden space-y-6">
+                  <h3 class="text-lg font-bold text-text-primary">Schritt 2: Region & Details</h3>
+
+                  {/* Region */}
+                  <div>
+                    <fieldset>
+                      <legend class="block text-sm font-medium text-text-primary mb-3">In welcher Region soll Ihre Werbung verteilt werden? *</legend>
+                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-60 overflow-y-auto p-1">
+                        {regions.map((region) => (
+                          <label class="cursor-pointer">
+                            <input type="radio" name="region-radio" value={region} required class="peer sr-only" />
+                            <span class="block text-center px-2 py-2.5 text-xs font-medium rounded-xl border border-border bg-white text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
+                              {region}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  {/* PLZ */}
+                  <div>
+                    <label for="step2-plz" class="block text-sm font-medium text-text-primary mb-2">Ausgewählte PLZ-Gebiete (optional)</label>
+                    <textarea
+                      id="step2-plz"
+                      rows="2"
+                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-none"
+                      placeholder="PLZ bitte hintereinander schreiben und mit Komma trennen"
+                    ></textarea>
+                  </div>
+
+                  {/* Selektive Verteilung */}
+                  <div>
+                    <fieldset>
+                      <legend class="block text-sm font-medium text-text-primary mb-3">Möchten Sie eine selektive Verteilung? *</legend>
+                      <div class="flex gap-3">
+                        <label class="cursor-pointer flex-1">
+                          <input type="radio" name="selektiv-radio" value="ja" required class="peer sr-only" />
+                          <span class="block text-center px-3 py-3 text-sm font-medium rounded-xl border border-border bg-white text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
+                            Ja
+                          </span>
+                        </label>
+                        <label class="cursor-pointer flex-1">
+                          <input type="radio" name="selektiv-radio" value="nein, ich möchte eine Vollverteilung" required class="peer sr-only" />
+                          <span class="block text-center px-3 py-3 text-sm font-medium rounded-xl border border-border bg-white text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
+                            Nein, Vollverteilung
+                          </span>
+                        </label>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  {/* Weitere Infos */}
+                  <div>
+                    <label for="step2-info" class="block text-sm font-medium text-text-primary mb-2">Weitere Informationen zur Verteilung</label>
+                    <textarea
+                      id="step2-info"
+                      rows="3"
+                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-none"
+                      placeholder="Hier können Sie weitere Details angeben..."
+                    ></textarea>
+                  </div>
+
+                  <div class="flex justify-between">
+                    <button
+                      type="button"
+                      id="btn-step2-back"
+                      class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-text-primary bg-white border border-border hover:bg-gray-50 rounded-full transition-all min-h-[44px]"
+                    >
+                      <ChevronLeft class="w-4 h-4" />
+                      Zurück
+                    </button>
+                    <button
+                      type="button"
+                      id="btn-step2-next"
+                      class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-white bg-primary hover:bg-primary-dark rounded-full transition-all min-h-[44px]"
+                    >
+                      Weiter
+                      <ArrowRight class="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
 
-                <div class="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    id="privacy"
-                    name="privacy"
-                    required
-                    class="w-5 h-5 mt-0.5 rounded border-border text-primary focus:ring-primary"
-                  />
-                  <label for="privacy" class="text-sm text-text-secondary leading-relaxed">
-                    Ich habe die <a href="/datenschutz" class="text-primary hover:underline">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *
-                  </label>
-                </div>
+                {/* Step 3: Kontaktdaten */}
+                <div id="step-3" class="hidden space-y-6">
+                  <h3 class="text-lg font-bold text-text-primary">Schritt 3: Kontaktdaten</h3>
 
-                <button
-                  type="submit"
-                  id="submit-btn"
-                  class="w-full inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-full transition-all duration-200 shadow-lg shadow-primary/20 hover:shadow-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <span id="btn-text">Nachricht senden</span>
-                  <svg id="btn-spinner" class="hidden w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                </button>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label for="vorname" class="block text-sm font-medium text-text-primary mb-2">Vorname *</label>
+                      <input
+                        type="text"
+                        id="vorname"
+                        name="vorname"
+                        required
+                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        placeholder="Max"
+                        maxlength="100"
+                      />
+                    </div>
+                    <div>
+                      <label for="nachname" class="block text-sm font-medium text-text-primary mb-2">Nachname *</label>
+                      <input
+                        type="text"
+                        id="nachname"
+                        name="nachname"
+                        required
+                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        placeholder="Mustermann"
+                        maxlength="100"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label for="firma" class="block text-sm font-medium text-text-primary mb-2">Firma *</label>
+                    <input
+                      type="text"
+                      id="firma"
+                      name="firma"
+                      required
+                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      placeholder="Ihre Firma"
+                      maxlength="200"
+                    />
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label for="adresse" class="block text-sm font-medium text-text-primary mb-2">Adresse</label>
+                      <input
+                        type="text"
+                        id="adresse"
+                        name="adresse"
+                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        placeholder="Musterstraße 1"
+                        maxlength="200"
+                      />
+                    </div>
+                    <div>
+                      <label for="stadt" class="block text-sm font-medium text-text-primary mb-2">Stadt</label>
+                      <input
+                        type="text"
+                        id="stadt"
+                        name="stadt"
+                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        placeholder="Oberursel"
+                        maxlength="100"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label for="region-feld" class="block text-sm font-medium text-text-primary mb-2">Region</label>
+                      <input
+                        type="text"
+                        id="region-feld"
+                        name="region_kontakt"
+                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        placeholder="Hessen"
+                        maxlength="100"
+                      />
+                    </div>
+                    <div>
+                      <label for="plz" class="block text-sm font-medium text-text-primary mb-2">Postleitzahl</label>
+                      <input
+                        type="text"
+                        id="plz"
+                        name="plz"
+                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        placeholder="61440"
+                        maxlength="10"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label for="email" class="block text-sm font-medium text-text-primary mb-2">E-Mail-Adresse *</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        placeholder="ihre@email.de"
+                        maxlength="254"
+                      />
+                    </div>
+                    <div>
+                      <label for="telefon" class="block text-sm font-medium text-text-primary mb-2">Telefon *</label>
+                      <input
+                        type="tel"
+                        id="telefon"
+                        name="telefon"
+                        required
+                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        placeholder="0163 8866766"
+                        maxlength="30"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="privacy"
+                      name="privacy"
+                      required
+                      class="w-5 h-5 mt-0.5 rounded border-border text-primary focus:ring-primary"
+                    />
+                    <label for="privacy" class="text-sm text-text-secondary leading-relaxed">
+                      Ich habe die <a href="/datenschutz" class="text-primary hover:underline">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass Verteilservice Plus meine Daten zum Zweck der Kontaktaufnahme digital verarbeitet. *
+                    </label>
+                  </div>
+
+                  <div class="flex justify-between items-center">
+                    <button
+                      type="button"
+                      id="btn-step3-back"
+                      class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-text-primary bg-white border border-border hover:bg-gray-50 rounded-full transition-all min-h-[44px]"
+                    >
+                      <ChevronLeft class="w-4 h-4" />
+                      Zurück
+                    </button>
+                    <button
+                      type="submit"
+                      id="submit-btn"
+                      class="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-full transition-all duration-200 shadow-lg shadow-primary/20 hover:shadow-primary/30 disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px]"
+                    >
+                      <span id="btn-text">Anfrage senden</span>
+                      <svg id="btn-spinner" class="hidden w-5 h-5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
 
                 <p id="form-error" class="hidden text-sm text-red-600 text-center" role="alert" aria-live="assertive"></p>
               </form>
@@ -230,47 +508,241 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
     const btnText = document.getElementById('btn-text');
     const btnSpinner = document.getElementById('btn-spinner');
 
+    const step1 = document.getElementById('step-1');
+    const step2 = document.getElementById('step-2');
+    const step3 = document.getElementById('step-3');
+
+    const btnStep1Next = document.getElementById('btn-step1-next');
+    const btnStep2Back = document.getElementById('btn-step2-back');
+    const btnStep2Next = document.getElementById('btn-step2-next');
+    const btnStep3Back = document.getElementById('btn-step3-back');
+
+    const ind1 = document.getElementById('step-indicator-1');
+    const ind2 = document.getElementById('step-indicator-2');
+    const ind3 = document.getElementById('step-indicator-3');
+    const line1 = document.getElementById('step-line-1');
+    const line2 = document.getElementById('step-line-2');
+
+    const hfMaterial = document.getElementById('hf-material') as HTMLInputElement | null;
+    const hfMenge = document.getElementById('hf-menge') as HTMLInputElement | null;
+    const hfFormat = document.getElementById('hf-format') as HTMLInputElement | null;
+    const hfTermin = document.getElementById('hf-termin') as HTMLInputElement | null;
+    const hfRegion = document.getElementById('hf-region') as HTMLInputElement | null;
+    const hfPlz = document.getElementById('hf-plz') as HTMLInputElement | null;
+    const hfSelektiv = document.getElementById('hf-selektiv') as HTMLInputElement | null;
+    const hfInfo = document.getElementById('hf-info') as HTMLInputElement | null;
+
     if (!form || !successMsg || !errorMsg || !submitBtn || !btnText || !btnSpinner) return;
+    if (!step1 || !step2 || !step3) return;
+    if (!btnStep1Next || !btnStep2Back || !btnStep2Next || !btnStep3Back) return;
+    if (!ind1 || !ind2 || !ind3 || !line1 || !line2) return;
+
+    function showStep(step: number) {
+      step1.classList.add('hidden');
+      step2.classList.add('hidden');
+      step3.classList.add('hidden');
+
+      ind1.setAttribute('aria-current', 'false');
+      ind2.setAttribute('aria-current', 'false');
+      ind3.setAttribute('aria-current', 'false');
+
+      ind1.className = 'w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-border text-text-muted transition-colors duration-300';
+      ind2.className = 'w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-border text-text-muted transition-colors duration-300';
+      ind3.className = 'w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-border text-text-muted transition-colors duration-300';
+
+      line1.className = 'w-8 h-0.5 bg-border rounded-full transition-colors duration-300';
+      line2.className = 'w-8 h-0.5 bg-border rounded-full transition-colors duration-300';
+
+      if (step === 1) {
+        step1.classList.remove('hidden');
+        ind1.className = 'w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-primary text-white transition-colors duration-300';
+        ind1.setAttribute('aria-current', 'step');
+      } else if (step === 2) {
+        step2.classList.remove('hidden');
+        ind1.className = 'w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-primary text-white transition-colors duration-300';
+        line1.className = 'w-8 h-0.5 bg-primary rounded-full transition-colors duration-300';
+        ind2.className = 'w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-primary text-white transition-colors duration-300';
+        ind2.setAttribute('aria-current', 'step');
+      } else if (step === 3) {
+        step3.classList.remove('hidden');
+        ind1.className = 'w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-primary text-white transition-colors duration-300';
+        line1.className = 'w-8 h-0.5 bg-primary rounded-full transition-colors duration-300';
+        ind2.className = 'w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-primary text-white transition-colors duration-300';
+        line2.className = 'w-8 h-0.5 bg-primary rounded-full transition-colors duration-300';
+        ind3.className = 'w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-primary text-white transition-colors duration-300';
+        ind3.setAttribute('aria-current', 'step');
+      }
+    }
+
+    function clearErrors() {
+      errorMsg.classList.add('hidden');
+      errorMsg.textContent = '';
+      form.querySelectorAll('input, textarea, select').forEach((field) => {
+        field.classList.remove('border-red-400');
+      });
+    }
+
+    function validateStep1(): boolean {
+      clearErrors();
+      let valid = true;
+
+      const material = form.querySelector<HTMLInputElement>('input[name="material-radio"]:checked');
+      if (!material) {
+        valid = false;
+        errorMsg.textContent = 'Bitte wählen Sie aus, was verteilt werden soll.';
+        errorMsg.classList.remove('hidden');
+        return valid;
+      }
+
+      const menge = document.getElementById('step1-menge') as HTMLInputElement | null;
+      if (!menge || !menge.value.trim()) {
+        valid = false;
+        menge?.classList.add('border-red-400');
+      }
+
+      const format = document.getElementById('step1-format') as HTMLSelectElement | null;
+      if (!format || !format.value) {
+        valid = false;
+        format?.classList.add('border-red-400');
+      }
+
+      if (!valid) {
+        errorMsg.textContent = 'Bitte füllen Sie alle Pflichtfelder aus.';
+        errorMsg.classList.remove('hidden');
+      }
+
+      return valid;
+    }
+
+    function validateStep2(): boolean {
+      clearErrors();
+      let valid = true;
+
+      const region = form.querySelector<HTMLInputElement>('input[name="region-radio"]:checked');
+      if (!region) {
+        valid = false;
+        errorMsg.textContent = 'Bitte wählen Sie eine Region aus.';
+        errorMsg.classList.remove('hidden');
+        return valid;
+      }
+
+      const selektiv = form.querySelector<HTMLInputElement>('input[name="selektiv-radio"]:checked');
+      if (!selektiv) {
+        valid = false;
+        errorMsg.textContent = 'Bitte geben Sie an, ob Sie eine selektive Verteilung wünschen.';
+        errorMsg.classList.remove('hidden');
+        return valid;
+      }
+
+      return valid;
+    }
+
+    function validateStep3(): boolean {
+      clearErrors();
+      let valid = true;
+
+      const requiredFields = ['vorname', 'nachname', 'firma', 'email', 'telefon'];
+      requiredFields.forEach((id) => {
+        const field = document.getElementById(id) as HTMLInputElement | null;
+        if (!field || !field.value.trim()) {
+          valid = false;
+          field?.classList.add('border-red-400');
+          field?.setAttribute('aria-invalid', 'true');
+        } else {
+          field?.setAttribute('aria-invalid', 'false');
+        }
+      });
+
+      const emailField = document.getElementById('email') as HTMLInputElement | null;
+      if (emailField && emailField.value) {
+        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        if (!emailRegex.test(emailField.value)) {
+          valid = false;
+          emailField.classList.add('border-red-400');
+          emailField.setAttribute('aria-invalid', 'true');
+        }
+      }
+
+      const privacy = document.getElementById('privacy') as HTMLInputElement | null;
+      if (!privacy || !privacy.checked) {
+        valid = false;
+        errorMsg.textContent = 'Bitte akzeptieren Sie die Datenschutzerklärung.';
+        errorMsg.classList.remove('hidden');
+        return valid;
+      }
+
+      if (!valid) {
+        errorMsg.textContent = 'Bitte füllen Sie alle Pflichtfelder korrekt aus.';
+        errorMsg.classList.remove('hidden');
+      }
+
+      return valid;
+    }
+
+    function syncHiddenFields() {
+      const material = form.querySelector<HTMLInputElement>('input[name="material-radio"]:checked');
+      if (hfMaterial) hfMaterial.value = material?.value || '';
+
+      const menge = document.getElementById('step1-menge') as HTMLInputElement | null;
+      if (hfMenge) hfMenge.value = menge?.value || '';
+
+      const format = document.getElementById('step1-format') as HTMLSelectElement | null;
+      if (hfFormat) hfFormat.value = format?.value || '';
+
+      const termin = document.getElementById('step1-termin') as HTMLInputElement | null;
+      if (hfTermin) hfTermin.value = termin?.value || '';
+
+      const region = form.querySelector<HTMLInputElement>('input[name="region-radio"]:checked');
+      if (hfRegion) hfRegion.value = region?.value || '';
+
+      const plz = document.getElementById('step2-plz') as HTMLTextAreaElement | null;
+      if (hfPlz) hfPlz.value = plz?.value || '';
+
+      const selektiv = form.querySelector<HTMLInputElement>('input[name="selektiv-radio"]:checked');
+      if (hfSelektiv) hfSelektiv.value = selektiv?.value || '';
+
+      const info = document.getElementById('step2-info') as HTMLTextAreaElement | null;
+      if (hfInfo) hfInfo.value = info?.value || '';
+    }
+
+    btnStep1Next.addEventListener('click', () => {
+      if (validateStep1()) {
+        showStep(2);
+      }
+    });
+
+    btnStep2Back.addEventListener('click', () => {
+      showStep(1);
+    });
+
+    btnStep2Next.addEventListener('click', () => {
+      if (validateStep2()) {
+        showStep(3);
+      }
+    });
+
+    btnStep3Back.addEventListener('click', () => {
+      showStep(2);
+    });
+
+    // Remove error styles on input
+    form.querySelectorAll('input, textarea, select').forEach((field) => {
+      field.addEventListener('input', () => {
+        field.classList.remove('border-red-400');
+      });
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       errorMsg.classList.add('hidden');
       errorMsg.textContent = '';
 
-      // Client validation
-      const requiredFields = form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>('input[required], textarea[required], select[required]');
-      let isValid = true;
-
-      requiredFields.forEach((field) => {
-        if (!field.value.trim()) {
-          isValid = false;
-          field.classList.add('border-red-400');
-          field.setAttribute('aria-invalid', 'true');
-        } else {
-          field.classList.remove('border-red-400');
-          field.setAttribute('aria-invalid', 'false');
-        }
-      });
-
-      // Email validation
-      const emailField = form.querySelector<HTMLInputElement>('input[type="email"]');
-      if (emailField && emailField.value) {
-        const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        if (!emailRegex.test(emailField.value)) {
-          isValid = false;
-          emailField.classList.add('border-red-400');
-          emailField.setAttribute('aria-invalid', 'true');
-        } else {
-          emailField.setAttribute('aria-invalid', 'false');
-        }
-      }
-
-      if (!isValid) {
-        errorMsg.textContent = 'Bitte füllen Sie alle Pflichtfelder korrekt aus.';
-        errorMsg.classList.remove('hidden');
+      if (!validateStep3()) {
         errorMsg.focus();
         return;
       }
+
+      syncHiddenFields();
 
       // Loading state
       submitBtn.disabled = true;
@@ -306,16 +778,9 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
         errorMsg.classList.remove('hidden');
       } finally {
         submitBtn.disabled = false;
-        btnText.textContent = 'Nachricht senden';
+        btnText.textContent = 'Anfrage senden';
         btnSpinner.classList.add('hidden');
       }
-    });
-
-    // Remove error styles on input
-    form.querySelectorAll('input, textarea, select').forEach((field) => {
-      field.addEventListener('input', () => {
-        field.classList.remove('border-red-400');
-      });
     });
   })();
 </script>

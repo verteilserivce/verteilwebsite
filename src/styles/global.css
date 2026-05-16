@@ -5,8 +5,8 @@
 @layer base {
   :root {
     /* Brand Colors */
-    --color-primary: #d91c26;
-    --color-primary-dark: #c91a23;
+    --color-primary: #7c919e;
+    --color-primary-dark: #5d727f;
 
     /* Backgrounds */
     --color-background: #ffffff;

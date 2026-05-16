@@ -1,6 +1,6 @@
 # Verteilservice Plus Website
 
-Dieses Projekt ist die statische Marketing-Website für **Verteilservice Plus** – ein Dienstleister für professionelle Flyerverteilung, Prospektverteilung, Streetpromotion und Web- & Logo Design in ganz Deutschland. Inhaber: Douaa Bendali. Sitz: Kupferhammer weg 51, 61440 Oberursel.
+Dieses Projekt ist die statische Marketing-Website fuer **Verteilservice Plus** – ein Dienstleister fuer professionelle Flyerverteilung, Prospektverteilung und Streetpromotion in ganz Deutschland. Inhaber: Douaa Bendali.
 
 ## Technologie-Stack
 
@@ -13,165 +13,250 @@ Dieses Projekt ist die statische Marketing-Website für **Verteilservice Plus** 
 ## Projektstruktur
 
 ```text
-├── public/                    # Statische Assets (favicon.ico, favicon.svg, robots.txt, sitemap.xml, site.webmanifest)
+├── public/                    # Statische Assets
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   ├── robots.txt
+│   ├── site.webmanifest       # PWA-Manifest (Theme-Color: #7c919e)
+│   └── sitemap.xml
 ├── src/
 │   ├── assets/
-│   │   ├── images/            # Bilder für Seiteninhalte (Hero, Über uns, Galerie, FAQ, Footer-Marquee etc.)
-│   │   └── partnerlogos/      # Partner-Logos für Marquee-Banner
+│   │   ├── fonts/             # (derzeit leer)
+│   │   ├── images/            # Hero-Bilder, Galerie-Fotos, Ueber-uns-Bilder
+│   │   │   ├── hero1.jpeg, hero2.jpg
+│   │   │   ├── newhero1, newhero2.jpeg, newhero3.jpeg
+│   │   │   ├── ueberuns.jpeg, ueberuns2.jpeg, warumwir.jpeg
+│   │   │   └── ~30 WhatsApp-generierte JPEGs (Firmenfahrzeuge, Team, Aktionen)
+│   │   └── partnerlogos/      # 8 JPG-Logos von Partnerunternehmen
 │   ├── components/
-│   │   ├── Header.astro       # Fixierte Navigation mit Mobile-Menü, Logo, CTA-Button
-│   │   ├── Footer.astro       # Footer mit Auto-Galerie-Marquee, Navigation, Rechtliches, Kontakt, Copyright
-│   │   ├── icons/             # Wiederverwendbare SVG-Icon-Komponenten (15 Stück)
-│   │   │                      #   ArrowRight, Bullseye, Check, ChevronDown, ChevronLeft, ChevronRight,
-│   │   │                      #   Cookie, Envelope, MapMarker, Menu, Phone, ShieldCheck, WhatsApp, X
-│   │   ├── sections/          # Seitenabschnitte für die Startseite
-│   │   │   ├── Hero.astro     # Vollbild-Hero mit Hintergrund-Slider (2 Bilder, 5s Intervall)
-│   │   │   ├── TrustBar.astro # Vertrauensindikatoren (Stats/Badges)
-│   │   │   ├── About.astro    # Über-uns-Teaser mit "Mehr anzeigen"-Toggle
-│   │   │   ├── PartnerLogos.astro   # Unendliches Logo-Marquee (CSS-Animation)
-│   │   │   ├── Process.astro  # Ablaufdarstellung (Schritt-für-Schritt)
-│   │   │   ├── Services.astro # Horizontales Leistungs-Carousel (9 Karten) auf der Startseite
-│   │   │   ├── TrackingQuality.astro # Feature-Highlights Tracking & Qualität
-│   │   │   ├── Gallery.astro  # Horizontale Bildergalerie mit Pfeil-Navigation
-│   │   │   ├── Pricing.astro  # Preispakete (3 Varianten)
-│   │   │   └── FAQ.astro      # Akkordeon-FAQ (10 Fragen)
+│   │   ├── Header.astro       # Fixierte Navigation mit Mobile-Menue
+│   │   ├── Footer.astro       # Footer mit Galerie-Marquee, Navigation, Kontakt
+│   │   ├── icons/             # 16 wiederverwendbare SVG-Icon-Komponenten
+│   │   │   ├── ArrowRight.astro
+│   │   │   ├── Bullseye.astro
+│   │   │   ├── Check.astro
+│   │   │   ├── ChevronDown.astro
+│   │   │   ├── ChevronLeft.astro
+│   │   │   ├── ChevronRight.astro
+│   │   │   ├── Cookie.astro
+│   │   │   ├── Envelope.astro
+│   │   │   ├── MapMarker.astro
+│   │   │   ├── Menu.astro
+│   │   │   ├── Phone.astro
+│   │   │   ├── ShieldCheck.astro
+│   │   │   ├── WhatsApp.astro
+│   │   │   └── X.astro
+│   │   ├── sections/          # Seitenabschnitte
+│   │   │   ├── About.astro
+│   │   │   ├── FAQ.astro      # Akkordeon mit 10 Fragen
+│   │   │   ├── Gallery.astro
+│   │   │   ├── Hero.astro     # Hintergrund-Slider mit Auto-Cycle (5s)
+│   │   │   ├── PartnerLogos.astro
+│   │   │   ├── Pricing.astro  # 4 Pakete nach Auflagenhoehe (Starter, Premium, Business, Mega Deal)
+│   │   │   ├── Process.astro  # 4-Schritte-Ablauf (Planung, Verteilung, Live-Kontrolle, Qualitaetspruefung)
+│   │   │   ├── ServicePackages.astro  # 4 Service-Pakete (Kompakt, Plus, Premium, Allrounder)
+│   │   │   ├── Services.astro # Horizontales Carousel mit 9 Leistungen
+│   │   │   ├── TrackingQuality.astro
+│   │   │   └── TrustBar.astro
 │   │   └── ui/
-│   │       └── CookieBanner.astro   # Cookie-Einwilligungsbanner (localStorage-basiert)
+│   │       └── CookieBanner.astro
 │   ├── layouts/
-│   │   └── Layout.astro       # Basis-Layout mit Meta-Tags, Header, Footer, CookieBanner, Schema.org JSON-LD
+│   │   └── Layout.astro       # Basis-Layout mit Meta-Tags, Header, Footer, JSON-LD
 │   ├── pages/                 # Dateibasiertes Routing
-│   │   ├── index.astro        # Startseite (komponiert aus ~10 Sections)
-│   │   ├── leistungen.astro   # Detaillierte Leistungsübersicht (9 Services + Benefits + Zielgruppen + CTA)
-│   │   ├── ueber-uns.astro    # Über-uns-Seite mit Story, Werten, Stats, Kontakt-Teaser
-│   │   ├── kontakt.astro      # Kontaktseite mit Kontaktinfos und Web3Forms-Formular
-│   │   ├── 404.astro          # Benutzerdefinierte Fehlerseite
-│   │   ├── impressum.astro    # Impressum (noindex)
-│   │   └── datenschutz.astro  # Datenschutzerklärung (noindex)
+│   │   ├── 404.astro
+│   │   ├── index.astro        # Startseite (komponiert aus 11 Sections)
+│   │   ├── leistungen.astro   # Detailseite aller 9 Leistungen
+│   │   ├── ueber-uns.astro    # Ueber-uns mit mehreren visuellen Abschnitten
+│   │   ├── kontakt.astro      # 3-Step-Kontaktformular (Web3Forms)
+│   │   ├── impressum.astro
+│   │   └── datenschutz.astro
 │   ├── styles/
-│   │   └── global.css         # Tailwind-Direktiven + CSS-Custom-Properties (Brand-Farben, Fonts)
-│   └── env.d.ts               # TypeScript-Deklarationen für ImportMetaEnv
+│   │   └── global.css         # Tailwind-Direktiven + CSS-Custom-Properties
+│   └── env.d.ts               # TypeScript-Deklarationen fuer ImportMetaEnv
 ├── astro.config.mjs           # Astro-Konfiguration (site, output: static, port: 3003)
-├── tailwind.config.mjs        # Aktive Tailwind-Konfiguration (Farben, Fonts, Animationen, Border-Radii)
-├── tailwind.config.ts         # Leerer Stub (wird nicht aktiv genutzt)
-├── postcss.config.js          # PostCSS-Konfiguration (tailwindcss, autoprefixer)
-├── tsconfig.json              # Erweitert astro/tsconfigs/strict
-├── netlify.toml               # Netlify-Deployment-Konfiguration + Security-Headers + Cache-Control
+├── tailwind.config.mjs        # Tailwind-Theme-Erweiterungen (Farben, Fonts, Animationen)
+├── tailwind.config.ts         # Leere TypScript-Config (nicht aktiv genutzt)
+├── postcss.config.js          # PostCSS mit Tailwind + Autoprefixer
+├── tsconfig.json              # Striktes Astro-TypeScript
+├── netlify.toml               # Netlify-Deployment + Security-Headers
 ├── .env.example               # Beispiel-Umgebungsvariablen
-├── .gitignore                 # Ignoriert dist/, .astro/, node_modules/, .env, .env.production, .DS_Store
-└── .vscode/                   # VS Code: Launch-Konfiguration für Astro Dev-Server + Extension-Empfehlung
-    ├── extensions.json
-    └── launch.json
+└── .env                       # Lokale Umgebungsvariablen (nicht committen)
 ```
 
 ## Build- und Entwicklungsbefehle
 
-Alle Befehle werden im Projektroot ausgeführt:
+Alle Befehle werden im Projektroot ausgefuehrt:
 
 | Befehl            | Aktion                                            |
 |:------------------|:--------------------------------------------------|
-| `npm install`     | Abhängigkeiten installieren                       |
+| `npm install`     | Abhaengigkeiten installieren                       |
 | `npm run dev`     | Entwicklungsserver starten (Port `3003`)          |
 | `npm run build`   | Statische Produktions-Build in `./dist/` erstellen|
 | `npm run preview` | Build lokal vor dem Deployment testen             |
-| `npm run astro`   | Astro-CLI-Befehle ausführen                       |
+| `npm run astro`   | Astro-CLI-Befehle ausfuehren                       |
+
+> **Hinweis:** Es gibt keinen `test`-Script in `package.json`. Das Projekt hat kein Test-Framework konfiguriert.
 
 ## Routing
 
 Astro verwendet dateibasiertes Routing. Jede `.astro`-Datei in `src/pages/` wird zu einer Route:
 
-| Route               | Datei                                   |
-|:--------------------|:----------------------------------------|
-| `/`                 | `src/pages/index.astro`                 |
-| `/leistungen`       | `src/pages/leistungen.astro`            |
-| `/ueber-uns`        | `src/pages/ueber-uns.astro`             |
-| `/kontakt`          | `src/pages/kontakt.astro`               |
-| `/impressum`        | `src/pages/impressum.astro`             |
-| `/datenschutz`      | `src/pages/datenschutz.astro`           |
-| `*` (404)           | `src/pages/404.astro`                   |
+| Route           | Quelldatei                          |
+|:----------------|:------------------------------------|
+| `/`             | `src/pages/index.astro`             |
+| `/leistungen`   | `src/pages/leistungen.astro`        |
+| `/ueber-uns`    | `src/pages/ueber-uns.astro`         |
+| `/kontakt`      | `src/pages/kontakt.astro`           |
+| `/impressum`    | `src/pages/impressum.astro`         |
+| `/datenschutz`  | `src/pages/datenschutz.astro`       |
+| (404)           | `src/pages/404.astro`               |
 
 ## Code-Stil und Konventionen
 
-- **Komponenten**: Astro-Dateien (`.astro`) mit Frontmatter-Script-Block (`---`) für server-seitigen TypeScript-Code.
-- **Styling**: Primär Tailwind-Utility-Klassen. CSS-Custom-Properties für Brand-Farben und Fonts in `src/styles/global.css`.
-- **Tailwind-Theme-Erweiterungen**: Brand-Farben (`primary`, `primary-dark`, `background`, `background-alt`, `surface`, `text-primary`, `text-secondary`, `text-muted`, `border`), Animationen (`marquee`, `marquee-reverse`, `fade-in`, `slide-up`), Font-Familien (`sans`, `serif`) und Border-Radii (`4xl`, `5xl`) sind in `tailwind.config.mjs` definiert.
-- **Icons**: Inline-SVGs als eigenständige Astro-Komponenten unter `src/components/icons/`. Sie akzeptieren eine optionale `class`-Prop mit Standardwert `w-5 h-5`.
-- **Client-seitige Scripts**: Werden direkt in `<script>`-Tags innerhalb der Astro-Komponenten geschrieben und als IIFE ausgeführt. Typ-Annotationen (z. B. `as HTMLFormElement | null`) werden verwendet, um TypeScript-Fehler zu vermeiden.
-- **Barrierefreiheit**: `aria-label`, `aria-current`, `aria-expanded`, `aria-controls`, `aria-selected`, `aria-hidden`, `aria-live`, `role`, `aria-invalid`, `aria-pressed` und `focus-visible`-Styles werden konsequent eingesetzt. Skip-Link und Focus-Trap im mobilen Menü vorhanden.
+- **Komponenten**: Astro-Dateien (`.astro`) mit Frontmatter-Script-Block (`---`) fuer Server-seitigen TypeScript-Code.
+- **Styling**: Primaer Tailwind-Utility-Klassen. CSS-Custom-Properties fuer Brand-Farben und Fonts in `src/styles/global.css`.
+- **Tailwind-Theme-Erweiterungen** (in `tailwind.config.mjs`):
+  - **Farben**: `primary` (#7c919e), `primary-dark` (#5d727f), `background`, `background-alt`, `surface`, `text-primary`, `text-secondary`, `text-muted`, `border`
+  - **Animationen**: `marquee`, `marquee-reverse`, `fade-in`, `slide-up`
+  - **Fonts**: `sans` (Inter), `serif` (Merriweather)
+  - **Border-Radii**: `4xl` (2rem), `5xl` (3rem)
+- **Icons**: Inline-SVGs als eigenstaendige Astro-Komponenten unter `src/components/icons/`. Sie akzeptieren eine optionale `class`-Prop mit Standardwert `w-5 h-5` und verwenden `aria-hidden="true"`.
+- **Client-seitige Scripts**: Werden direkt in `<script>`-Tags innerhalb der Astro-Komponenten geschrieben und als IIFE ausgefuehrt. Typ-Annotationen (`as HTMLFormElement | null`) werden verwendet, um TypeScript-Fehler zu vermeiden.
+- **Barrierefreiheit**: `aria-label`, `aria-current`, `aria-expanded`, `aria-controls`, `aria-selected`, `aria-live`, `aria-invalid`, `role="dialog"`, `role="tablist"`, `role="tab"`, `role="status"`, `role="alert"`, Skip-Link zum Hauptinhalt, Fokus-Trap im Mobile-Menue und `focus-visible`-Styles werden konsequent eingesetzt.
 - **Sprache**: Die gesamte Website-Inhalt, UI-Texte und die meisten Code-Kommentare sind auf **Deutsch**.
 - **Responsive Design**: Mobile-First mit Tailwind-Breakpoints (`sm:`, `md:`, `lg:`).
-- **Touch-Ziele**: Interaktive Elemente haben mindestens `44px` × `44px` (`min-w-[44px] min-h-[44px]`).
-- **Bilder**: Dekorative Bilder verwenden `alt=""` und `aria-hidden="true"`. Inhaltliche Bilder haben beschreibende `alt`-Texte.
-- **Reduzierte Bewegung**: `prefers-reduced-motion` wird in `global.css` und einzelnen Komponenten unterstützt (Animationen deaktiviert, Scroll-Verhalten auf `auto`).
+- **Touch-Targets**: Interaktive Elemente verwenden konsistent `min-h-[44px]` und `min-w-[44px]` fuer ausreichende Klickflaechen.
+- **Reduced Motion**: `prefers-reduced-motion`-Media-Query wird in `global.css` und einzelnen Komponenten beruecksichtigt.
+- **Externe Links**: Verwenden konsequent `rel="noopener noreferrer"`.
+- **Noscript-Fallbacks**: FAQ-Akkordeon und Mobile-Menue haben `<noscript>`-Fallbacks fuer den No-JS-Zustand.
 
 ## Umgebungsvariablen
 
-Kopiere `.env.example` zu `.env` und fülle die Werte aus:
+Kopiere `.env.example` zu `.env` und fuelle die Werte aus:
 
 | Variable              | Beschreibung                              |
 |:----------------------|:------------------------------------------|
-| `PUBLIC_WEB3FORMS_KEY`| Access Key für das Web3Forms-Kontaktformular |
-| `PUBLIC_SITE_URL`     | Öffentliche Website-URL                   |
+| `PUBLIC_WEB3FORMS_KEY`| Access Key fuer das Web3Forms-Kontaktformular |
+| `PUBLIC_SITE_URL`     | Oeffentliche Website-URL                   |
 
-> **Hinweis**: Alle Umgebungsvariablen müssen mit `PUBLIC_` prefixt sein, damit Astro sie dem Client-Code exponiert. Die Typen sind in `src/env.d.ts` deklariert.
+> **Wichtig**: Alle Umgebungsvariablen muessen mit `PUBLIC_` prefixt sein, damit Astro sie dem Client-Code exponiert. Die Typen sind in `src/env.d.ts` deklariert.
 
 ## Wichtige Features
 
-### Kontaktformular (Web3Forms)
-- Endpoint: `https://api.web3forms.com/submit`
-- Felder: Name, E-Mail, Telefon (optional), Betreff (Select mit 10 Optionen), Nachricht, Datenschutz-Checkbox, Honeypot (`botcheck`)
-- Client-seitige Validierung (Pflichtfelder, E-Mail-Format, `maxlength`-Attribute)
-- Ladezustand mit Spinner, Erfolgsmeldung, Fehlerbehandlung inkl. 10s-Timeout via `AbortController`
-- `aria-live`-Regionen für Erfolg/Fehler; `aria-invalid` bei Validierungsfehlern
-- Das Formular befindet sich vollständig in `src/pages/kontakt.astro`
+### Kontaktformular (3-Step)
+- Verwendet [Web3Forms](https://web3forms.com/) (API-Endpoint: `https://api.web3forms.com/submit`).
+- **Schritt 1**: Verteilungsdetails (Material, Menge, Format, Termin).
+- **Schritt 2**: Region & Details (16 Bundesland-Optionen, PLZ-Gebiete, selektive Verteilung).
+- **Schritt 3**: Kontaktdaten (Vorname, Nachname, Firma, Anschrift, Stadt, Region, PLZ, E-Mail, Telefon, Datenschutz).
+- Client-seitiger Step-Wechsel mit Fortschrittsanzeige (3 Punkte).
+- Validierung pro Step mit visuellem Feedback (rote Borders, `aria-invalid`).
+- Step 1+2 Daten werden in versteckte Hidden-Inputs synchronisiert, bevor an Web3Forms gesendet wird.
+- Ladezustand mit Spinner, Timeout von 10 Sekunden (`AbortController`).
+- Erfolgs- und Fehlermeldungen werden dynamisch eingeblendet.
+- Honeypot-Feld `botcheck` zur Spam-Abwehr.
+- Alle CTA-Buttons verlinken auf `/kontakt#angebot` fuer direkten Scroll zum Formular.
+
+### Service-Pakete (ServicePackages.astro)
+- 4 Pakete als Karten-Grid: **Kompakt**, **Plus**, **Premium**, **Allrounder**.
+- Features als Checkliste pro Paket (Check-Icon-Komponente).
+- Jede Karte verlinkt auf `/kontakt#angebot`.
+
+### Preis-Vorteile (Pricing.astro)
+- 4 Pakete nach Auflagenhoehe: **Starter Vorteil** (ab 50.000), **Premium Vorteil** (ab 100.000), **Business Vorteil** (ab 250.000), **Mega Deal** (ab 500.000 + 25.000 gratis).
+- **Mega Deal** ist visuell hervorgehoben (`ring-2 ring-primary`).
+- Bonus-Box mit zusaetzlichen Premium-Vorteilen unterhalb des Grids.
 
 ### Cookie-Banner
-- Speichert die Einwilligung (`accepted`/`declined`) im `localStorage` unter dem Schlüssel `vsp_cookie_consent`
-- Sendet ein Custom-Event `cookieConsentChanged` mit Detail `{ accepted: boolean }`
-- Wird mit 1s Verzögerung eingeblendet, falls noch keine Entscheidung vorliegt
-- Komponente: `src/components/ui/CookieBanner.astro`
+- Speichert die Einwilligung (`accepted`/`declined`) im `localStorage` unter dem Schluessel `vsp_cookie_consent`.
+- Sendet ein Custom-Event `cookieConsentChanged` mit `detail: { accepted }`.
+- Banner erscheint mit 1-Sekunde-Verzoegerung fuer bessere UX.
+- Zwei Optionen: "Nur notwendige" und "Alle akzeptieren".
 
 ### SEO
-- Jede Seite nutzt das `Layout.astro` mit dynamischen `title`, `description`, Open-Graph-Tags, Twitter-Cards, Canonical-URLs, `theme-color`, `author`, Web-App-Manifest und Schema.org `LocalBusiness` JSON-LD
-- `impressum.astro` und `datenschutz.astro` sind mit `noindex={true}` markiert
-- `Astro.site` ist in `astro.config.mjs` auf `https://verteilservice-plus.de` gesetzt
-- `public/robots.txt`, `public/sitemap.xml` und `public/site.webmanifest` sind vorhanden
-- Das Layout referenziert `/og-image.jpg` und `/apple-touch-icon.png` – diese sollten im `public/`-Ordner bereitgestellt werden
+- Jede Seite nutzt das `Layout.astro` mit dynamischen `title`, `description`, Open-Graph-Tags, Twitter-Cards, Canonical-URLs und Schema.org `LocalBusiness` JSON-LD.
+- Impressum & Datenschutz sind mit `noindex={true}` markiert.
+- `site.webmanifest` ist fuer PWA-Faehigkeiten konfiguriert.
+- `robots.txt` und `sitemap.xml` liegen in `public/`.
 
-### Interaktive Komponenten (Client-seitige Scripts)
-- **Header**: Scroll-Schatten-Effekt, Mobile-Menü-Toggle mit Focus-Trap (Fokusverschiebung in Menü, Tab-Loop, Escape), `aria-expanded`-Steuerung. `<noscript>`-Fallback für mobiles Menü.
-- **Hero**: Hintergrundbild-Slider mit 5-Sekunden-Intervall und Opazitäts-Transition. LCP-optimiert via `<img fetchpriority="high">`. Intervall pausiert per `IntersectionObserver`, wenn Hero nicht sichtbar.
-- **Services (Startseite)**: Horizontales Scroll-Carousel mit Snap-Scrolling, Pfeil-Buttons, Dot-Navigation und `requestAnimationFrame`-basiertem Aktiv-Dot-Update
-- **FAQ**: Akkordeon mit `grid-template-rows`-Transition, schließt andere Items beim Öffnen, `aria-expanded`-Steuerung. `<noscript>`-Fallback zeigt Antworten standardmäßig an.
-- **Über uns**: "Mehr anzeigen"-Toggle mit `max-h-0` / `max-h-[2000px]`-Transition und `aria-hidden`-Synchronisierung
-- **Gallery**: Horizontale Bildergalerie mit Pfeil-Buttons und `scrollBy`-Navigation
-- **Footer**: Auto-Galerie-Marquee mit dupliziertem Inhalt für nahtloses Looping
+### Header
+- Fixierter Header mit `backdrop-blur-md` und Scroll-Shadow-Effekt.
+- Mobiles Menue mit Fokus-Trap, Escape-Taste-Schliessung und Body-Scroll-Lock.
+- Noscript-Fallback fuer das Mobile-Menue.
+- Aktive Navigationslinks werden mit Unterstrich und `aria-current="page"` hervorgehoben.
+- Navigation: Startseite, Leistungen, Ueber Uns, Kontakt.
+
+### Services-Carousel (Startseite)
+- Horizontales Scroll-Carousel mit `snap-x snap-mandatory`.
+- 9 Leistungskarten (Flyerverteilung, Prospektverteilung, Zeitungs- & Beilagenverteilung, Direktwerbung, Streetpromotion, Sampling Aktionen, Bundesweite Kampagnenplanung, Adressierte Verteilung, Web- & Logo Design).
+- Navigation ueber Pfeil-Buttons und Dot-Indikatoren.
+- Aktiver Dot wird ueber Scroll-Event mit `requestAnimationFrame` aktualisiert.
+- Erste Karte (`Flyerverteilung`) ist visuell hervorgehoben (`highlighted: true` → primary Hintergrund).
+
+### Hero-Slider
+- Zwei Hintergrundbilder mit CSS-Opacity-Transition (1s).
+- Auto-Cycle alle 5 Sekunden, gesteuert durch `IntersectionObserver` (pausiert, wenn nicht sichtbar).
+
+### Footer
+- Drei Bereiche: Content-Grid (Navigation, Rechtliches, Kontakt), Auto-Galerie-Marquee, Copyright.
+- Galerie-Marquee mit 6 Firmenfahrzeug-Fotos, dupliziert fuer nahtloses Looping.
+- Kontaktdaten: Telefon 0163 8866766, E-Mail Info@verteilservice-plus.de, Adresse Kupferhammer weg 51, 61440 Oberursel.
+
+### Partner-Logos
+- Automatisches CSS-Marquee mit 8 Partnerlogos.
+- Titel: "Unsere Partner".
+- Logos im Grayscale-Modus mit Hover-Effekt.
+
+### FAQ-Akkordeon
+- 10 haefig gestellte Fragen mit Grid-Transition-Animation (`grid-rows-[0fr]` / `grid-rows-[1fr]`).
+- Nur ein Eintrag kann gleichzeitig geoeffnet sein.
+- Sticky Info-Box auf der rechten Seite (Desktop).
 
 ## Assets
 
-- Bilder werden aus `src/assets/images/` und `src/assets/partnerlogos/` importiert und von Astro optimiert
-- Statische Assets (Favicons, robots.txt, sitemap.xml, site.webmanifest) liegen in `public/`
-- Ein `og-image.jpg` wird im Layout referenziert, sollte im `public/`-Ordner bereitgestellt werden
-- Ein `apple-touch-icon.png` wird im Layout referenziert, sollte im `public/`-Ordner bereitgestellt werden
+- **Bilder**: Alle Fotos liegen in `src/assets/images/`. Sie werden ueber Astro's Image-Handling importiert (`import img from '../assets/images/...'`).
+- **Hero-Bilder**: `hero1.jpeg`, `hero2.jpg` (aktiv genutzt). Zusaetzlich `newhero1` (keine Dateiendung), `newhero2.jpeg`, `newhero3.jpeg` (derzeit nicht referenziert).
+- **Galerie/About-Fotos**: Mehrere JPEGs mit WhatsApp-generierten Dateinamen.
+- **Partnerlogos**: In `src/assets/partnerlogos/` als JPGs.
+- **Fonts**: Das `src/assets/fonts/`-Verzeichnis ist derzeit leer. Es werden System-Fonts (Inter, Merriweather) ueber CSS-Custom-Properties geladen.
 
 ## Deployment
 
-Das Projekt ist für **Netlify** konfiguriert (`netlify.toml`):
+Das Projekt ist fuer **Netlify** konfiguriert (`netlify.toml`):
 
 - Build-Befehl: `npm run build`
 - Publish-Verzeichnis: `dist`
 - Node-Version: `22`
-- Sicherheits-Header sind gesetzt (HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
-- Statische Assets (`/_astro/*`) werden mit langem Cache-Control ausgeliefert (`max-age=31536000, immutable`)
-- Die Startseite (`/`) hat `Cache-Control: public, max-age=0, must-revalidate`
+- **Security-Headers**:
+  - `Strict-Transport-Security` (HSTS)
+  - `X-Frame-Options: DENY`
+  - `X-Content-Type-Options: nosniff`
+  - `Referrer-Policy: strict-origin-when-cross-origin`
+  - `Permissions-Policy` (strikte Einschraenkungen)
+  - `Content-Security-Policy` (CSP mit `default-src 'self'`, `connect-src 'self' https://api.web3forms.com`)
+- **Caching**:
+  - Statische Assets (`/_astro/*`): `max-age=31536000, immutable`
+  - Startseite (`/`): `max-age=0, must-revalidate`
 
 ## Testen
 
-Derzeit ist **kein Test-Framework** im Projekt konfiguriert. Es gibt keine Unit-Tests, Integrationstests oder E2E-Tests. Das Testen erfolgt manuell über `npm run dev` und `npm run preview`.
+Derzeit ist **kein Test-Framework** im Projekt konfiguriert. Es gibt keine Unit-Tests, Integrationstests oder E2E-Tests. Das Testen erfolgt manuell ueber `npm run dev` und `npm run preview`.
 
 ## Sicherheitshinweise
 
-- `.env` und `.env.production` sind in `.gitignore` eingetragen und dürfen nicht committet werden.
-- Das Kontaktformular enthält ein verstecktes Honeypot-Feld (`botcheck`) zur Spam-Abwehr.
+- `.env` und `.env.production` sind in `.gitignore` eingetragen und duerfen nicht committet werden.
+- Das Kontaktformular enthaelt ein verstecktes Honeypot-Feld (`botcheck`) zur Spam-Abwehr.
 - Netlify-Headers verhindern Clickjacking (X-Frame-Options: DENY) und Content-Type-Sniffing.
+- CSP erlaubt Form-Action nur zu `self` und `https://api.web3forms.com`.
 - Sensitive Dateien (`.env`) werden von Astro und Netlify nicht im Build ausgegeben.
-- Die Content-Security-Policy in `netlify.toml` erlaubt Verbindungen nur zu `self` und `https://api.web3forms.com`.
+- Externe Links (WhatsApp, Web3Forms) nutzen konsequent `rel="noopener noreferrer"`.
+
+## Hinweise fuer Agenten
+
+- `tailwind.config.ts` ist eine nicht-funktionale TypScript-Datei (leerer `content`-Array). Alle Tailwind-Erweiterungen befinden sich ausschliesslich in `tailwind.config.mjs`.
+- `README.md` ist noch die unveraenderte Astro-Starter-Vorlage und spiegelt nicht den aktuellen Projektstatus wider.
+- Neue Seiten werden als `.astro`-Dateien in `src/pages/` angelegt und sollten das `Layout.astro` importieren.
+- Neue Icons folgen dem Muster in `src/components/icons/`: optionale `class`-Prop mit Default `w-5 h-5`, `aria-hidden="true"`.
+- Neue Sections gehoeren in `src/components/sections/` und werden von den Page-Komponenten importiert.
+- Brand-Farbe ist `#7c919e` (primary) und `#5d727f` (primary-dark).
+- Kontakt-Telefonnummer: `+491638866766`, E-Mail: `Info@verteilservice-plus.de`.
+- Adresse: Kupferhammer weg 51, 61440 Oberursel.

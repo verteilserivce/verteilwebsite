@@ -1,0 +1,108 @@
+---
+import Check from '../icons/Check.astro';
+import ArrowRight from '../icons/ArrowRight.astro';
+
+const packages = [
+  {
+    name: 'Kompakt',
+    description: 'Für kleine Kampagnen & Standardverteilung',
+    features: [
+      'Haus zu Haus Verteilung',
+      'Prüfung der Verteilung',
+      '24/7 Kundenservice',
+      'Planung',
+    ],
+  },
+  {
+    name: 'Plus',
+    description: 'Mehr Kontrolle & zusätzliche Leistungen',
+    features: [
+      'Haus zu Haus Verteilung',
+      'Prüfung der Verteilung',
+      '24/7 Kundenservice',
+      'Planung',
+      'GPS Live Standort Funktion',
+      'Transport der Werbematerialien inklusive',
+    ],
+  },
+  {
+    name: 'Premium',
+    description: 'Mit Apptracking & erweiterten Vorteilen',
+    features: [
+      'Haus zu Haus Verteilung',
+      'Prüfung der Verteilung',
+      '24/7 Kundenservice',
+      'Planung',
+      'GPS Live Standort Funktion',
+      'Transport der Werbematerialien inklusive',
+      'APP Tracking',
+    ],
+  },
+  {
+    name: 'Allrounder',
+    description: 'Das Komplettpaket für maximale Sicherheit',
+    features: [
+      'Haus zu Haus Verteilung',
+      'Prüfung der Verteilung',
+      '24/7 Kundenservice',
+      'Planung',
+      'GPS Live Standort Funktion',
+      'Transport der Werbematerialien inklusive',
+      'APP Tracking',
+      'Fotodokumentation der Verteilung',
+    ],
+  },
+];
+---
+
+<section class="bg-background-alt py-24" aria-labelledby="service-packages-heading">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header */}
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Service-Pakete</span>
+      <h2 id="service-packages-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight">
+        Unsere Service-Pakete
+      </h2>
+      <p class="mt-4 text-lg text-text-secondary">
+        Wählen Sie das passende Paket für Ihre Kampagne – von der Basis-Verteilung bis zum Komplettservice.
+      </p>
+    </div>
+
+    {/* Grid */}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {packages.map((pkg) => (
+        <div class="relative bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-border overflow-hidden flex flex-col transition-all duration-300 hover:shadow-[0_12px_40px_rgb(0,0,0,0.1)]">
+          {/* Content */}
+          <div class="p-8 flex flex-col flex-1">
+            <h3 class="text-2xl font-bold text-text-primary mb-2">{pkg.name}</h3>
+            <p class="text-sm text-text-secondary mb-6">{pkg.description}</p>
+
+            {/* Divider */}
+            <div class="border-t border-border mb-6"></div>
+
+            {/* Feature List */}
+            <div class="flex flex-col gap-3 mb-8 flex-1">
+              {pkg.features.map((feature) => (
+                <div class="flex items-start gap-3">
+                  <Check class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span class="text-text-secondary text-sm">{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA Button */}
+            <div class="mt-auto">
+              <a
+                href="/kontakt#angebot"
+                class="group inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-bold transition-all min-h-[44px] bg-primary text-white hover:bg-primary-dark"
+              >
+                Jetzt anfragen
+                <ArrowRight class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
