@@ -2,6 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import ArrowRight from '../components/icons/ArrowRight.astro';
 import Check from '../components/icons/Check.astro';
+import leistung1 from '../assets/images/leistung1.jpg';
+import leistung2 from '../assets/images/leistung2.jpg';
+import leistung3 from '../assets/images/leistung3.jpg';
+import leistung4 from '../assets/images/leistung4.jpg';
+import leistung5 from '../assets/images/leistung5.jpg';
+import leistung6 from '../assets/images/leistung6.jpg';
+import leistung7 from '../assets/images/leistung7.jpg';
+import leistung8 from '../assets/images/leistung8.jpg';
+import leistung9 from '../assets/images/leistung9.jpg';
 
 const services = [
   {
@@ -13,9 +22,10 @@ const services = [
       'Termingerechte Auslieferung mit Qualitätskontrolle',
       'Einzelflyer-Verteilung (keine Mehrfachbelegung)',
       'Fotodokumentation und GPS-Tracking auf Wunsch',
-      'Flexible Auflagen von 5.000 bis 500.000+ Exemplaren',
+      'Unbegrenzte Auflagen – wir verteilen so viel Sie benötigen',
     ],
     highlighted: true,
+    image: leistung1,
   },
   {
     title: 'Prospektverteilung',
@@ -29,6 +39,7 @@ const services = [
       'Detaillierte Abschlussreports',
     ],
     highlighted: false,
+    image: leistung2,
   },
   {
     title: 'Zeitungs- & Beilagenverteilung',
@@ -42,6 +53,7 @@ const services = [
       'Rückmeldung bei Nichtzustellbarkeit',
     ],
     highlighted: false,
+    image: leistung3,
   },
   {
     title: 'Direktwerbung',
@@ -55,6 +67,7 @@ const services = [
       'Datenschutzkonforme Handhabung',
     ],
     highlighted: false,
+    image: leistung4,
   },
   {
     title: 'Streetpromotion',
@@ -68,19 +81,21 @@ const services = [
       'Erfahrene Promoter mit Freundlichkeit und Engagement',
     ],
     highlighted: false,
+    image: leistung5,
   },
   {
-    title: 'Sampling Aktionen',
-    subtitle: 'Produktproben für maximale Sichtbarkeit',
-    description: 'Gezielte Produktproben-Verteilung für maximale Sichtbarkeit und Neukundengewinnung. Lassen Sie potentielle Kunden Ihr Produkt direkt erleben.',
+    title: 'Wahlwerbung',
+    subtitle: 'Gezielte politische Werbeverteilung',
+    description: 'Professionelle Verteilung von Wahlwerbematerial für Parteien, Kandidaten und politische Kampagnen. Wir sorgen für eine breite und zielgenaue Reichweite in Ihrem Wahlgebiet.',
     features: [
-      'Gezielte Verteilung an Ihre Zielgruppe',
-      'Messbare Reichweite und Conversion',
-      'Erfahrene Sampling-Teams',
-      'Feedback-Erfassung vor Ort',
-      'Dokumentation aller Aktionen',
+      'Gezielte Verteilung in Wahlbezirken und Stadtteilen',
+      'Termingerechte Auslieferung vor Wahltagen',
+      'Koordination mit lokalen Teams und Helfern',
+      'Dokumentation der verteilten Gebiete',
+      'Erfahrung mit politischen Kampagnen',
     ],
     highlighted: false,
+    image: leistung6,
   },
   {
     title: 'Bundesweite Kampagnenplanung',
@@ -94,6 +109,7 @@ const services = [
       'Umfassende Abschlussreports',
     ],
     highlighted: false,
+    image: leistung7,
   },
   {
     title: 'Adressierte Verteilung',
@@ -107,6 +123,7 @@ const services = [
       'Datenschutzkonforme Handhabung aller Adressdaten',
     ],
     highlighted: false,
+    image: leistung8,
   },
   {
     title: 'Web- & Logo Design',
@@ -120,6 +137,7 @@ const services = [
       'Betreuung und Wartung nach Go-Live',
     ],
     highlighted: false,
+    image: leistung9,
   },
 ];
 
@@ -193,7 +211,7 @@ const audiences = [
                   ))}
                 </ul>
                 <a
-                  href="/kontakt"
+                  href="/kontakt#angebot"
                   class={`group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-full transition-all duration-200 ${
                     service.highlighted
                       ? 'text-white bg-primary hover:bg-primary-dark shadow-lg shadow-primary/20'
@@ -206,9 +224,14 @@ const audiences = [
               </div>
               <div class={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                 <div class={`aspect-[4/3] rounded-3xl overflow-hidden ${service.highlighted ? 'ring-2 ring-primary' : ''}`}>
-                  <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-                    <span class="text-6xl font-bold text-gray-300">{String(index + 1).padStart(2, '0')}</span>
-                  </div>
+                  <img
+                    src={service.image.src}
+                    alt={service.title}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    width="600"
+                    height="450"
+                  />
                 </div>
               </div>
             </div>
@@ -268,7 +291,7 @@ const audiences = [
           Kontaktieren Sie uns unverbindlich. Wir beraten Sie persönlich und finden gemeinsam die optimale Lösung für Ihr Werbeziel.
         </p>
         <a
-          href="/kontakt"
+          href="/kontakt#angebot"
           class="group inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-full transition-all duration-200 shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5"
         >
           Kostenloses Beratungsgespräch vereinbaren

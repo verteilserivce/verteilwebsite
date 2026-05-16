@@ -1,5 +1,9 @@
 ---
 import Check from '../icons/Check.astro';
+import starterImg from '../../assets/images/starterpaket.jpg';
+import premiumImg from '../../assets/images/premiumpaket.jpg';
+import businessImg from '../../assets/images/businesspaket.jpg';
+import megaImg from '../../assets/images/megapaket.jpg';
 
 const packages = [
   {
@@ -11,6 +15,7 @@ const packages = [
       'Basis-Support',
     ],
     buttonClass: 'bg-primary text-white hover:bg-primary-dark',
+    image: starterImg,
   },
   {
     name: 'Premium Vorteil',
@@ -22,6 +27,7 @@ const packages = [
       'Priorisierte Verteilung',
     ],
     buttonClass: 'bg-primary text-white hover:bg-primary-dark',
+    image: premiumImg,
   },
   {
     name: 'Business Vorteil',
@@ -33,6 +39,7 @@ const packages = [
       'Express-Abwicklung',
     ],
     buttonClass: 'bg-primary text-white hover:bg-primary-dark',
+    image: businessImg,
   },
   {
     name: 'Mega Deal',
@@ -47,6 +54,7 @@ const packages = [
     ],
     buttonClass: 'bg-primary text-white hover:bg-primary-dark',
     highlighted: true,
+    image: megaImg,
   },
 ];
 
@@ -74,9 +82,16 @@ const bonuses = [
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
     {packages.map((pkg) => (
       <div class={`bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border overflow-hidden flex flex-col ${pkg.highlighted ? 'border-primary ring-2 ring-primary' : 'border-gray-100'}`}>
-        {/* Image Placeholder */}
-        <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
-          <span class="text-sm font-medium text-gray-400">Bild folgt</span>
+        {/* Package Image */}
+        <div class="w-full h-48 bg-gray-200 overflow-hidden">
+          <img
+            src={pkg.image.src}
+            alt={pkg.name}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="400"
+            height="192"
+          />
         </div>
 
         {/* Content */}
@@ -97,7 +112,7 @@ const bonuses = [
           {/* Footer Button */}
           <div class="mt-auto">
             <a
-              href="/kontakt"
+              href="/kontakt#angebot"
               class={`inline-flex w-max items-center gap-2 rounded-full px-7 py-3 text-sm font-bold transition-all min-h-[44px] ${pkg.buttonClass}`}
             >
               Anfragen

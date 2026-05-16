@@ -1,5 +1,6 @@
 ---
 import Check from '../icons/Check.astro';
+import trackingImg from '../../assets/images/livetracking.jpg';
 
 const features = [
   'Eigene Tracking-App',
@@ -41,16 +42,15 @@ const features = [
 
       {/* Right: Visual */}
       <div class="relative">
-        <div class="aspect-[4/3] rounded-[2rem] overflow-hidden bg-gray-100 flex items-center justify-center">
-          <div class="text-center p-8">
-            <div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/>
-              </svg>
-            </div>
-            <p class="text-lg font-bold text-text-primary">Tracking-App Vorschau</p>
-            <p class="text-sm text-text-muted mt-1">Live-Standorte & Fotodokumentation</p>
-          </div>
+        <div class="aspect-[4/3] rounded-[2rem] overflow-hidden bg-gray-100">
+          <img
+            src={trackingImg.src}
+            alt="Live-Tracking-App mit GPS-Standortkontrolle"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="600"
+            height="450"
+          />
         </div>
         {/* Decorative element */}
         <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-primary/10 rounded-full -z-10"></div>

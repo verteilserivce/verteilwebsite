@@ -6,9 +6,10 @@ import Phone from '../components/icons/Phone.astro';
 import Envelope from '../components/icons/Envelope.astro';
 import MapMarker from '../components/icons/MapMarker.astro';
 import WhatsApp from '../components/icons/WhatsApp.astro';
-import aboutStory1 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.33.jpeg';
-import aboutStory2 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.35.jpeg';
-import aboutContact from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.31.jpeg';
+import Check from '../components/icons/Check.astro';
+import aboutStory1 from '../assets/images/überuns.jpeg';
+import aboutStory2 from '../assets/images/überuns2.jpeg';
+import aboutContact from '../assets/images/warumwir.jpeg';
 
 const values = [
   {
@@ -28,6 +29,32 @@ const stats = [
   { value: 'Bundesweit', label: 'In ganz Deutschland' },
   { value: '100%', label: 'Haus-zu-Haus-Fokus' },
   { value: 'Marktführer', label: 'Als Kunden' },
+];
+
+const services = [
+  'Flyerverteilung',
+  'Prospektverteilung',
+  'Zeitungsverteilung',
+  'Beilagenverteilung',
+  'Adressierte Werbung',
+  'Direktmarketing',
+  'Streetpromotion & Promotion-Aktionen',
+];
+
+const trackingFeatures = [
+  'Live-App-Tracking unserer Verteiler',
+  'GPS-Standortüberwachung in Echtzeit',
+  'Fotodokumentation der Verteilgebiete',
+  'Kontrolle durch eigene Kontrolleure',
+  'Zusätzliche Überwachung durch Bezirksleiter',
+];
+
+const audiences = [
+  'Lokale Unternehmen',
+  'Franchise-Betriebe',
+  'Große Firmen',
+  'Dienstleister',
+  'Promotion- und Werbekampagnen',
 ];
 ---
 
@@ -51,7 +78,7 @@ const stats = [
       </div>
     </section>
 
-    {/* Story */}
+    {/* Intro + Story */}
     <section class="py-20 md:py-28 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -60,61 +87,15 @@ const stats = [
               Über uns
             </h2>
             <div class="space-y-4 text-text-secondary leading-relaxed">
-              <p>
-                Seit über 20 Jahren stehen wir für professionelle, zuverlässige und messbare Haus-zu-Haus-Verteilung sowie Streetpromotion – bundesweit in ganz Deutschland.
+              <p class="text-lg">
+                Verteilservice Plus steht für professionelle, zuverlässige und moderne Haus-zu-Haus-Verteilung sowie erfolgreiche Streetpromotion – bundesweit in ganz Deutschland.
               </p>
               <p>
-                Als stark aufgestelltes Unternehmen besteht unser Team aus erfahrenen Spezialisten im Innen- und Außendienst, die jeden Auftrag präzise planen und professionell umsetzen.
+                Hinter unserem Unternehmen steht ein erfahrenes Team mit langjähriger Erfahrung in der Werbeverteilung, Direktwerbung und Promotionplanung. Gemeinsam mit unseren geschulten Innen- und Außendienstteams setzen wir Kampagnen jeder Größenordnung präzise, strukturiert und professionell um.
               </p>
               <p>
-                Ob unsere Außendienst- und Verteilerteams im direkten Einsatzgebiet oder unsere erfahrenen Bürokräfte in der Kampagnenplanung – bei uns greift jeder Bereich perfekt ineinander.
+                Ob lokale Verteilaktionen, regionale Kampagnen oder bundesweite Promotion – wir entwickeln individuelle Lösungen passend zu Ihrem Unternehmen, Ihrer Zielgruppe und Ihrem Verteilgebiet.
               </p>
-
-              <div id="about-more-content" class="space-y-4 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
-                <h3 class="text-lg font-semibold text-text-primary pt-2">Präzise Planung bis zur letzten Straße</h3>
-                <p>
-                  Unsere Stärke beginnt bereits vor der eigentlichen Verteilung. Unsere Planungsteams erstellen jede Kampagne so detailliert, dass jede Straße, jedes Haus und jedes gewünschte Verteilgebiet exakt berücksichtigt wird.
-                </p>
-
-                <h3 class="text-lg font-semibold text-text-primary pt-2">Bundesweite Verteilung & Streetpromotion</h3>
-                <p>
-                  Wir bieten bundesweite Verteilung von Flyern, Prospekten, Zeitungen, Beilagen, Direktwerbung sowie Streetpromotion und Promotion-Aktionen vor Ort.
-                </p>
-
-                <h3 class="text-lg font-semibold text-text-primary pt-2">Exzellente Ausführung & maximale Kontrolle</h3>
-                <p>
-                  Unser Qualitätsanspruch ist eine 100 % Haus-zu-Haus-Verteilung. Einzigartig ist unsere moderne Kontrollstruktur:
-                </p>
-                <ul class="list-disc list-inside space-y-1 pl-2">
-                  <li>Live-App-Tracking unserer Verteiler</li>
-                  <li>Standortverfolgung in Echtzeit</li>
-                  <li>Fotodokumentation jeder Straße</li>
-                  <li>Kontrolle durch eigene Kontrolleure</li>
-                  <li>Überwachung durch Bezirksleiter</li>
-                </ul>
-
-                <h3 class="text-lg font-semibold text-text-primary pt-2">Vertrauen durch starke Strukturen</h3>
-                <p>
-                  Unsere strukturierte Arbeitsweise ist einer der Hauptgründe, warum wir seit vielen Jahren erfolgreich mit Marktführern, Franchise-Unternehmen, großen Firmen sowie kleinen Betrieben zusammenarbeiten.
-                </p>
-
-                <h3 class="text-lg font-semibold text-text-primary pt-2">Unser Versprechen</h3>
-                <p>
-                  Wir stehen für exzellente Planung, lückenlose Kontrolle, bundesweite Stärke und messbare Ergebnisse.
-                </p>
-              </div>
-
-              <button
-                type="button"
-                id="about-toggle"
-                aria-expanded="false"
-                class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors mt-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-lg"
-              >
-                <span>Mehr anzeigen</span>
-                <svg class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                </svg>
-              </button>
             </div>
           </div>
           <div class="grid grid-cols-2 gap-4">
@@ -140,6 +121,145 @@ const stats = [
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    {/* Strong Structure */}
+    <section class="py-20 md:py-28 bg-background-alt">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+            Ein starkes Unternehmen mit klarer Struktur
+          </h2>
+          <p class="text-lg text-text-secondary leading-relaxed">
+            Unsere Stärke liegt in der Kombination aus professioneller Planung, zuverlässiger Durchführung und moderner Kontrolle.
+          </p>
+        </div>
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="text-text-secondary leading-relaxed mb-4">
+            Während unsere Außendienst- und Verteilerteams täglich für eine saubere und zuverlässige Zustellung sorgen, plant und koordiniert unser Büro jede Kampagne bis ins kleinste Detail.
+          </p>
+          <p class="text-text-secondary leading-relaxed">
+            Von der ersten Planung bis zur letzten verteilten Straße greift bei uns jeder Bereich perfekt ineinander.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Precise Planning */}
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+            Präzise Planung bis zur letzten Straße
+          </h2>
+          <p class="text-lg text-text-secondary leading-relaxed">
+            Eine erfolgreiche Verteilung beginnt lange vor der eigentlichen Zustellung.
+          </p>
+        </div>
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="text-text-secondary leading-relaxed">
+            Deshalb erstellen wir für jede Kampagne detaillierte Verteil- und Gebietsplanungen, bei denen jede Straße, jedes Wohngebiet und jedes gewünschte Haus berücksichtigt wird. Durch unsere strukturierte Arbeitsweise gewährleisten wir eine effiziente, nachvollziehbare und kontrollierte Durchführung aller Aufträge.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Nationwide Distribution */}
+    <section class="py-20 md:py-28 bg-background-alt">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+            Bundesweite Verteilung & Streetpromotion
+          </h2>
+          <p class="text-lg text-text-secondary leading-relaxed mb-8">
+            Wir bieten bundesweit professionelle Lösungen in den Bereichen:
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            {services.map((service) => (
+              <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-text-secondary bg-white border border-border rounded-full">
+                {service}
+              </span>
+            ))}
+          </div>
+          <p class="mt-8 text-text-secondary leading-relaxed">
+            Ob kleine lokale Aktion oder groß angelegte Kampagne – wir unterstützen Unternehmen jeder Größe bei einer erfolgreichen Werbeverteilung.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Modern Control */}
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+            Moderne Kontrolle & maximale Transparenz
+          </h2>
+          <p class="text-lg text-text-secondary leading-relaxed">
+            Qualität, Kontrolle und Transparenz stehen bei uns an erster Stelle.
+          </p>
+        </div>
+        <div class="max-w-3xl mx-auto">
+          <p class="text-text-secondary leading-relaxed text-center mb-8">
+            Deshalb arbeiten wir mit modernen Tracking- und Kontrollsystemen, um jede laufende Verteilung nachvollziehbar und überprüfbar zu machen. Unsere Leistungen umfassen unter anderem:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            {trackingFeatures.map((feature) => (
+              <div class="flex items-center gap-3 bg-background-alt rounded-2xl px-5 py-4">
+                <span class="w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
+                  <Check class="w-3.5 h-3.5" />
+                </span>
+                <span class="text-sm font-medium text-text-secondary">{feature}</span>
+              </div>
+            ))}
+          </div>
+          <p class="mt-8 text-text-secondary leading-relaxed text-center">
+            Dadurch schaffen wir maximale Transparenz und zusätzliche Sicherheit für unsere Kunden.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Trust */}
+    <section class="py-20 md:py-28 bg-background-alt">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+            Vertrauen durch professionelle Arbeitsweise
+          </h2>
+          <p class="text-lg text-text-secondary leading-relaxed">
+            Unsere strukturierte Organisation, unsere zuverlässigen Teams und unsere professionelle Umsetzung sind die Gründe, warum uns Unternehmen aus unterschiedlichsten Branchen ihr Vertrauen schenken.
+          </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-8">
+          {audiences.map((audience) => (
+            <span class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-text-secondary bg-white border border-border rounded-full">
+              {audience}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Our Goal */}
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
+          Unser Ziel
+        </h2>
+        <p class="text-lg md:text-xl text-text-secondary leading-relaxed mb-8">
+          Unser Ziel ist es, Werbung nicht nur zu verteilen, sondern sichtbar, kontrollierbar und erfolgreich zu machen.
+        </p>
+        <p class="text-text-secondary leading-relaxed mb-10">
+          Mit Verteilservice Plus erhalten Sie einen zuverlässigen Partner für professionelle Werbeverteilung und moderne Promotion-Lösungen in ganz Deutschland.
+        </p>
+        <a
+          href="/kontakt#angebot"
+          class="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white bg-primary hover:bg-primary-dark rounded-full transition-all duration-200 shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:-translate-y-0.5"
+        >
+          Jetzt unverbindlich anfragen
+        </a>
       </div>
     </section>
 
@@ -234,36 +354,4 @@ const stats = [
       </div>
     </section>
   </main>
-
-  <script>
-    (function () {
-      const toggleBtn = document.getElementById('about-toggle');
-      const moreContent = document.getElementById('about-more-content');
-
-      if (!toggleBtn || !moreContent) return;
-
-      const arrow = toggleBtn.querySelector('svg');
-      const label = toggleBtn.querySelector('span');
-
-      toggleBtn.addEventListener('click', () => {
-        const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-
-        if (isExpanded) {
-          moreContent.classList.remove('max-h-[2000px]');
-          moreContent.classList.add('max-h-0');
-          moreContent.setAttribute('aria-hidden', 'true');
-          toggleBtn.setAttribute('aria-expanded', 'false');
-          if (label) label.textContent = 'Mehr anzeigen';
-          if (arrow) arrow.classList.remove('rotate-180');
-        } else {
-          moreContent.classList.remove('max-h-0');
-          moreContent.classList.add('max-h-[2000px]');
-          moreContent.setAttribute('aria-hidden', 'false');
-          toggleBtn.setAttribute('aria-expanded', 'true');
-          if (label) label.textContent = 'Weniger anzeigen';
-          if (arrow) arrow.classList.add('rotate-180');
-        }
-      });
-    })();
-  </script>
 </Layout>
