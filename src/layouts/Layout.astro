@@ -14,7 +14,7 @@ interface Props {
 const {
   title = 'Verteilservice Plus | Flyerverteilung & Streetpromotion bundesweit',
   description = 'Professionelle Haus-zu-Haus-Verteilung mit Live-App-Tracking, Fotodokumentation und eigener Qualitätskontrolle. Bundesweit seit über 20 Jahren.',
-  image = '/og-image.jpg',
+  image = '',
   noindex = false,
 } = Astro.props;
 
@@ -41,7 +41,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://verteils
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalURL} />
-  <meta property="og:image" content={new URL(image, Astro.site || 'https://verteilservice-plus.de')} />
+  {image && (
+    <>
+      <meta property="og:image" content={new URL(image, Astro.site || 'https://verteilservice-plus.de')} />
+      <meta name="twitter:image" content={new URL(image, Astro.site || 'https://verteilservice-plus.de')} />
+    </>
+  )}
   <meta property="og:locale" content="de_DE" />
   <meta property="og:site_name" content="Verteilservice Plus" />
   
@@ -49,13 +54,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://verteils
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={new URL(image, Astro.site || 'https://verteilservice-plus.de')} />
 
   <!-- Additional Meta -->
-  <meta name="theme-color" content="#7c919e" />
+  <meta name="theme-color" content="#064efd" />
   <meta name="author" content="Verteilservice Plus" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
   <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preload" href="/css/fontawesome.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="/css/fontawesome.min.css" /></noscript>
 
   <!-- Schema.org LocalBusiness -->
   <script type="application/ld+json" set:html={JSON.stringify({

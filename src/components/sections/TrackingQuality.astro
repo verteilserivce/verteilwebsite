@@ -1,5 +1,4 @@
 ---
-import Check from '../icons/Check.astro';
 import trackingImg from '../../assets/images/livetracking.jpg';
 
 const features = [
@@ -18,7 +17,10 @@ const features = [
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       {/* Left: Content */}
       <div>
-        <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Qualität</span>
+        <span class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-accent mb-4">
+          <i class="fas fa-shield-halved text-xs" aria-hidden="true"></i>
+          Qualität
+        </span>
         <h2 id="tracking-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-6">
           Live Tracking & Qualität
         </h2>
@@ -28,15 +30,17 @@ const features = [
           und lückenlose Qualitätskontrolle.
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {features.map((feature) => (
-            <div class="flex items-center gap-3">
-              <span class="w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-600 shrink-0">
-                <Check class="w-3.5 h-3.5" />
-              </span>
-              <span class="text-sm text-text-secondary font-medium">{feature}</span>
-            </div>
-          ))}
+        <div class="glass rounded-2xl p-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {features.map((feature) => (
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 flex items-center justify-center rounded-full bg-green-100 text-green-600 shrink-0">
+                  <i class="fas fa-check text-[10px]" aria-hidden="true"></i>
+                </span>
+                <span class="text-sm text-text-secondary font-medium">{feature}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

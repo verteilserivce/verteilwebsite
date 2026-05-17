@@ -1,141 +1,61 @@
 ---
-import Check from '../icons/Check.astro';
-import starterImg from '../../assets/images/starterpaket.jpg';
-import premiumImg from '../../assets/images/premiumpaket.jpg';
-import businessImg from '../../assets/images/businesspaket.jpg';
-import megaImg from '../../assets/images/megapaket.jpg';
-
 const packages = [
   {
     name: 'Starter Vorteil',
     subtitle: 'Ab 50.000 Flyer',
-    features: [
-      'Kostenlose Lagerung',
-      'Verteilplanung inklusive',
-      'Basis-Support',
-    ],
-    buttonClass: 'bg-primary text-white hover:bg-primary-dark',
-    image: starterImg,
+    features: ['Kostenlose Lagerung', 'Verteilplanung inklusive', 'Basis-Support'],
   },
   {
     name: 'Premium Vorteil',
     subtitle: 'Ab 100.000 Flyer',
-    features: [
-      'App-Tracking inklusive',
-      'Live-Standorte',
-      'Kostenlose Lagerung',
-      'Priorisierte Verteilung',
-    ],
-    buttonClass: 'bg-primary text-white hover:bg-primary-dark',
-    image: premiumImg,
+    features: ['App-Tracking inklusive', 'Live-Standorte', 'Kostenlose Lagerung', 'Priorisierte Verteilung'],
   },
   {
     name: 'Business Vorteil',
     subtitle: 'Ab 250.000 Flyer',
-    features: [
-      'Fotodokumentation inklusive',
-      'Bezirksleiter-Kontrolle',
-      'GPS-Live-Überwachung',
-      'Express-Abwicklung',
-    ],
-    buttonClass: 'bg-primary text-white hover:bg-primary-dark',
-    image: businessImg,
+    features: ['Fotodokumentation inklusive', 'Bezirksleiter-Kontrolle', 'GPS-Live-Überwachung', 'Express-Abwicklung'],
   },
   {
     name: 'Mega Deal',
     subtitle: 'Ab 500.000 Flyer + 25.000 gratis',
-    features: [
-      'Alle Business-Vorteile',
-      '+ 25.000 Flyer kostenlos',
-      'Live-App-Tracking',
-      'GPS-Standortkontrolle',
-      'Fotodokumentation',
-      'Qualitätskontrolle',
-    ],
-    buttonClass: 'bg-primary text-white hover:bg-primary-dark',
-    highlighted: true,
-    image: megaImg,
+    features: ['Alle Business-Vorteile', '+ 25.000 Flyer kostenlos', 'Live-App-Tracking', 'GPS-Standortkontrolle'],
   },
-];
-
-const bonuses = [
-  'Live-App-Tracking',
-  'GPS-Standortkontrolle',
-  'Fotodokumentation',
-  'Bundesweite Verteilung',
-  'Qualitätskontrolle',
 ];
 ---
 
-<section class="bg-white py-24" aria-labelledby="pricing-heading">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Header */}
-    <div class="text-center max-w-2xl mx-auto">
-      <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Unsere Pakete</span>
-      <h2 id="pricing-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-        Ihre Vorteile nach Auflagenhöhe.
+<section class="py-10 md:py-14 bg-background-alt" aria-labelledby="pricing-heading">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-8">
+      <h2 id="pricing-heading" class="text-lg md:text-xl font-semibold text-text-primary">
+        Ihre Vorteile nach Auflagenhöhe
       </h2>
     </div>
-  </div>
 
-  {/* Grid */}
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-    {packages.map((pkg) => (
-      <div class={`bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.06)] border overflow-hidden flex flex-col ${pkg.highlighted ? 'border-primary ring-2 ring-primary' : 'border-gray-100'}`}>
-        {/* Package Image */}
-        <div class="w-full h-48 bg-gray-200 overflow-hidden">
-          <img
-            src={pkg.image.src}
-            alt={pkg.name}
-            class="w-full h-full object-cover"
-            loading="lazy"
-            width="400"
-            height="192"
-          />
-        </div>
-
-        {/* Content */}
-        <div class="p-8 flex flex-col flex-1">
-          <h3 class="text-2xl font-bold text-gray-900 mb-1">{pkg.name}</h3>
-          <p class="text-sm font-bold text-gray-500 mb-6 pb-6 border-b border-gray-100">{pkg.subtitle}</p>
-
-          {/* Checkliste */}
-          <div class="flex flex-col gap-3 mb-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+      {packages.map((pkg) => (
+        <div class="bg-white rounded-xl border border-gray-100 p-4 md:p-5 text-center transition-colors hover:border-primary/20">
+          <p class="text-sm font-bold text-primary">{pkg.name}</p>
+          <p class="text-[11px] text-text-muted mt-0.5 mb-3">{pkg.subtitle}</p>
+          <ul class="space-y-1 text-left">
             {pkg.features.map((feature) => (
-              <div class="flex items-start gap-3">
-                <Check class="w-5 h-5 text-green-600 shrink-0 mt-0.5" />
-                <span class="text-gray-600 text-sm">{feature}</span>
-              </div>
+              <li class="flex items-start gap-2 text-xs text-text-secondary">
+                <i class="fas fa-check text-primary text-[10px] mt-0.5 shrink-0" aria-hidden="true"></i>
+                <span>{feature}</span>
+              </li>
             ))}
-          </div>
-
-          {/* Footer Button */}
-          <div class="mt-auto">
-            <a
-              href="/kontakt#angebot"
-              class={`inline-flex w-max items-center gap-2 rounded-full px-7 py-3 text-sm font-bold transition-all min-h-[44px] ${pkg.buttonClass}`}
-            >
-              Anfragen
-            </a>
-          </div>
+          </ul>
         </div>
-      </div>
-    ))}
-  </div>
+      ))}
+    </div>
 
-  {/* Bonus Box */}
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-    <div class="bg-background-alt border border-border rounded-3xl p-8 md:p-10">
-      <p class="text-lg md:text-xl font-bold text-gray-900 text-center mb-6">
-        ✔️ Profitieren Sie zusätzlich von unseren Premium-Vorteilen
-      </p>
-      <div class="flex flex-wrap justify-center gap-3">
-        {bonuses.map((badge) => (
-          <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-full min-h-[44px]">
-            {badge}
-          </span>
-        ))}
-      </div>
+    <div class="mt-6 text-center">
+      <a
+        href="/kontakt#angebot"
+        class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-dark transition-colors min-h-[44px] px-4"
+      >
+        Individuelles Angebot anfragen
+        <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
+      </a>
     </div>
   </div>
 </section>

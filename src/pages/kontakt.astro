@@ -1,12 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Phone from '../components/icons/Phone.astro';
-import Envelope from '../components/icons/Envelope.astro';
-import MapMarker from '../components/icons/MapMarker.astro';
-import WhatsApp from '../components/icons/WhatsApp.astro';
-import Check from '../components/icons/Check.astro';
-import ArrowRight from '../components/icons/ArrowRight.astro';
-import ChevronLeft from '../components/icons/ChevronLeft.astro';
 
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
 
@@ -52,10 +45,12 @@ const regions = [
 >
   <main>
     {/* Hero */}
-    <section class="pt-20 pb-16 md:pt-28 md:pb-24 bg-background-alt">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden">
+      <div class="blob w-[600px] h-[600px] bg-primary/20 top-0 left-1/2 -translate-x-1/2 blob-animated"></div>
+      <div class="blob w-[400px] h-[400px] bg-primary/15 bottom-0 left-1/4 blob-animated-delayed"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto">
-          <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Kontakt</span>
+          <span class="inline-block text-sm font-bold uppercase tracking-widest text-accent mb-4">Kontakt</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6 leading-tight">
             Jetzt unverbindliches Angebot anfragen
           </h1>
@@ -72,52 +67,54 @@ const regions = [
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
           {/* Left: Contact Info */}
           <div class="lg:col-span-2">
-            <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-6">
-              Direkter Kontakt
-            </h2>
-            <p class="text-text-secondary leading-relaxed mb-10">
-              Wir freuen uns auf Ihre Nachricht. Egal ob Sie ein konkretes Angebot wünschen oder erst einmal unverbindlich beraten werden möchten – wir sind für Sie da.
-            </p>
+            <div class="glass rounded-3xl p-8">
+              <h2 class="text-2xl md:text-3xl font-bold text-text-primary mb-6">
+                Direkter Kontakt
+              </h2>
+              <p class="text-text-secondary leading-relaxed mb-10">
+                Wir freuen uns auf Ihre Nachricht. Egal ob Sie ein konkretes Angebot wünschen oder erst einmal unverbindlich beraten werden möchten – wir sind für Sie da.
+              </p>
 
-            <div class="space-y-6">
-              <a href="tel:+491638866766" class="group flex items-start gap-4">
-                <span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-200">
-                  <Phone class="w-5 h-5" />
-                </span>
-                <div>
-                  <p class="text-sm text-text-muted mb-0.5">Telefon</p>
-                  <p class="text-base font-semibold text-text-primary group-hover:text-primary transition-colors">0163 8866766</p>
-                </div>
-              </a>
+              <div class="space-y-6">
+                <a href="tel:+491638866766" class="group flex items-start gap-4">
+                  <span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-200">
+                    <i class="fas fa-phone text-sm" aria-hidden="true"></i>
+                  </span>
+                  <div>
+                    <p class="text-sm text-text-muted mb-0.5">Telefon</p>
+                    <p class="text-base font-semibold text-text-primary group-hover:text-primary transition-colors">0163 8866766</p>
+                  </div>
+                </a>
 
-              <a href="mailto:Info@verteilservice-plus.de" class="group flex items-start gap-4">
-                <span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-200">
-                  <Envelope class="w-5 h-5" />
-                </span>
-                <div>
-                  <p class="text-sm text-text-muted mb-0.5">E-Mail</p>
-                  <p class="text-base font-semibold text-text-primary group-hover:text-primary transition-colors break-all">Info@verteilservice-plus.de</p>
-                </div>
-              </a>
+                <a href="mailto:Info@verteilservice-plus.de" class="group flex items-start gap-4">
+                  <span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-200">
+                    <i class="fas fa-envelope text-sm" aria-hidden="true"></i>
+                  </span>
+                  <div>
+                    <p class="text-sm text-text-muted mb-0.5">E-Mail</p>
+                    <p class="text-base font-semibold text-text-primary group-hover:text-primary transition-colors break-all">Info@verteilservice-plus.de</p>
+                  </div>
+                </a>
 
-              <a href="https://wa.me/491638866766" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-4">
-                <span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-200">
-                  <WhatsApp class="w-5 h-5" />
-                </span>
-                <div>
-                  <p class="text-sm text-text-muted mb-0.5">WhatsApp</p>
-                  <p class="text-base font-semibold text-text-primary group-hover:text-primary transition-colors">Direktnachricht senden</p>
-                </div>
-              </a>
+                <a href="https://wa.me/491638866766" target="_blank" rel="noopener noreferrer" class="group flex items-start gap-4">
+                  <span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-200">
+                    <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
+                  </span>
+                  <div>
+                    <p class="text-sm text-text-muted mb-0.5">WhatsApp</p>
+                    <p class="text-base font-semibold text-text-primary group-hover:text-primary transition-colors">Direktnachricht senden</p>
+                  </div>
+                </a>
 
-              <div class="flex items-start gap-4">
-                <span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <MapMarker class="w-5 h-5" />
-                </span>
-                <div>
-                  <p class="text-sm text-text-muted mb-0.5">Adresse</p>
-                  <p class="text-base font-semibold text-text-primary">Kupferhammer weg 51</p>
-                  <p class="text-base font-semibold text-text-primary">61440 Oberursel</p>
+                <div class="flex items-start gap-4">
+                  <span class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <i class="fas fa-location-dot text-sm" aria-hidden="true"></i>
+                  </span>
+                  <div>
+                    <p class="text-sm text-text-muted mb-0.5">Adresse</p>
+                    <p class="text-base font-semibold text-text-primary">Kupferhammer weg 51</p>
+                    <p class="text-base font-semibold text-text-primary">61440 Oberursel</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -125,11 +122,11 @@ const regions = [
 
           {/* Right: Multi-Step Form */}
           <div class="lg:col-span-3">
-            <div class="bg-[#F8F7F5] rounded-3xl p-8 md:p-10">
+            <div class="glass-strong rounded-3xl p-8 md:p-10">
               {/* Success Message */}
               <div id="form-success" class="hidden text-center py-10" role="status" aria-live="polite">
                 <div class="w-16 h-16 mx-auto mb-6 flex items-center justify-center rounded-full bg-green-100 text-green-600">
-                  <Check class="w-8 h-8" />
+                  <i class="fas fa-check text-xl" aria-hidden="true"></i>
                 </div>
                 <h3 class="text-2xl font-bold text-text-primary mb-3">Vielen Dank für Ihre Nachricht!</h3>
                 <p class="text-text-secondary">Wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden bei Ihnen.</p>
@@ -161,17 +158,23 @@ const regions = [
                 {/* Progress Steps */}
                 <div class="flex items-center justify-center gap-4 mb-8" role="tablist" aria-label="Formularschritte">
                   <div class="flex items-center gap-2">
-                    <span id="step-indicator-1" class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-primary text-white transition-colors duration-300" aria-current="step">1</span>
+                    <span id="step-indicator-1" class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-primary text-white transition-colors duration-300" aria-current="step">
+                      <i class="fas fa-box-open text-xs" aria-hidden="true"></i>
+                    </span>
                     <span class="text-sm font-medium text-text-primary hidden sm:inline">Verteilung</span>
                   </div>
                   <div class="w-8 h-0.5 bg-border rounded-full" id="step-line-1"></div>
                   <div class="flex items-center gap-2">
-                    <span id="step-indicator-2" class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-border text-text-muted transition-colors duration-300">2</span>
+                    <span id="step-indicator-2" class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-border text-text-muted transition-colors duration-300">
+                      <i class="fas fa-map-location-dot text-xs" aria-hidden="true"></i>
+                    </span>
                     <span class="text-sm font-medium text-text-muted hidden sm:inline">Region</span>
                   </div>
                   <div class="w-8 h-0.5 bg-border rounded-full" id="step-line-2"></div>
                   <div class="flex items-center gap-2">
-                    <span id="step-indicator-3" class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-border text-text-muted transition-colors duration-300">3</span>
+                    <span id="step-indicator-3" class="w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold bg-border text-text-muted transition-colors duration-300">
+                      <i class="fas fa-user text-xs" aria-hidden="true"></i>
+                    </span>
                     <span class="text-sm font-medium text-text-muted hidden sm:inline">Kontakt</span>
                   </div>
                 </div>
@@ -188,7 +191,7 @@ const regions = [
                         {materialOptions.map((opt) => (
                           <label class="cursor-pointer">
                             <input type="radio" name="material-radio" value={opt} required class="peer sr-only" />
-                            <span class="block text-center px-3 py-3 text-sm font-medium rounded-xl border border-border bg-white text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
+                            <span class="block text-center px-3 py-3 text-sm font-medium rounded-xl border border-white/30 bg-white/40 text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
                               {opt}
                             </span>
                           </label>
@@ -205,7 +208,7 @@ const regions = [
                       id="step1-menge"
                       min="1"
                       required
-                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                       placeholder="z. B. 5000"
                     />
                     <p class="mt-1.5 text-xs text-text-muted">Wieviel Stück willst du voraussichtlich verteilen lassen? Für eine erfolgreiche Kampagne empfehlen wir eine Mindestmenge von 5.000 Stück.</p>
@@ -217,7 +220,7 @@ const regions = [
                     <select
                       id="step1-format"
                       required
-                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                     >
                       <option value="" disabled selected>Format auswählen</option>
                       {formatOptions.map((opt) => (
@@ -232,7 +235,8 @@ const regions = [
                     <input
                       type="date"
                       id="step1-termin"
-                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      min={new Date().toISOString().split('T')[0]}
+                      class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                     />
                   </div>
 
@@ -243,7 +247,7 @@ const regions = [
                       class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-white bg-primary hover:bg-primary-dark rounded-full transition-all min-h-[44px]"
                     >
                       Weiter
-                      <ArrowRight class="w-4 h-4" />
+                      <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
                     </button>
                   </div>
                 </div>
@@ -260,7 +264,7 @@ const regions = [
                         {regions.map((region) => (
                           <label class="cursor-pointer">
                             <input type="radio" name="region-radio" value={region} required class="peer sr-only" />
-                            <span class="block text-center px-2 py-2.5 text-xs font-medium rounded-xl border border-border bg-white text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
+                            <span class="block text-center px-2 py-2.5 text-xs font-medium rounded-xl border border-white/30 bg-white/40 text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
                               {region}
                             </span>
                           </label>
@@ -275,7 +279,7 @@ const regions = [
                     <textarea
                       id="step2-plz"
                       rows="2"
-                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-none"
+                      class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-none"
                       placeholder="PLZ bitte hintereinander schreiben und mit Komma trennen"
                     ></textarea>
                   </div>
@@ -287,13 +291,13 @@ const regions = [
                       <div class="flex gap-3">
                         <label class="cursor-pointer flex-1">
                           <input type="radio" name="selektiv-radio" value="ja" required class="peer sr-only" />
-                          <span class="block text-center px-3 py-3 text-sm font-medium rounded-xl border border-border bg-white text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
+                          <span class="block text-center px-3 py-3 text-sm font-medium rounded-xl border border-white/30 bg-white/40 text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
                             Ja
                           </span>
                         </label>
                         <label class="cursor-pointer flex-1">
                           <input type="radio" name="selektiv-radio" value="nein, ich möchte eine Vollverteilung" required class="peer sr-only" />
-                          <span class="block text-center px-3 py-3 text-sm font-medium rounded-xl border border-border bg-white text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
+                          <span class="block text-center px-3 py-3 text-sm font-medium rounded-xl border border-white/30 bg-white/40 text-text-secondary peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all duration-200 min-h-[44px] flex items-center justify-center">
                             Nein, Vollverteilung
                           </span>
                         </label>
@@ -307,7 +311,7 @@ const regions = [
                     <textarea
                       id="step2-info"
                       rows="3"
-                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-none"
+                      class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-none"
                       placeholder="Hier können Sie weitere Details angeben..."
                     ></textarea>
                   </div>
@@ -316,9 +320,9 @@ const regions = [
                     <button
                       type="button"
                       id="btn-step2-back"
-                      class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-text-primary bg-white border border-border hover:bg-gray-50 rounded-full transition-all min-h-[44px]"
+                      class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-text-primary bg-white/40 border border-white/30 hover:bg-white/60 rounded-full transition-all min-h-[44px]"
                     >
-                      <ChevronLeft class="w-4 h-4" />
+                      <i class="fas fa-chevron-left text-xs" aria-hidden="true"></i>
                       Zurück
                     </button>
                     <button
@@ -327,7 +331,7 @@ const regions = [
                       class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-white bg-primary hover:bg-primary-dark rounded-full transition-all min-h-[44px]"
                     >
                       Weiter
-                      <ArrowRight class="w-4 h-4" />
+                      <i class="fas fa-arrow-right text-xs" aria-hidden="true"></i>
                     </button>
                   </div>
                 </div>
@@ -344,7 +348,7 @@ const regions = [
                         id="vorname"
                         name="vorname"
                         required
-                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                         placeholder="Max"
                         maxlength="100"
                       />
@@ -356,7 +360,7 @@ const regions = [
                         id="nachname"
                         name="nachname"
                         required
-                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                         placeholder="Mustermann"
                         maxlength="100"
                       />
@@ -370,7 +374,7 @@ const regions = [
                       id="firma"
                       name="firma"
                       required
-                      class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                      class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                       placeholder="Ihre Firma"
                       maxlength="200"
                     />
@@ -383,7 +387,7 @@ const regions = [
                         type="text"
                         id="adresse"
                         name="adresse"
-                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                         placeholder="Musterstraße 1"
                         maxlength="200"
                       />
@@ -394,7 +398,7 @@ const regions = [
                         type="text"
                         id="stadt"
                         name="stadt"
-                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                         placeholder="Oberursel"
                         maxlength="100"
                       />
@@ -408,7 +412,7 @@ const regions = [
                         type="text"
                         id="region-feld"
                         name="region_kontakt"
-                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                         placeholder="Hessen"
                         maxlength="100"
                       />
@@ -419,9 +423,11 @@ const regions = [
                         type="text"
                         id="plz"
                         name="plz"
-                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        pattern="\d{5}"
+                        title="Bitte geben Sie eine 5-stellige PLZ ein"
+                        class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                         placeholder="61440"
-                        maxlength="10"
+                        maxlength="5"
                       />
                     </div>
                   </div>
@@ -434,7 +440,7 @@ const regions = [
                         id="email"
                         name="email"
                         required
-                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                         placeholder="ihre@email.de"
                         maxlength="254"
                       />
@@ -446,7 +452,9 @@ const regions = [
                         id="telefon"
                         name="telefon"
                         required
-                        class="w-full px-4 py-3 bg-white border border-border rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                        pattern="[+0-9s\-]{6,}"
+                        title="Bitte geben Sie eine gültige Telefonnummer ein"
+                        class="w-full px-4 py-3 bg-white/40 border border-white/30 rounded-xl text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
                         placeholder="0163 8866766"
                         maxlength="30"
                       />
@@ -459,7 +467,7 @@ const regions = [
                       id="privacy"
                       name="privacy"
                       required
-                      class="w-5 h-5 mt-0.5 rounded border-border text-primary focus:ring-primary"
+                      class="w-5 h-5 mt-0.5 rounded border-white/30 text-primary focus:ring-primary"
                     />
                     <label for="privacy" class="text-sm text-text-secondary leading-relaxed">
                       Ich habe die <a href="/datenschutz" class="text-primary hover:underline">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass Verteilservice Plus meine Daten zum Zweck der Kontaktaufnahme digital verarbeitet. *
@@ -470,9 +478,9 @@ const regions = [
                     <button
                       type="button"
                       id="btn-step3-back"
-                      class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-text-primary bg-white border border-border hover:bg-gray-50 rounded-full transition-all min-h-[44px]"
+                      class="inline-flex items-center gap-2 px-7 py-3 text-sm font-bold text-text-primary bg-white/40 border border-white/30 hover:bg-white/60 rounded-full transition-all min-h-[44px]"
                     >
-                      <ChevronLeft class="w-4 h-4" />
+                      <i class="fas fa-chevron-left text-xs" aria-hidden="true"></i>
                       Zurück
                     </button>
                     <button

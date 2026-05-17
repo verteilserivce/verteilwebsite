@@ -1,5 +1,4 @@
 ---
-import ChevronDown from '../icons/ChevronDown.astro';
 import faqImage from '../../assets/images/WhatsApp Image 2026-05-14 at 21.17.26.jpeg';
 
 const faqs = [
@@ -46,23 +45,31 @@ const faqs = [
 ];
 ---
 
-<section class="py-20 md:py-28 bg-white" aria-labelledby="faq-heading">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="relative py-20 md:py-28 overflow-hidden" aria-labelledby="faq-heading">
+  {/* Decorative blobs */}
+  <div class="blob w-[500px] h-[500px] bg-primary/20 top-20 right-0 blob-animated"></div>
+  <div class="blob w-[400px] h-[400px] bg-primary/15 bottom-0 left-1/4 blob-animated-delayed"></div>
+  <div class="blob w-[300px] h-[300px] bg-primary/10 top-1/2 left-1/2 blob-animated-slow"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
       {/* Left Column: Accordion */}
       <div class="order-2 lg:order-1">
         <div class="space-y-4">
           {faqs.map((faq, index) => (
-            <div class="faq-item bg-[#F8F7F5] rounded-2xl overflow-hidden">
+            <div class="faq-item glass rounded-2xl overflow-hidden">
               <button
                 type="button"
                 class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
                 aria-expanded="false"
                 aria-controls={`faq-answer-${index}`}
               >
-                <span class="text-base font-semibold text-text-primary">{faq.question}</span>
-                <span class="faq-icon shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-white text-text-primary transition-transform duration-300">
-                  <ChevronDown class="w-4 h-4" />
+                <span class="flex items-center gap-3 text-base font-semibold text-text-primary">
+                  <i class="fas fa-circle-question text-primary text-sm shrink-0" aria-hidden="true"></i>
+                  {faq.question}
+                </span>
+                <span class="faq-icon shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-white/60 text-text-primary transition-transform duration-300">
+                  <i class="fas fa-chevron-down text-xs" aria-hidden="true"></i>
                 </span>
               </button>
               <div
@@ -83,7 +90,7 @@ const faqs = [
 
       {/* Right Column: Sticky Info */}
       <div class="order-1 lg:order-2 lg:sticky lg:top-24 lg:self-start">
-        <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Häufige Fragen</span>
+        <span class="inline-block text-sm font-bold uppercase tracking-widest text-accent mb-4">Häufige Fragen</span>
         <h2 id="faq-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight mb-6">
           Alles Wichtige auf einen Blick.
         </h2>

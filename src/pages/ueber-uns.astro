@@ -1,12 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Bullseye from '../components/icons/Bullseye.astro';
-import ShieldCheck from '../components/icons/ShieldCheck.astro';
-import Phone from '../components/icons/Phone.astro';
-import Envelope from '../components/icons/Envelope.astro';
-import MapMarker from '../components/icons/MapMarker.astro';
-import WhatsApp from '../components/icons/WhatsApp.astro';
-import Check from '../components/icons/Check.astro';
 import aboutStory1 from '../assets/images/überuns.jpeg';
 import aboutStory2 from '../assets/images/überuns2.jpeg';
 import aboutContact from '../assets/images/warumwir.jpeg';
@@ -15,20 +8,20 @@ const values = [
   {
     title: 'Zielgenauigkeit',
     description: 'Jeder Flyer hat einen bestimmten Empfänger. Wir stellen sicher, dass er genau dort ankommt, wo er die größte Wirkung entfaltet.',
-    icon: Bullseye,
+    icon: 'fa-bullseye',
   },
   {
     title: 'Zuverlässigkeit',
     description: 'Wir halten unsere Zusagen ein – termingerecht, gründlich und mit höchster Sorgfalt. Vertrauen ist das Fundament unseres Geschäfts.',
-    icon: ShieldCheck,
+    icon: 'fa-shield-halved',
   },
 ];
 
 const stats = [
-  { value: '20+', label: 'Jahre Erfahrung' },
-  { value: 'Bundesweit', label: 'In ganz Deutschland' },
-  { value: '100%', label: 'Haus-zu-Haus-Fokus' },
-  { value: 'Marktführer', label: 'Als Kunden' },
+  { value: '20+', label: 'Jahre Erfahrung', icon: 'fa-calendar-days' },
+  { value: 'Bundesweit', label: 'In ganz Deutschland', icon: 'fa-globe' },
+  { value: '100%', label: 'Haus-zu-Haus-Fokus', icon: 'fa-house-chimney' },
+  { value: 'Marktführer', label: 'Als Kunden', icon: 'fa-star' },
 ];
 
 const services = [
@@ -64,10 +57,12 @@ const audiences = [
 >
   <main>
     {/* Hero */}
-    <section class="pt-20 pb-16 md:pt-28 md:pb-24 bg-background-alt">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="relative pt-20 pb-16 md:pt-28 md:pb-24 overflow-hidden">
+      <div class="blob w-[600px] h-[600px] bg-primary/20 top-0 left-1/2 -translate-x-1/2 blob-animated"></div>
+      <div class="blob w-[400px] h-[400px] bg-primary/15 bottom-0 left-1/4 blob-animated-delayed"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto">
-          <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Über Uns</span>
+          <span class="inline-block text-sm font-bold uppercase tracking-widest text-accent mb-4">Über Uns</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-text-primary mb-6 leading-tight">
             Ihr bundesweiter Partner für professionelle Werbeverteilung
           </h1>
@@ -125,8 +120,10 @@ const audiences = [
     </section>
 
     {/* Strong Structure */}
-    <section class="py-20 md:py-28 bg-background-alt">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="relative py-20 md:py-28 overflow-hidden">
+      <div class="blob w-[500px] h-[500px] bg-primary/20 top-0 right-0 blob-animated"></div>
+      <div class="blob w-[400px] h-[400px] bg-primary/15 bottom-0 left-0 blob-animated-delayed"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
             Ein starkes Unternehmen mit klarer Struktur
@@ -166,8 +163,10 @@ const audiences = [
     </section>
 
     {/* Nationwide Distribution */}
-    <section class="py-20 md:py-28 bg-background-alt">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="relative py-20 md:py-28 overflow-hidden">
+      <div class="blob w-[500px] h-[500px] bg-primary/20 bottom-0 left-0 blob-animated"></div>
+      <div class="blob w-[400px] h-[400px] bg-primary/15 top-0 right-0 blob-animated-delayed"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
             Bundesweite Verteilung & Streetpromotion
@@ -177,7 +176,8 @@ const audiences = [
           </p>
           <div class="flex flex-wrap justify-center gap-3">
             {services.map((service) => (
-              <span class="inline-flex items-center px-4 py-2 text-sm font-medium text-text-secondary bg-white border border-border rounded-full">
+              <span class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-text-secondary glass rounded-full">
+                <i class="fas fa-check text-primary text-[10px]" aria-hidden="true"></i>
                 {service}
               </span>
             ))}
@@ -206,9 +206,9 @@ const audiences = [
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
             {trackingFeatures.map((feature) => (
-              <div class="flex items-center gap-3 bg-background-alt rounded-2xl px-5 py-4">
+              <div class="flex items-center gap-3 glass rounded-2xl px-5 py-4">
                 <span class="w-6 h-6 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-                  <Check class="w-3.5 h-3.5" />
+                  <i class="fas fa-check text-[10px]" aria-hidden="true"></i>
                 </span>
                 <span class="text-sm font-medium text-text-secondary">{feature}</span>
               </div>
@@ -222,8 +222,10 @@ const audiences = [
     </section>
 
     {/* Trust */}
-    <section class="py-20 md:py-28 bg-background-alt">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="relative py-20 md:py-28 overflow-hidden">
+      <div class="blob w-[500px] h-[500px] bg-primary/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blob-animated"></div>
+      <div class="blob w-[400px] h-[400px] bg-primary/15 top-0 right-0 blob-animated-delayed"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mx-auto text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
             Vertrauen durch professionelle Arbeitsweise
@@ -234,7 +236,8 @@ const audiences = [
         </div>
         <div class="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto mb-8">
           {audiences.map((audience) => (
-            <span class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-text-secondary bg-white border border-border rounded-full">
+            <span class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-text-secondary glass rounded-full">
+              <i class="fas fa-user-check text-primary text-[10px]" aria-hidden="true"></i>
               {audience}
             </span>
           ))}
@@ -264,19 +267,21 @@ const audiences = [
     </section>
 
     {/* Values */}
-    <section class="py-20 md:py-28 bg-[#F8F7F5]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="relative py-20 md:py-28 overflow-hidden">
+      <div class="blob w-[500px] h-[500px] bg-primary/20 top-0 right-0 blob-animated"></div>
+      <div class="blob w-[400px] h-[400px] bg-primary/15 bottom-0 left-0 blob-animated-delayed"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Unsere Werte</span>
+          <span class="inline-block text-sm font-bold uppercase tracking-widest text-accent mb-4">Unsere Werte</span>
           <h2 class="text-3xl md:text-4xl font-bold text-text-primary">
             Was uns antreibt
           </h2>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {values.map((value) => (
-            <div class="bg-white rounded-3xl p-8 shadow-sm">
+            <div class="glass-strong rounded-3xl p-8">
               <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
-                <value.icon class="w-6 h-6" />
+                <i class={`fas ${value.icon} text-lg`} aria-hidden="true"></i>
               </div>
               <h3 class="text-xl font-bold text-text-primary mb-3">{value.title}</h3>
               <p class="text-text-secondary leading-relaxed">{value.description}</p>
@@ -287,11 +292,14 @@ const audiences = [
     </section>
 
     {/* Stats */}
-    <section class="py-16 md:py-20 bg-text-primary">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section class="relative py-16 md:py-20 bg-text-primary overflow-hidden">
+      <div class="blob w-[400px] h-[400px] bg-primary/30 top-0 left-1/4 blob-animated"></div>
+      <div class="blob w-[350px] h-[350px] bg-primary/20 bottom-0 right-1/4 blob-animated-delayed"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat) => (
-            <div class="text-center">
+            <div class="glass-dark rounded-2xl p-6 text-center">
+              <i class={`fas ${stat.icon} text-primary text-xl mb-3`} aria-hidden="true"></i>
               <p class="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</p>
               <p class="text-sm text-gray-400 uppercase tracking-wider">{stat.label}</p>
             </div>
@@ -305,7 +313,10 @@ const audiences = [
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Kontakt</span>
+            <span class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-accent mb-4">
+              <i class="fas fa-address-card text-xs" aria-hidden="true"></i>
+              Kontakt
+            </span>
             <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-6">
               Sprechen Sie uns an
             </h2>
@@ -313,28 +324,28 @@ const audiences = [
               Ob per Telefon, E-Mail oder WhatsApp – wir sind für Sie da. Lassen Sie uns gemeinsam besprechen,
               wie wir Ihre Werbebotschaft am besten in die Welt bringen.
             </p>
-            <div class="space-y-4">
+            <div class="glass-strong rounded-2xl p-6 space-y-4">
               <a href="tel:+491638866766" class="flex items-center gap-4 text-text-secondary hover:text-primary transition-colors">
                 <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Phone class="w-5 h-5" />
+                  <i class="fas fa-phone text-sm" aria-hidden="true"></i>
                 </span>
                 <span class="font-medium">0163 8866766</span>
               </a>
               <a href="mailto:Info@verteilservice-plus.de" class="flex items-center gap-4 text-text-secondary hover:text-primary transition-colors">
                 <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Envelope class="w-5 h-5" />
+                  <i class="fas fa-envelope text-sm" aria-hidden="true"></i>
                 </span>
                 <span class="font-medium">Info@verteilservice-plus.de</span>
               </a>
               <a href="https://wa.me/491638866766" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 text-text-secondary hover:text-primary transition-colors">
                 <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <WhatsApp class="w-5 h-5" />
+                  <i class="fab fa-whatsapp text-sm" aria-hidden="true"></i>
                 </span>
                 <span class="font-medium">WhatsApp</span>
               </a>
               <div class="flex items-center gap-4 text-text-secondary">
                 <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <MapMarker class="w-5 h-5" />
+                  <i class="fas fa-location-dot text-sm" aria-hidden="true"></i>
                 </span>
                 <span class="font-medium">Kupferhammer weg 51, 61440 Oberursel</span>
               </div>

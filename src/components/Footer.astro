@@ -1,14 +1,9 @@
 ---
-import Phone from './icons/Phone.astro';
-import Envelope from './icons/Envelope.astro';
-import MapMarker from './icons/MapMarker.astro';
-import WhatsApp from './icons/WhatsApp.astro';
 import img1 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.14.jpeg';
 import img2 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.24.jpeg';
 import img3 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.30 (1).jpeg';
 import img4 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.15 (1).jpeg';
 import img5 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.34.jpeg';
-import img6 from '../assets/images/WhatsApp Image 2026-05-14 at 21.17.31 (1).jpeg';
 
 const currentYear = new Date().getFullYear();
 
@@ -24,16 +19,20 @@ const legalLinks = [
   { href: '/datenschutz', label: 'Datenschutz' },
 ];
 
-const galleryImages = [img1, img2, img3, img4, img5, img6];
+const galleryImages = [img1, img2, img3, img4, img5];
 ---
 
-<footer class="mt-auto">
+<footer class="mt-auto relative overflow-hidden">
+  {/* Decorative blobs for glass-dark visibility */}
+  <div class="blob w-[600px] h-[600px] bg-primary/20 -top-40 -left-40 blob-animated-slow"></div>
+  <div class="blob w-[500px] h-[500px] bg-primary/15 top-20 right-0 blob-animated-delayed"></div>
+
   {/* Bereich 1: Content-Grid */}
-  <div class="bg-[#111111] text-white">
+  <div class="relative z-10 bg-[#0d0d0d]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Spalte 1: Brand */}
-        <div class="sm:col-span-2 lg:col-span-1">
+        <div class="glass-dark rounded-2xl p-6 sm:col-span-2 lg:col-span-1">
           <a href="/" class="inline-block text-2xl font-bold tracking-tight mb-4">
             Verteilservice <span class="text-primary">Plus</span>
           </a>
@@ -49,7 +48,7 @@ const galleryImages = [img1, img2, img3, img4, img5, img6];
         </div>
 
         {/* Spalte 2: Navigation */}
-        <div>
+        <div class="glass-dark rounded-2xl p-6">
           <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Navigation</h3>
           <ul class="space-y-3">
             {navLinks.map((link) => (
@@ -66,7 +65,7 @@ const galleryImages = [img1, img2, img3, img4, img5, img6];
         </div>
 
         {/* Spalte 3: Rechtliches */}
-        <div>
+        <div class="glass-dark rounded-2xl p-6">
           <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Rechtliches</h3>
           <ul class="space-y-3">
             {legalLinks.map((link) => (
@@ -83,7 +82,7 @@ const galleryImages = [img1, img2, img3, img4, img5, img6];
         </div>
 
         {/* Spalte 4: Kontakt */}
-        <div>
+        <div class="glass-dark rounded-2xl p-6">
           <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">Kontakt</h3>
           <ul class="space-y-4">
             <li>
@@ -91,7 +90,7 @@ const galleryImages = [img1, img2, img3, img4, img5, img6];
                 href="tel:+491638866766"
                 class="inline-flex items-center gap-3 text-gray-400 hover:text-primary transition-colors duration-200 text-sm min-h-[44px]"
               >
-                <Phone class="w-4 h-4 shrink-0" />
+                <i class="fas fa-phone text-xs shrink-0" aria-hidden="true"></i>
                 <span>0163 8866766</span>
               </a>
             </li>
@@ -100,7 +99,7 @@ const galleryImages = [img1, img2, img3, img4, img5, img6];
                 href="mailto:Info@verteilservice-plus.de"
                 class="inline-flex items-center gap-3 text-gray-400 hover:text-primary transition-colors duration-200 text-sm break-all min-h-[44px]"
               >
-                <Envelope class="w-4 h-4 shrink-0" />
+                <i class="fas fa-envelope text-xs shrink-0" aria-hidden="true"></i>
                 <span>Info@verteilservice-plus.de</span>
               </a>
             </li>
@@ -111,12 +110,12 @@ const galleryImages = [img1, img2, img3, img4, img5, img6];
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-3 text-gray-400 hover:text-primary transition-colors duration-200 text-sm"
               >
-                <WhatsApp class="w-4 h-4 shrink-0" />
+                <i class="fab fa-whatsapp text-xs shrink-0" aria-hidden="true"></i>
                 <span>WhatsApp</span>
               </a>
             </li>
             <li class="inline-flex items-start gap-3 text-gray-400 text-sm">
-              <MapMarker class="w-4 h-4 shrink-0 mt-0.5" />
+              <i class="fas fa-location-dot text-xs shrink-0 mt-0.5" aria-hidden="true"></i>
               <span>Kupferhammer weg 51<br />61440 Oberursel</span>
             </li>
           </ul>
@@ -126,7 +125,7 @@ const galleryImages = [img1, img2, img3, img4, img5, img6];
   </div>
 
   {/* Bereich 2: Auto-Galerie Marquee */}
-  <div class="bg-[#0a0a0a] overflow-hidden py-4">
+  <div class="relative z-10 bg-[#0a0a0a] overflow-hidden py-4">
     <div class="relative flex w-[200%] animate-marquee">
       {/* Erste Reihe */}
       {galleryImages.map((src, i) => (
@@ -158,7 +157,7 @@ const galleryImages = [img1, img2, img3, img4, img5, img6];
   </div>
 
   {/* Bereich 3: Copyright */}
-  <div class="bg-black py-6">
+  <div class="relative z-10 bg-black py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-center text-gray-500 text-xs">
         &copy; {currentYear} Verteilservice Plus – Douaa Bendali. Alle Rechte vorbehalten.

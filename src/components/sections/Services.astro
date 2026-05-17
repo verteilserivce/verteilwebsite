@@ -1,61 +1,72 @@
 ---
-import ChevronLeft from '../icons/ChevronLeft.astro';
-import ChevronRight from '../icons/ChevronRight.astro';
-
 const services = [
   {
     title: 'Flyerverteilung',
     description: 'Zuverlässige Haus-zu-Haus-Verteilung mit präziser Gebietsplanung bis auf Straßen- und Hausebene.',
     highlighted: true,
+    icon: 'fa-paper-plane',
   },
   {
     title: 'Prospektverteilung',
     description: 'Ideal für lokale Geschäfte, Filialen, Franchises und große Marken mit messbarer Reichweite.',
     highlighted: false,
+    icon: 'fa-newspaper',
   },
   {
     title: 'Zeitungs- & Beilagenverteilung',
     description: 'Gezielte Zustellung von Werbebeilagen, Wochenblättern und regionalen Prospekten.',
     highlighted: false,
+    icon: 'fa-layer-group',
   },
   {
     title: 'Direktwerbung',
     description: 'Verteilung individueller Werbemittel direkt in Briefkästen Ihrer Zielgruppe.',
     highlighted: false,
+    icon: 'fa-bullhorn',
   },
   {
     title: 'Streetpromotion',
     description: 'Promotion-Teams für Innenstädte, Einkaufszonen, Events, Messen und stark frequentierte Bereiche.',
     highlighted: false,
+    icon: 'fa-users',
   },
   {
-    title: 'Sampling Aktionen',
-    description: 'Gezielte Produktproben-Verteilung für maximale Sichtbarkeit und Neukundengewinnung.',
+    title: 'Wahlwerbung',
+    description: 'Professionelle Verteilung von Wahlwerbematerial für Parteien, Kandidaten und politische Kampagnen.',
     highlighted: false,
+    icon: 'fa-check-to-slot',
   },
   {
     title: 'Bundesweite Kampagnenplanung',
     description: 'Von der Mengenplanung über Zielgebiete bis zur exakten Touren- und Bezirksstruktur.',
     highlighted: false,
+    icon: 'fa-map-location-dot',
   },
   {
     title: 'Adressierte Verteilung',
     description: 'Gezielte Zustellung Ihrer Werbung direkt an ausgewählte Haushalte und Unternehmen.',
     highlighted: false,
+    icon: 'fa-address-book',
   },
   {
     title: 'Web- & Logo Design',
     description: 'Moderne Webseiten und professionelle Logos für einen starken und überzeugenden Markenauftritt.',
     highlighted: false,
+    icon: 'fa-pen-ruler',
   },
 ];
 ---
 
-<section class="bg-[#F9F8F6] py-20 md:py-28" aria-labelledby="services-heading">
-  <div class="max-w-7xl mx-auto px-4">
+<section class="relative py-20 md:py-28 overflow-hidden" aria-labelledby="services-heading">
+  {/* Decorative blobs */}
+  <div class="blob w-[500px] h-[500px] bg-primary/20 -top-40 -left-40 blob-animated"></div>
+  <div class="blob w-[400px] h-[400px] bg-primary/15 bottom-0 right-0 blob-animated-delayed"></div>
+  <div class="blob w-[350px] h-[350px] bg-primary/10 top-1/2 left-1/3 blob-animated-slow"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4">
     {/* Header */}
     <div class="text-center max-w-2xl mx-auto">
-      <span class="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-4">Unsere Leistungen</span>
+      <span class="inline-block text-sm font-bold uppercase tracking-widest text-accent mb-4">Unsere Leistungen</span>
       <h2 id="services-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
         Unsere Leistungen für Ihre maximale Reichweite.
       </h2>
@@ -63,22 +74,12 @@ const services = [
   </div>
 
   {/* Carousel */}
-  <div id="services-slider" class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar gap-8 max-w-7xl mx-auto px-4 pt-20 pb-12 w-full">
+  <div id="services-slider" class="relative z-10 flex flex-nowrap overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar gap-8 max-w-7xl mx-auto px-4 pt-20 pb-12 w-full">
     {services.map((service, index) => (
-      <div class={`relative flex-none w-[85%] md:w-[40%] lg:w-[30%] rounded-[2rem] p-8 pt-14 text-center shadow-sm snap-center ${service.highlighted ? 'bg-primary' : 'bg-white'}`}>
-        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-20 h-20 bg-[#F9F8F6] rounded-full p-2">
-          <div class={`w-full h-full rounded-full flex items-center justify-center shadow-sm ${service.highlighted ? 'bg-primary' : 'bg-white'}`}>
-            <svg class={`w-8 h-8 ${service.highlighted ? 'text-white' : 'text-gray-800'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" aria-hidden="true">
-              {index === 0 && <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/>}
-              {index === 1 && <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-10.5c0-.621.504-1.125 1.125-1.125h1.5M7.5 3.75h6.75"/>}
-              {index === 2 && <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-10.5c0-.621.504-1.125 1.125-1.125h1.5M7.5 3.75h6.75"/>}
-              {index === 3 && <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>}
-              {index === 4 && <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>}
-              {index === 5 && <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/>}
-              {index === 6 && <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/>}
-              {index === 7 && <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>}
-              {index === 8 && <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.388 1.621a15.998 15.998 0 001.622-3.395m0 0c.199-.399.41-.78.628-1.14m-1.628 1.14a15.998 15.998 0 013.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.185-1.81M18.75 6.75h.008v.008h-.008V6.75zm-11.25 0h.008v.008h-.008V6.75zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>}
-            </svg>
+      <div class={`relative flex-none w-[85%] md:w-[40%] lg:w-[30%] rounded-[2rem] p-8 pt-14 text-center snap-center ${service.highlighted ? 'bg-primary' : 'glass'}`}>
+        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-20 h-20 glass-strong rounded-full p-2">
+          <div class={`w-full h-full rounded-full flex items-center justify-center ${service.highlighted ? 'bg-white/20' : 'bg-white/80'}`}>
+            <i class={`fas ${service.icon} text-xl ${service.highlighted ? 'text-white' : 'text-gray-800'}`} aria-hidden="true"></i>
           </div>
         </div>
         <h3 class={`text-xl font-bold mb-4 ${service.highlighted ? 'text-white' : 'text-gray-900'}`}>{service.title}</h3>
@@ -93,14 +94,14 @@ const services = [
   </div>
 
   {/* Controls: Arrows + Dots */}
-  <div class="flex items-center justify-center gap-4 mt-2">
+  <div class="relative z-10 flex items-center justify-center gap-4 mt-2">
     <button
       type="button"
       id="slider-prev"
       aria-label="Vorherige Leistung"
       class="w-11 h-11 rounded-full flex items-center justify-center text-gray-400 hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
-      <ChevronLeft class="w-5 h-5" />
+      <i class="fas fa-chevron-left text-sm" aria-hidden="true"></i>
     </button>
 
     <div class="flex justify-center gap-1" id="slider-dots" role="tablist" aria-label="Leistungen-Navigation">
@@ -117,7 +118,7 @@ const services = [
       aria-label="Nächste Leistung"
       class="w-11 h-11 rounded-full flex items-center justify-center text-gray-400 hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
-      <ChevronRight class="w-5 h-5" />
+      <i class="fas fa-chevron-right text-sm" aria-hidden="true"></i>
     </button>
   </div>
 </section>
