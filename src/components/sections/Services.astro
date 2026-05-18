@@ -65,7 +65,7 @@ const services = [
 
   <div class="relative z-10 max-w-7xl mx-auto px-4">
     {/* Header */}
-    <div class="text-center max-w-2xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-12 md:mb-16">
       <span class="inline-block text-sm font-bold uppercase tracking-widest text-accent mb-4">Unsere Leistungen</span>
       <h2 id="services-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
         Unsere Leistungen für Ihre maximale Reichweite.
@@ -74,7 +74,7 @@ const services = [
   </div>
 
   {/* Carousel */}
-  <div id="services-slider" class="relative z-10 flex flex-nowrap overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar gap-8 max-w-7xl mx-auto px-4 pt-20 pb-12 w-full">
+  <div id="services-slider" class="relative z-10 flex flex-nowrap overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar gap-8 max-w-7xl mx-auto px-4 pt-14 pb-12 w-full">
     {services.map((service, index) => (
       <div class={`relative flex-none w-[85%] md:w-[40%] lg:w-[30%] rounded-[2rem] p-8 pt-14 text-center snap-center ${service.highlighted ? 'bg-primary' : 'glass'}`}>
         <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 w-20 h-20 glass-strong rounded-full p-2">

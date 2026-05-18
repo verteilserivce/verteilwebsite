@@ -1,5 +1,10 @@
 ---
 import aboutImage from '../../assets/images/überuns.jpeg';
+import avatar1 from '../../assets/images/avatars/avatar1.png';
+import avatar2 from '../../assets/images/avatars/avatar2.png';
+import avatar3 from '../../assets/images/avatars/avatar3.png';
+import avatar4 from '../../assets/images/avatars/avatar4.png';
+import avatar5 from '../../assets/images/avatars/avatar5.png';
 
 const topFeatures = [
   { icon: 'fa-paper-plane', title: 'Live-Tracking', subtitle: 'in Echtzeit' },
@@ -23,16 +28,10 @@ const stats = [
   { icon: 'fa-thumbs-up', value: '100%', label: 'Zufriedene Kunden' },
 ];
 
-const avatars = [
-  'https://randomuser.me/api/portraits/men/32.jpg',
-  'https://randomuser.me/api/portraits/women/44.jpg',
-  'https://randomuser.me/api/portraits/men/46.jpg',
-  'https://randomuser.me/api/portraits/women/68.jpg',
-  'https://randomuser.me/api/portraits/men/22.jpg',
-];
+const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5];
 ---
 
-<section id="about-us" class="py-16 md:py-24 bg-white" aria-labelledby="about-heading">
+<section id="about-us" class="pt-10 md:pt-14 pb-16 md:pb-24 bg-white" aria-labelledby="about-heading">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     {/* ========== Top-Bar ========== */}
     <div class="bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] rounded-2xl p-6 md:p-8 mb-8 md:mb-10">
@@ -51,9 +50,9 @@ const avatars = [
       </div>
     </div>
 
-    {/* ========== Main 3-Column Grid (items-center = kritischer Fix) ========== */}
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr_1fr] items-center gap-10">
-      {/* ----- Left Column: Text & CTA (NO background, NO shadow) ----- */}
+    {/* ========== Main 3-Column Grid ========== */}
+    <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_2.2fr_0.9fr] items-stretch gap-10">
+      {/* ----- Left Column: Text & CTA ----- */}
       <div class="flex flex-col">
         <span class="text-xs font-bold uppercase tracking-widest text-accent mb-4">Über uns</span>
         <h2 id="about-heading" class="text-3xl md:text-4xl font-bold text-[#111827] leading-tight mb-2">
@@ -78,56 +77,55 @@ const avatars = [
 
         <a
           href="/ueber-uns"
-          class="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-[#1a56db] hover:bg-[#1649c4] rounded-lg transition-colors min-h-[44px] w-fit mb-8"
+          class="group inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-primary hover:bg-primary-dark rounded-lg transition-colors min-h-[44px] w-fit mb-8"
         >
           Mehr über uns
           <i class="fas fa-arrow-right text-xs transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true"></i>
         </a>
 
         {/* Avatar Stack */}
-        <div class="flex items-center gap-4 mt-auto">
+        <div class="flex flex-col items-start gap-2 mt-auto">
           <div class="flex -space-x-3">
             {avatars.map((src, index) => (
               <img
-                src={src}
+                src={src.src}
                 alt={`Teammitglied ${index + 1}`}
                 class="w-9 h-9 rounded-full border-2 border-white object-cover bg-gray-200"
                 loading="lazy"
                 width="36"
                 height="36"
-                onerror="this.style.display='none'"
               />
             ))}
-            <div class="w-9 h-9 rounded-full bg-green-500 border-2 border-white flex items-center justify-center text-white text-xs">
+            <div class="w-9 h-9 rounded-full bg-green-500 border-2 border-white flex items-center justify-center text-white text-xs shrink-0 relative z-10">
               <i class="fas fa-plus text-[10px]" aria-hidden="true"></i>
             </div>
           </div>
-          <div class="text-sm text-[#4B5563]">
-            <span class="font-bold text-[#111827]">100+</span> Verteiler im<br>Einsatz für Sie
-          </div>
+          <p class="text-sm text-[#4B5563]">
+            <span class="font-bold text-[#111827]">100+</span> Verteiler im Einsatz für Sie
+          </p>
         </div>
       </div>
 
       {/* ----- Middle Column: Bento 2×2 Grid ----- */}
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid grid-cols-2 grid-rows-2 h-full gap-4">
         {/* Box 1: Live-Tracking */}
-        <div class="bg-gray-50 border border-gray-100 rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between aspect-[4/3] p-5">
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between p-5">
           <div>
             <p class="text-sm font-bold text-text-primary">Live-Tracking</p>
             <p class="text-xs text-text-muted">in Echtzeit</p>
           </div>
-          <svg viewBox="0 0 200 60" class="w-full h-12 mt-2" fill="none" stroke="#064efd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg viewBox="0 0 200 60" class="w-full h-12 mt-2 text-primary" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="0,50 40,35 80,42 120,20 160,28 200,10" />
-            <circle cx="40" cy="35" r="3" fill="#064efd" />
-            <circle cx="80" cy="42" r="3" fill="#064efd" />
-            <circle cx="120" cy="20" r="3" fill="#064efd" />
-            <circle cx="160" cy="28" r="3" fill="#064efd" />
-            <circle cx="200" cy="10" r="3" fill="#064efd" />
+            <circle cx="40" cy="35" r="3" fill="currentColor" />
+            <circle cx="80" cy="42" r="3" fill="currentColor" />
+            <circle cx="120" cy="20" r="3" fill="currentColor" />
+            <circle cx="160" cy="28" r="3" fill="currentColor" />
+            <circle cx="200" cy="10" r="3" fill="currentColor" />
           </svg>
         </div>
 
         {/* Box 2: Fotodokumentation */}
-        <div class="bg-gray-50 border border-gray-100 rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between aspect-[4/3] p-5">
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between p-5">
           <div>
             <p class="text-sm font-bold text-text-primary">Fotodokumentation</p>
             <p class="text-xs text-text-muted">Nachweise in Echtzeit</p>
@@ -141,7 +139,7 @@ const avatars = [
         </div>
 
         {/* Box 3: Foto */}
-        <div class="bg-gray-50 border border-gray-100 rounded-2xl shadow-sm overflow-hidden aspect-[4/3]">
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
           <img
             src={aboutImage.src}
             alt="Team bei der professionellen Flyerverteilung"
@@ -153,7 +151,7 @@ const avatars = [
         </div>
 
         {/* Box 4: GPS-Kontrolle */}
-        <div class="bg-gray-50 border border-gray-100 rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between aspect-[4/3] p-5">
+        <div class="bg-gray-50 border border-gray-100 rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between p-5">
           <div>
             <p class="text-sm font-bold text-text-primary">GPS-Kontrolle</p>
             <p class="text-xs text-text-muted">100% transparent</p>
@@ -167,15 +165,13 @@ const avatars = [
         </div>
       </div>
 
-      {/* ----- Right Column: Stats (NO background, divide-y) ----- */}
-      <div class="flex flex-col divide-y divide-gray-100">
+      {/* ----- Right Column: Stats ----- */}
+      <div class="flex flex-col h-full justify-between">
         {stats.map((stat) => (
-          <div class="py-5 flex items-center gap-4">
-            <span class="w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary shrink-0">
-              <i class={`fas ${stat.icon} text-sm`} aria-hidden="true"></i>
-            </span>
+          <div class="flex items-center gap-5">
+            <i class={`fas ${stat.icon} text-primary text-3xl shrink-0`} aria-hidden="true"></i>
             <div>
-              <p class="text-xl font-bold text-[#111827]">{stat.value}</p>
+              <p class="text-4xl font-bold text-[#111827]">{stat.value}</p>
               <p class="text-xs text-text-muted">{stat.label}</p>
             </div>
           </div>

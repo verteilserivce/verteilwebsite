@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
+const isKeyMissing = !accessKey;
 
 const materialOptions = [
   'Flyer',
@@ -140,6 +141,18 @@ const regions = [
                 class="space-y-6"
                 novalidate
               >
+                {isKeyMissing && (
+                  <div class="rounded-xl bg-red-50 border border-red-200 p-4 text-sm text-red-700" role="alert">
+                    <strong>Konfigurationsfehler:</strong> Das Kontaktformular ist derzeit nicht erreichbar.
+                    Bitte kontaktieren Sie uns direkt per Telefon oder E-Mail.
+                  </div>
+                )}
+                <noscript>
+                  <div class="rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-800">
+                    <strong>Hinweis:</strong> Für die beste Funktionalität aktivieren Sie bitte JavaScript.
+                    Ohne JavaScript können wir die Formularvalidierung nicht garantieren.
+                  </div>
+                </noscript>
                 <input type="hidden" name="access_key" value={accessKey} />
                 <input type="hidden" name="subject" value="Neue Anfrage über Verteilservice Plus Website" />
                 <input type="hidden" name="from_name" value="Verteilservice Plus Website" />
@@ -505,6 +518,12 @@ const regions = [
       </div>
     </section>
   </main>
+<script>
+  (function() {
+    const input = document.getElementById('step1-termin');
+    if (input) input.min = new Date().toISOString().split('T')[0];
+  })();
+</script>
 </Layout>
 
 <script>

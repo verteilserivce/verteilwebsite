@@ -3,6 +3,7 @@ const packages = [
   {
     name: 'Kompakt',
     description: 'Für kleine Kampagnen & Standardverteilung',
+    icon: 'fa-box',
     features: [
       'Haus zu Haus Verteilung',
       'Prüfung der Verteilung',
@@ -13,6 +14,7 @@ const packages = [
   {
     name: 'Plus',
     description: 'Mehr Kontrolle & zusätzliche Leistungen',
+    icon: 'fa-star',
     features: [
       'Haus zu Haus Verteilung',
       'Prüfung der Verteilung',
@@ -25,6 +27,7 @@ const packages = [
   {
     name: 'Premium',
     description: 'Mit Apptracking & erweiterten Vorteilen',
+    icon: 'fa-gem',
     features: [
       'Haus zu Haus Verteilung',
       'Prüfung der Verteilung',
@@ -38,6 +41,7 @@ const packages = [
   {
     name: 'Allrounder',
     description: 'Das Komplettpaket für maximale Sicherheit',
+    icon: 'fa-layer-group',
     features: [
       'Haus zu Haus Verteilung',
       'Prüfung der Verteilung',
@@ -73,9 +77,14 @@ const packages = [
     {/* Grid */}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {packages.map((pkg) => (
-        <div class="glass-strong rounded-[2rem] overflow-hidden flex flex-col">
+        <div class="glass-strong rounded-[2rem] overflow-hidden flex flex-col h-full">
           {/* Content */}
           <div class="p-8 flex flex-col flex-1">
+            {/* Icon */}
+            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+              <i class={`fas ${pkg.icon} text-lg`} aria-hidden="true"></i>
+            </div>
+
             <h3 class="text-2xl font-bold text-text-primary mb-2">{pkg.name}</h3>
             <p class="text-sm text-text-secondary mb-6">{pkg.description}</p>
 

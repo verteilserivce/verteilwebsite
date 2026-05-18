@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/sections/Hero.astro';
+import CTABanner from '../components/sections/CTABanner.astro';
 import About from '../components/sections/About.astro';
 import PartnerLogos from '../components/sections/PartnerLogos.astro';
 import Process from '../components/sections/Process.astro';
 import Services from '../components/sections/Services.astro';
 import TrackingQuality from '../components/sections/TrackingQuality.astro';
+import ProofSection from '../components/sections/ProofSection.astro';
 import Gallery from '../components/sections/Gallery.astro';
 import Pricing from '../components/sections/Pricing.astro';
 import ServicePackages from '../components/sections/ServicePackages.astro';
@@ -18,14 +20,24 @@ import FAQ from '../components/sections/FAQ.astro';
 >
   <main>
     <Hero />
+    <CTABanner />
     <About />
     <PartnerLogos />
     <Process />
     <Services />
     <TrackingQuality />
+    <ProofSection />
     <Gallery />
     <ServicePackages />
+    <CTABanner
+      title="Noch Fragen zu Ihrer Kampagne?"
+      subtitle="Wir beraten Sie gerne persönlich und finden gemeinsam die optimale Lösung für Ihre Verteilung."
+    />
     <Pricing />
+    <CTABanner
+      title="Lassen Sie uns loslegen."
+      subtitle="Starten Sie jetzt Ihre nächste Kampagne – unverbindlich, transparent und mit echten Erfolgsgarantien."
+    />
     <FAQ />
   </main>
 </Layout>

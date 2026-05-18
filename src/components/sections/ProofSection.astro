@@ -1,0 +1,81 @@
+---
+import nachweis1 from '../../assets/images/nachweise/nachweis1.jpg';
+import nachweis2 from '../../assets/images/nachweise/nachweis2.jpg';
+import nachweis3 from '../../assets/images/nachweise/nachweis3.jpg';
+
+const steps = [
+  {
+    icon: 'fa-check',
+    title: 'Verteilung',
+    subtitle: 'wird durchgeführt',
+  },
+  {
+    icon: 'fa-camera',
+    title: 'Fotos werden',
+    subtitle: 'erstellt',
+  },
+  {
+    icon: 'fa-cloud-arrow-up',
+    title: 'Nachweise werden',
+    subtitle: 'hochgeladen',
+  },
+  {
+    icon: 'fa-file-lines',
+    title: 'Sie erhalten',
+    subtitle: 'Echtzeit-Einblick',
+  },
+];
+
+const proofImages = [
+  { src: nachweis1, alt: 'Fotodokumentation der Verteilung' },
+  { src: nachweis2, alt: 'GPS-Tracking und Kartenansicht' },
+  { src: nachweis3, alt: 'Detaillierte Verteilungsnachweise' },
+];
+---
+
+<section class="py-16 md:py-24 bg-background-alt" aria-labelledby="proof-heading">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header */}
+    <div class="text-center mb-12 md:mb-16">
+      <h2 id="proof-heading" class="text-sm md:text-base font-bold uppercase tracking-widest text-accent">
+        Nachweise, die überzeugen.
+      </h2>
+    </div>
+
+    {/* 4 Steps with Icons */}
+    <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-12 md:mb-16">
+      {steps.map((step, index) => (
+        <div class="flex items-center gap-4 md:gap-6">
+          <div class="flex flex-col items-center text-center w-28 md:w-32">
+            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-primary text-white mb-3">
+              <i class={`fas ${step.icon} text-xl`} aria-hidden="true"></i>
+            </div>
+            <p class="text-sm font-semibold text-text-primary leading-tight">{step.title}</p>
+            <p class="text-xs text-text-muted">{step.subtitle}</p>
+          </div>
+          {index < steps.length - 1 && (
+            <div class="hidden md:block text-primary/40">
+              <i class="fas fa-arrow-right text-lg" aria-hidden="true"></i>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+
+    {/* 3 Proof Images */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+      {proofImages.map((img) => (
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 border border-gray-200 shadow-sm">
+          <img
+            src={img.src.src}
+            alt={img.alt}
+            class="w-full h-full object-cover"
+            loading="lazy"
+            width="600"
+            height="450"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

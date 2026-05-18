@@ -1,35 +1,19 @@
 ---
-import hero1 from '../../assets/images/newhero1.jpeg';
-import hero2 from '../../assets/images/newhero2.jpeg';
-import hero3 from '../../assets/images/newhero3.jpeg';
+import heroImage from '../../assets/images/echterhero.jpeg';
 ---
 
 <section class="relative min-h-screen flex items-center overflow-hidden" aria-label="Hero-Bereich">
-  {/* Background Slider */}
+  {/* Background Image */}
   <div class="absolute inset-0 z-0">
-    <div id="hero-slider" class="relative w-full h-full">
-      <img
-        src={hero1.src}
-        alt=""
-        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-100"
-        fetchpriority="high"
-        aria-hidden="true"
-      />
-      <img
-        src={hero2.src}
-        alt=""
-        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0"
-        loading="lazy"
-        aria-hidden="true"
-      />
-      <img
-        src={hero3.src}
-        alt=""
-        class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-0"
-        loading="lazy"
-        aria-hidden="true"
-      />
-    </div>
+    <img
+      src={heroImage.src}
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover"
+      fetchpriority="high"
+      width="1685"
+      height="934"
+      aria-hidden="true"
+    />
     {/* Dark Overlay */}
     <div class="absolute inset-0 bg-black/60 z-[1]"></div>
   </div>
@@ -88,43 +72,4 @@ import hero3 from '../../assets/images/newhero3.jpeg';
       </div>
     </div>
   </div>
-
-  {/* Scroll Indicator */}
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-[3] hidden md:flex flex-col items-center gap-2 motion-safe:animate-bounce">
-    <span class="text-white/50 text-xs uppercase tracking-widest">Scroll</span>
-    <i class="fas fa-arrow-down text-white/50 text-sm" aria-hidden="true"></i>
-  </div>
 </section>
-
-<script>
-  (function() {
-    const slider = document.getElementById('hero-slider');
-    if (!slider) return;
-    const slides = slider.children;
-    let current = 0;
-    let intervalId = null;
-
-    function cycle() {
-      slides[current].classList.remove('opacity-100');
-      slides[current].classList.add('opacity-0');
-      current = (current + 1) % slides.length;
-      slides[current].classList.remove('opacity-0');
-      slides[current].classList.add('opacity-100');
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (!intervalId) intervalId = setInterval(cycle, 5000);
-        } else {
-          if (intervalId) {
-            clearInterval(intervalId);
-            intervalId = null;
-          }
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observer.observe(slider);
-  })();
-</script>

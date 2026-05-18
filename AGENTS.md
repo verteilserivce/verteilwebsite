@@ -1,14 +1,14 @@
-# Verteilservice Plus Website
+<!-- AGENTS.md – Verteilservice Plus Website -->
 
-Dieses Projekt ist die statische Marketing-Website für **Verteilservice Plus** – ein Dienstleister für professionelle Flyerverteilung und Werbebotschaften in Oberursel und bundesweit. Inhaber: Douaa Bendali.
+Dieses Projekt ist die statische Marketing-Website für **Verteilservice Plus** – ein Dienstleister für professionelle Flyerverteilung, Prospektverteilung und Streetpromotion bundesweit in Deutschland. Inhaber: Douaa Bendali.
 
 ## Technologie-Stack
 
 - **[Astro](https://astro.build/)** `^6.3.1` – Static Site Generator (Output-Modus: `static`)
 - **[Tailwind CSS](https://tailwindcss.com/)** `^3.4.19` – Utility-First CSS-Framework
+- **[Font Awesome Free](https://fontawesome.com/)** `^7.2.0` – Icon-Font (Solid + Brands)
 - **PostCSS & Autoprefixer** – CSS-Verarbeitung
 - **TypeScript** – Strikte Typisierung (`astro/tsconfigs/strict`)
-- **Font Awesome Free** `^7.2.0` – Icons via CSS-Klassen (`fas`, `fab`)
 - **Node.js** `>=22.12.0`
 
 ## Projektstruktur
@@ -16,31 +16,37 @@ Dieses Projekt ist die statische Marketing-Website für **Verteilservice Plus** 
 ```text
 ├── public/                    # Statische Assets
 │   ├── css/
-│   │   └── fontawesome.min.css
-│   ├── webfonts/              # Font Awesome Schriftdateien
+│   │   └── fontawesome.min.css       # Font Awesome CSS (manuell kopiert)
+│   ├── webfonts/                     # Font Awesome Webfont-Dateien
+│   │   ├── fa-brands-400.woff2
+│   │   ├── fa-regular-400.woff2
+│   │   ├── fa-solid-900.woff2
+│   │   └── fa-v4compatibility.woff2
 │   ├── favicon.ico
 │   ├── favicon.svg
 │   ├── robots.txt
-│   ├── site.webmanifest       # PWA-Manifest (Theme-Color: #064efd)
+│   ├── site.webmanifest       # PWA-Manifest (Theme-Color: #536c85)
 │   └── sitemap.xml
 ├── src/
 │   ├── assets/
-│   │   ├── fonts/             # (derzeit leer)
-│   │   ├── images/            # Fotos der Verteilung, Hero-Bilder, Team-Fotos
-│   │   └── partnerlogos/      # 8 Logos von Partnerunternehmen
+│   │   ├── images/            # Fotos der Verteilung, Hero-Bilder, Team-Fotos,
+│   │   │                      # Nachweise, Avatars, Leistungsbilder
+│   │   └── partnerlogos/      # Logos von Partnerunternehmen
 │   ├── components/
 │   │   ├── Header.astro       # Fixierte Navigation mit Mobile-Menü
 │   │   ├── Footer.astro       # Footer mit Galerie-Marquee, Navigation, Kontakt
-│   │   ├── sections/          # Seitenabschnitte (Hero, About, Services, etc.)
-│   │   │   ├── About.astro
-│   │   │   ├── FAQ.astro
-│   │   │   ├── Gallery.astro
-│   │   │   ├── Hero.astro     # Hintergrund-Slider mit 3 Bildern, Auto-Cycle (5s)
+│   │   ├── sections/          # Seitenabschnitte
+│   │   │   ├── About.astro    # Bento-Grid mit Stats, Avatars, Features
+│   │   │   ├── CTABanner.astro# Wiederverwendbarer CTA-Banner (Props: title, subtitle, compact)
+│   │   │   ├── FAQ.astro      # Akkordeon-FAQ mit sticky Info-Spalte
+│   │   │   ├── Gallery.astro  # Bildergalerie
+│   │   │   ├── Hero.astro     # Statischer Hero mit Hintergrundbild + Overlay
 │   │   │   ├── PartnerLogos.astro
 │   │   │   ├── Pricing.astro  # Vorteile nach Auflagenhöhe
-│   │   │   ├── Process.astro
-│   │   │   ├── ServicePackages.astro  # 4 Service-Pakete (Kompakt, Plus, Premium, Allrounder)
-│   │   │   ├── Services.astro # Horizontales Carousel mit Snap-Scrolling (9 Leistungen)
+│   │   │   ├── Process.astro  # 4-Schritte-Prozess
+│   │   │   ├── ProofSection.astro # Nachweis-Prozess + Fotos
+│   │   │   ├── ServicePackages.astro  # 4 Pakete (Kompakt, Plus, Premium, Allrounder)
+│   │   │   ├── Services.astro # Horizontales Carousel mit Snap-Scrolling
 │   │   │   ├── TrackingQuality.astro
 │   │   │   └── TrustBar.astro
 │   │   └── ui/
@@ -49,18 +55,19 @@ Dieses Projekt ist die statische Marketing-Website für **Verteilservice Plus** 
 │   │   └── Layout.astro       # Basis-Layout mit Meta-Tags, Header, Footer, JSON-LD
 │   ├── pages/                 # Dateibasiertes Routing
 │   │   ├── 404.astro
-│   │   ├── index.astro        # Startseite (komponiert aus 10 Sections)
+│   │   ├── index.astro        # Startseite (komponiert aus 13 Sections)
 │   │   ├── leistungen.astro   # Detailseite aller 9 Leistungen
 │   │   ├── ueber-uns.astro    # Über-uns mit mehreren visuellen Abschnitten
 │   │   ├── kontakt.astro      # 3-Step-Kontaktformular (Web3Forms)
 │   │   ├── impressum.astro
 │   │   └── datenschutz.astro
 │   ├── styles/
-│   │   └── global.css         # Tailwind-Direktiven + CSS-Custom-Properties + Glassmorphism
+│   │   └── global.css         # Tailwind-Direktiven + CSS-Custom-Properties +
+│   │                          # Glassmorphism-System + Decorative Blobs
 │   └── env.d.ts               # TypeScript-Deklarationen für ImportMetaEnv
 ├── astro.config.mjs           # Astro-Konfiguration (site, output: static, port: 3003)
-├── tailwind.config.mjs        # Tailwind-Theme-Erweiterungen (Farben via CSS-Var, Fonts, Animationen)
-├── tailwind.config.ts         # Leere TypeScript-Config (nicht aktiv genutzt)
+├── tailwind.config.mjs        # Tailwind-Theme-Erweiterungen (Farben, Fonts, Animationen)
+├── tailwind.config.ts         # Leere TypScript-Config (nicht aktiv genutzt)
 ├── postcss.config.js          # PostCSS mit Tailwind + Autoprefixer
 ├── tsconfig.json              # Striktes Astro-TypeScript
 ├── netlify.toml               # Netlify-Deployment + Security-Headers
@@ -72,13 +79,13 @@ Dieses Projekt ist die statische Marketing-Website für **Verteilservice Plus** 
 
 Alle Befehle werden im Projektroot ausgeführt:
 
-| Befehl            | Aktion                                            |
-|:------------------|:--------------------------------------------------|
-| `npm install`     | Abhängigkeiten installieren                       |
-| `npm run dev`     | Entwicklungsserver starten (Port `3003`)          |
-| `npm run build`   | Statische Produktions-Build in `./dist/` erstellen|
-| `npm run preview` | Build lokal vor dem Deployment testen             |
-| `npm run astro`   | Astro-CLI-Befehle ausführen                       |
+| Befehl          | Aktion                                            |
+|:----------------|:--------------------------------------------------|
+| `npm install`   | Abhängigkeiten installieren                       |
+| `npm run dev`   | Entwicklungsserver starten (Port `3003`)          |
+| `npm run build` | Statische Produktions-Build in `./dist/` erstellen|
+| `npm run preview`| Build lokal vor dem Deployment testen            |
+| `npm run astro` | Astro-CLI-Befehle ausführen                       |
 
 > **Hinweis:** Es gibt keinen `test`-Script in `package.json`. Das Projekt hat kein Test-Framework konfiguriert.
 
@@ -98,30 +105,22 @@ Astro verwendet dateibasiertes Routing. Jede `.astro`-Datei in `src/pages/` wird
 
 ## Code-Stil und Konventionen
 
-- **Komponenten**: Astro-Dateien (`.astro`) mit Frontmatter-Script-Block (`---`) für server-seitigen TypeScript-Code.
+- **Komponenten**: Astro-Dateien (`.astro`) mit Frontmatter-Script-Block (`---`) für Server-seitigen TypeScript-Code.
 - **Styling**: Primär Tailwind-Utility-Klassen. CSS-Custom-Properties für Brand-Farben und Fonts in `src/styles/global.css`.
+- **Glassmorphism**: Ein umfangreiches System aus `.glass`, `.glass-strong`, `.glass-primary` und `.glass-dark` ist in `global.css` definiert und wird konsistent für Karten, Panels und Formulare verwendet.
 - **Tailwind-Theme-Erweiterungen** (in `tailwind.config.mjs`):
-  - **Farben**: Werden über CSS-Custom-Properties referenziert (`primary: var(--color-primary)`, `primary-dark: var(--color-primary-dark)`, `background`, `background-alt`, `surface`, `text-primary`, `text-secondary`, `text-muted`, `border`). Zusätzlich feste Akzentfarben `accent` (#f97316) und `accent-dark` (#ea580c).
+  - **Farben**: `primary` (#536c85), `primary-dark` (#3e5268), `background`, `background-alt`, `surface`, `text-primary`, `text-secondary`, `text-muted`, `border`, `accent` (#536c85), `accent-dark` (#3e5268)
   - **Animationen**: `marquee`, `marquee-reverse`, `fade-in`, `slide-up`
-  - **Fonts**: `sans` (Inter via CSS-Var), `serif` (Merriweather via CSS-Var)
+  - **Fonts**: `sans` (Inter), `serif` (Merriweather)
   - **Border-Radii**: `4xl` (2rem), `5xl` (3rem)
-- **Icons**: Es werden **keine** eigenen SVG-Icon-Komponenten verwendet. Stattdessen wird **Font Awesome Free** über `public/css/fontawesome.min.css` eingebunden. Icons werden als `<i class="fas fa-xxx" aria-hidden="true"></i>` (Solid) oder `<i class="fab fa-xxx" aria-hidden="true"></i>` (Brands) verwendet.
+- **Icons**: Es werden ausschließlich **Font Awesome**-Icons verwendet (`<i class="fas fa-...">` bzw. `<i class="fab fa-...">`). Die Schriftart-Dateien liegen in `public/webfonts/`, das CSS in `public/css/fontawesome.min.css`. Das Verzeichnis `src/components/icons/` existiert nicht mehr.
 - **Client-seitige Scripts**: Werden direkt in `<script>`-Tags innerhalb der Astro-Komponenten geschrieben und als IIFE ausgeführt. Typ-Annotationen (`as HTMLFormElement | null`) werden verwendet, um TypeScript-Fehler zu vermeiden.
 - **Barrierefreiheit**: `aria-label`, `aria-current`, `aria-expanded`, `aria-controls`, `aria-selected`, `aria-live`, `aria-invalid`, `role="dialog"`, `role="tablist"`, `role="tab"`, `role="status"`, `role="alert"`, Skip-Link zum Hauptinhalt, Fokus-Trap im Mobile-Menü und `focus-visible`-Styles werden konsequent eingesetzt.
 - **Sprache**: Die gesamte Website-Inhalt, UI-Texte und die meisten Code-Kommentare sind auf **Deutsch**.
 - **Responsive Design**: Mobile-First mit Tailwind-Breakpoints (`sm:`, `md:`, `lg:`).
 - **Touch-Targets**: Interaktive Elemente verwenden konsistent `min-h-[44px]` und `min-w-[44px]` für ausreichende Klickflächen.
 - **Reduced Motion**: `prefers-reduced-motion`-Media-Query wird in `global.css` und einzelnen Komponenten berücksichtigt.
-
-## Glassmorphism-System
-
-In `src/styles/global.css` sind mehrere wiederverwendbare Glassmorphism-Klassen definiert:
-
-- `.glass` – Standard-Glas für Karten, Tags, Badges
-- `.glass-strong` – Stärkeres Glas für wichtige Panels, Formulare, Pricing-Cards
-- `.glass-primary` – Primär getöntes Glas für hervorgehobene Karten auf dunklen Hintergründen
-- `.glass-dark` – Dunkles Glas für Footer und dunkle Sections
-- `.blob` / `.blob-animated` – Dekorative, animierte Hintergrund-Formen (Blur, float-Animation)
+- **Dekorative Blobs**: Abschnitte verwenden häufig animierte, verschwommene Farbkreise (`.blob`, `.blob-animated`, `.blob-animated-delayed`, `.blob-animated-slow`) als Hintergrunddekor.
 
 ## Umgebungsvariablen
 
@@ -141,8 +140,8 @@ Kopiere `.env.example` zu `.env` und fülle die Werte aus:
 - **Schritt 1**: Verteilungsdetails (Material, Menge, Format, Termin).
 - **Schritt 2**: Region & Details (Bundesland, PLZ-Gebiete, selektive Verteilung).
 - **Schritt 3**: Kontaktdaten (Name, Firma, Anschrift, E-Mail, Telefon, Datenschutz).
-- Client-seitiger Step-Wechsel mit Fortschrittsanzeige (3 Icons).
-- Validierung pro Step mit visuellem Feedback (rote Borders).
+- Client-seitiger Step-Wechsel mit Fortschrittsanzeige (3 Punkte mit Icons).
+- Validierung pro Step mit visuellem Feedback (rote Borders, `aria-invalid`).
 - Step 1+2 Daten werden in versteckte Hidden-Inputs synchronisiert, bevor an Web3Forms gesendet wird.
 - Ladezustand mit Spinner, Timeout von 10 Sekunden (`AbortController`).
 - Erfolgs- und Fehlermeldungen werden dynamisch eingeblendet.
@@ -153,7 +152,6 @@ Kopiere `.env.example` zu `.env` und fülle die Werte aus:
 - 4 Pakete als Karten-Grid: **Kompakt**, **Plus**, **Premium**, **Allrounder**.
 - Features als Checkliste pro Paket.
 - Jede Karte verlinkt auf `/kontakt#angebot`.
-- Alle Karten verwenden `.glass-strong`.
 
 ### Cookie-Banner
 - Speichert die Einwilligung (`accepted`/`declined`) im `localStorage` unter dem Schlüssel `vsp_cookie_consent`.
@@ -164,42 +162,44 @@ Kopiere `.env.example` zu `.env` und fülle die Werte aus:
 ### SEO
 - Jede Seite nutzt das `Layout.astro` mit dynamischen `title`, `description`, Open-Graph-Tags, Twitter-Cards, Canonical-URLs und Schema.org `LocalBusiness` JSON-LD.
 - Impressum & Datenschutz sind mit `noindex={true}` markiert.
-- `site.webmanifest` ist für PWA-Fähigkeiten konfiguriert (Theme-Color: `#064efd`).
+- `site.webmanifest` ist für PWA-Fähigkeiten konfiguriert.
 - `robots.txt` und `sitemap.xml` liegen in `public/`.
 
 ### Header
-- Fixierter Header mit `.glass-strong` und Scroll-Shadow-Effekt.
+- Fixierter Header mit `backdrop-blur-sm` und Scroll-Shadow-Effekt (`shadow-md` ab Scroll-Position > 10px).
 - Mobiles Menü mit Fokus-Trap, Escape-Taste-Schließung und Body-Scroll-Lock.
 - Noscript-Fallback für das Mobile-Menü.
 - Aktive Navigationslinks werden mit Unterstrich und `aria-current="page"` hervorgehoben.
 
 ### Services-Carousel (Startseite)
 - Horizontales Scroll-Carousel mit `snap-x snap-mandatory`.
-- 9 Leistungen als Karten. Die erste Karte (`Flyerverteilung`) ist visuell hervorgehoben (`bg-primary` statt `glass`).
 - Navigation über Pfeil-Buttons und Dot-Indikatoren.
 - Aktiver Dot wird über Scroll-Event mit `requestAnimationFrame` aktualisiert.
+- Erste Karte (`Flyerverteilung`) ist visuell hervorgehoben (`highlighted: true`).
 
-### Hero-Slider
-- Drei Hintergrundbilder (`newhero1.jpeg`, `newhero2.jpeg`, `newhero3.jpeg`) mit CSS-Opacity-Transition (1s).
-- Auto-Cycle alle 5 Sekunden, gesteuert durch `IntersectionObserver` (pausiert, wenn nicht sichtbar).
+### Hero
+- Statischer Hero-Bereich mit Vollbild-Hintergrundbild (`echterhero.jpeg`), dunklem Overlay (60% Schwarz) und dekorativen SVG-Linien.
+- Kein Auto-Cycle-Slider mehr.
 
-### Footer-Galerie
-- Automatisches CSS-Marquee mit duplizierten Bildern für nahtloses Looping.
-- 6 Firmenfahrzeug-Fotos, importiert aus `src/assets/images/`.
+### FAQ-Akkordeon
+- Einzeln öffnendes Akkordeon mit CSS `grid-rows-[0fr]` / `grid-rows-[1fr]` für Animation.
+- Noscript-Fallback zeigt alle Antworten direkt an.
 
-### Partner-Logos
-- Automatisches CSS-Marquee mit 8 Partnerlogos.
-- Titel: "Unsere Partner".
-- Logos im Grayscale-Modus mit Hover-Effekt.
+### Footer
+- Content-Grid mit Brand, Navigation, Rechtliches und Kontakt in `.glass-dark`-Karten.
+- Automatisches CSS-Marquee mit duplizierten Bildern für nahtloses Looping (10 Firmenfahrzeug-Fotos).
+- Copyright-Zeile mit dynamischem Jahr.
 
 ## Assets
 
 - **Bilder**: Alle Fotos liegen in `src/assets/images/`. Sie werden über Astro's Image-Handling importiert (`import img from '../assets/images/...'`).
-- **Hero-Bilder**: `newhero1.jpeg`, `newhero2.jpeg`, `newhero3.jpeg`
-- **Galerie/About-Fotos**: Mehrere JPEGs mit WhatsApp-generierten Dateinamen
+- **Hero-Bild**: `echterhero.jpeg`
+- **Galerie/Footer-Fotos**: Mehrere JPEGs mit WhatsApp-generierten Dateinamen
+- **Nachweise**: `src/assets/images/nachweise/nachweis1.jpg` bis `nachweis3.jpg`
+- **Avatars**: `src/assets/images/avatars/avatar1.png` bis `avatar5.png` (Verwendung in `About.astro`)
+- **Leistungsbilder**: `leistung1.jpg` bis `leistung9.jpg`
 - **Partnerlogos**: In `src/assets/partnerlogos/` als JPGs
-- **Fonts**: Das `src/assets/fonts/`-Verzeichnis ist derzeit leer. Es werden System-Fonts (Inter, Merriweather) über CSS-Custom-Properties geladen.
-- **Icons**: Font Awesome Free wird als lokale CSS-Datei in `public/css/fontawesome.min.css` ausgeliefert. Die zugehörigen Schriftdateien liegen in `public/webfonts/`.
+- **Fonts**: System-Fonts (Inter, Merriweather) über CSS-Custom-Properties in `global.css`. Font Awesome wird als Icon-Font geladen.
 
 ## Deployment
 
@@ -234,9 +234,11 @@ Derzeit ist **kein Test-Framework** im Projekt konfiguriert. Es gibt keine Unit-
 
 ## Hinweise für Agenten
 
-- `tailwind.config.ts` ist eine leere TypeScript-Datei und wird nicht aktiv genutzt. Alle Tailwind-Erweiterungen befinden sich in `tailwind.config.mjs`.
+- `tailwind.config.ts` ist eine leere TypScript-Datei und wird nicht aktiv genutzt. Alle Tailwind-Erweiterungen befinden sich in `tailwind.config.mjs`.
 - `README.md` ist noch die unveränderte Astro-Starter-Vorlage und spiegelt nicht den aktuellen Projektstatus wider.
 - Neue Seiten werden als `.astro`-Dateien in `src/pages/` angelegt und sollten das `Layout.astro` importieren.
+- Neue Icons folgen dem **Font Awesome**-Muster: `<i class="fas fa-[name]" aria-hidden="true"></i>` bzw. `<i class="fab fa-[name]" aria-hidden="true"></i>`. Es werden keine eigenen SVG-Icon-Komponenten mehr erstellt.
 - Neue Sections gehören in `src/components/sections/` und werden von den Page-Komponenten importiert.
-- Brand-Farbe ist `#064efd` (primary) und `#0039c7` (primary-dark). Die alte graue Farbe (#7c919e) und die alte rote Farbe (#d91c26) wurden komplett ersetzt.
-- Für Icons wird **Font Awesome** verwendet. Füge keine eigenen SVG-Icon-Komponenten unter `src/components/icons/` hinzu – dieser Ordner existiert nicht mehr.
+- Brand-Farbe ist `#536c85` (primary) und `#3e5268` (primary-dark).
+- Für Font Awesome müssen bei Updates die Dateien in `public/css/` und `public/webfonts/` manuell aus dem `@fortawesome/fontawesome-free`-Package aktualisiert werden.
+- `public/sitemap.xml` muss bei neuen Seiten manuell ergänzt werden.

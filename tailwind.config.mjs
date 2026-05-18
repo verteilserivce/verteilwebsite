@@ -15,8 +15,8 @@ export default {
         'text-secondary': 'var(--color-text-secondary)',
         'text-muted': 'var(--color-text-muted)',
         border: 'var(--color-border)',
-        accent: '#f97316',
-        'accent-dark': '#ea580c',
+        accent: 'var(--color-accent)',
+        'accent-dark': '#3e5268',
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],

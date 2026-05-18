@@ -5,8 +5,8 @@
 @layer base {
   :root {
     /* Brand Colors */
-    --color-primary: #064efd;
-    --color-primary-dark: #0039c7;
+    --color-primary: #536c85;
+    --color-primary-dark: #3e5268;
 
     /* Backgrounds */
     --color-background: #ffffff;
@@ -20,6 +20,7 @@
 
     /* Border */
     --color-border: #e5e5e5;
+    --color-accent: #536c85;
 
     /* Fonts */
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -96,7 +97,7 @@
       0 1px 2px rgba(0, 0, 0, 0.04),
       0 4px 8px rgba(0, 0, 0, 0.06),
       0 12px 24px rgba(0, 0, 0, 0.08),
-      0 24px 48px rgba(6, 78, 253, 0.12),
+      0 24px 48px rgba(83, 108, 133, 0.12),
       inset 0 1px 0 rgba(255, 255, 255, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -106,7 +107,7 @@
       0 1px 2px rgba(0, 0, 0, 0.04),
       0 8px 16px rgba(0, 0, 0, 0.08),
       0 20px 40px rgba(0, 0, 0, 0.10),
-      0 32px 64px rgba(124, 145, 158, 0.18),
+      0 32px 64px rgba(83, 108, 133, 0.18),
       inset 0 1px 0 rgba(255, 255, 255, 0.55);
   }
 
@@ -124,7 +125,7 @@
       0 1px 2px rgba(0, 0, 0, 0.04),
       0 4px 8px rgba(0, 0, 0, 0.06),
       0 12px 24px rgba(0, 0, 0, 0.08),
-      0 24px 48px rgba(6, 78, 253, 0.15),
+      0 24px 48px rgba(83, 108, 133, 0.15),
       inset 0 1px 0 rgba(255, 255, 255, 0.55);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -134,7 +135,7 @@
       0 1px 2px rgba(0, 0, 0, 0.04),
       0 8px 16px rgba(0, 0, 0, 0.08),
       0 20px 40px rgba(0, 0, 0, 0.10),
-      0 32px 64px rgba(124, 145, 158, 0.22),
+      0 32px 64px rgba(83, 108, 133, 0.22),
       inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
@@ -142,17 +143,17 @@
   .glass-primary {
     background: linear-gradient(
       135deg,
-      rgba(6, 78, 253, 0.55) 0%,
-      rgba(6, 78, 253, 0.30) 100%
+      rgba(83, 108, 133, 0.55) 0%,
+      rgba(83, 108, 133, 0.30) 100%
     );
     backdrop-filter: blur(40px) saturate(180%);
     -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border: 1.5px solid rgba(6, 78, 253, 0.60);
+    border: 1.5px solid rgba(83, 108, 133, 0.60);
     box-shadow:
       0 1px 2px rgba(0, 0, 0, 0.04),
       0 4px 8px rgba(0, 0, 0, 0.06),
       0 12px 24px rgba(0, 0, 0, 0.08),
-      0 24px 48px rgba(6, 78, 253, 0.20),
+      0 24px 48px rgba(83, 108, 133, 0.20),
       inset 0 1px 0 rgba(255, 255, 255, 0.35);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -162,7 +163,7 @@
       0 1px 2px rgba(0, 0, 0, 0.04),
       0 8px 16px rgba(0, 0, 0, 0.08),
       0 20px 40px rgba(0, 0, 0, 0.10),
-      0 32px 64px rgba(124, 145, 158, 0.28),
+      0 32px 64px rgba(83, 108, 133, 0.28),
       inset 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 

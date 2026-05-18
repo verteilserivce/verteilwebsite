@@ -9,7 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "prebuild": "npm run optimize-images"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",
