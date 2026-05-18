@@ -27,7 +27,7 @@ const images = [img1, img2, img3, img4, img5, img6, img7, img8];
       <button
         type="button"
         id="gallery-prev"
-        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-6 z-10 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/80 backdrop-blur-md border border-white/50 shadow-lg text-text-primary flex items-center justify-center hover:text-primary transition-colors duration-200"
+        class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/80 backdrop-blur-md border border-white/50 shadow-lg text-text-primary flex items-center justify-center hover:text-primary transition-colors duration-200"
         aria-label="Vorheriges Bild"
       >
         <i class="fas fa-chevron-left text-sm" aria-hidden="true"></i>
@@ -37,7 +37,7 @@ const images = [img1, img2, img3, img4, img5, img6, img7, img8];
       <button
         type="button"
         id="gallery-next"
-        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-6 z-10 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/80 backdrop-blur-md border border-white/50 shadow-lg text-text-primary flex items-center justify-center hover:text-primary transition-colors duration-200"
+        class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/80 backdrop-blur-md border border-white/50 shadow-lg text-text-primary flex items-center justify-center hover:text-primary transition-colors duration-200"
         aria-label="Nächstes Bild"
       >
         <i class="fas fa-chevron-right text-sm" aria-hidden="true"></i>
@@ -46,7 +46,7 @@ const images = [img1, img2, img3, img4, img5, img6, img7, img8];
       {/* Scroll Track */}
       <div
         id="gallery-track"
-        class="flex gap-5 overflow-x-auto hide-scrollbar scroll-smooth snap-x snap-mandatory px-4 md:px-8 py-4"
+        class="flex gap-5 overflow-x-auto hide-scrollbar scroll-smooth snap-x snap-proximity px-4 md:px-10 py-4"
       >
         {images.map((img, i) => (
           <div class="shrink-0 snap-start w-[280px] md:w-[320px]">
@@ -85,14 +85,39 @@ const images = [img1, img2, img3, img4, img5, img6, img7, img8];
     const nextBtn = document.getElementById('gallery-next');
     if (!track || !prevBtn || !nextBtn) return;
 
-    const scrollAmount = 340;
+    function getScrollAmount() {
+      const card = track.querySelector(':scope > div');
+      if (!card) return 340;
+      const style = getComputedStyle(track);
+      const gap = parseFloat(style.gap) || 20;
+      return card.getBoundingClientRect().width + gap;
+    }
 
     prevBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
     });
 
     nextBtn.addEventListener('click', () => {
-      track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
     });
+
+    // Touch swipe support
+    let startX = 0;
+    let isDown = false;
+
+    track.addEventListener('touchstart', (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      if (!isDown) return;
+      isDown = false;
+      const endX = e.changedTouches[0].pageX;
+      const diff = startX - endX;
+      if (Math.abs(diff) > 40) {
+        track.scrollBy({ left: diff > 0 ? getScrollAmount() : -getScrollAmount(), behavior: 'smooth' });
+      }
+    }, { passive: true });
   })();
 </script>
